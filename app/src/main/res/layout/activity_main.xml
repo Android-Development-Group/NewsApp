@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:auto="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_EBEBEB"
+    android:orientation="vertical"
     tools:context="com.myself.newsapp.MainActivity">
 
     <!--标题栏-->
@@ -22,10 +23,8 @@
         android:id="@+id/sample_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        auto:layout_constraintBottom_toBottomOf="parent"
-        auto:layout_constraintLeft_toLeftOf="parent"
-        auto:layout_constraintRight_toRightOf="parent"
-        auto:layout_constraintTop_toTopOf="parent"/>
+        android:layout_gravity="center"
+        android:layout_marginTop="180dp"
+        android:text="Hello World!"/>
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
