@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_size_6sp">6sp</dimen>
+    <dimen name="text_size_8sp">8sp</dimen>
+    <dimen name="text_size_10sp">10sp</dimen>
+    <dimen name="text_size_12sp">12sp</dimen>
+    <dimen name="text_size_14sp">14sp</dimen>
+    <dimen name="text_size_16sp">16sp</dimen>
+    <dimen name="text_size_18sp">18sp</dimen>
+    <dimen name="text_size_20sp">20sp</dimen>
+    <dimen name="text_size_22sp">22sp</dimen>
+    <dimen name="text_size_24sp">24sp</dimen>
+    <dimen name="text_size_26sp">26sp</dimen>
+    <dimen name="text_size_28sp">28sp</dimen>
+    <dimen name="text_size_30sp">30sp</dimen>
+    <dimen name="text_size_32sp">32sp</dimen>
+
+    <dimen name="divider_height">1px</dimen>
+    <dimen name="dimens_8dp">8dp</dimen>
+    <dimen name="dimens_4dp">4dp</dimen>
+    <dimen name="dimens_20dp">20dp</dimen>
+    <dimen name="dimens_15dp">15dp</dimen>
+
+    <dimen name="tab_bar_height">50dp</dimen>
+
+    <dimen name="navigation_bar_height">48dp</dimen>
+
+    <dimen name="setting_item_height">36dp</dimen>
+
+    <!--<dimen name="tooltip_default_arrow_height">8dp</dimen>-->
+    <!--<dimen name="tooltip_default_arrow_width">16dp</dimen>-->
+    <!--<dimen name="tooltip_default_corner_radius">4dp</dimen>-->
+    <!--<dimen name="tooltip_default_offset">0dp</dimen>-->
+    <!--<integer name="tooltip_default_arrow_location">1</integer>-->
+    <!--<integer name="tooltip_default_arrow_alignment">3</integer>-->
+
+    <dimen name="crop__bar_height">40dp</dimen>
+</resources>

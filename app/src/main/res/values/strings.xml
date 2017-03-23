@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">NewsApp</string>
 
+    <string name="main_title">NewsApp主页</string>
+
     <string name="no_network_tips">您的网络不给力，请稍后重试</string>
 
 

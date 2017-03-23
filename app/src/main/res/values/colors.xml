@@ -3,4 +3,45 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+
+    <!--TextColor-->
+    <color name="text_main_color_sel">#B57DE4</color>
+    <color name="text_main_color_nor">#985EC9</color>
+    <color name="text_color_F5F5F5">#F5F5F5</color>
+    <color name="text_color_ED5564">#ED5564</color>
+    <color name="text_color_646464">#646464</color>
+    <color name="text_color_white">#FFFFFF</color>
+    <color name="text_color_red">#CD5564</color>
+    <color name="text_color_gray">#959595</color>
+    <color name="text_color_B2B2B2">#B2B2B2</color>
+    <color name="text_color_9B9B9B">#9B9B9B</color>
+    <color name="text_color_C1C1C1">#C1C1C1</color>
+    <color name="text_color_88FFFFFF">#88FFFFFF</color>
+    <color name="text_color_E7CCFD">#E7CCFD</color>
+    <color name="text_color_88D152">#88D152</color>
+    <color name="text_color_69D398">#69D398</color>
+    <color name="text_color_985EC9">#985EC9</color>
+    <color name="text_color_6666CC">#6666CC</color>
+
+    <!--Color-->
+    <color name="color_history_nor">#985cc9</color>
+    <color name="color_history_sel">#8044b2</color>
+    <color name="color_golden">#FFE875</color>
+    <color name="color_EBEBEB">#EBEBEB</color>
+    <color name="color_C2C2C2">#C2C2C2</color>
+    <color name="color_313131">#313131</color>
+    <color name="color_7f313131">#7f313131</color>
+    <color name="color_007AFF">#007AFF</color>
+    <color name="color_rectangle_nor">#F5F5F5</color>
+    <color name="color_rectangle_sel">#985EC9</color>
+    <color name="color_F4EFF9">#F4EFF9</color>
+    <color name="color_49484B">#48494B</color>
+    <color name="color_212121">#212121</color>
+    <color name="color_F5F5F5">#F5F5F5</color>
+    <color name="color_bb000000">#bb000000</color>
+    <color name="color_FFF6F1">#FFF6F1</color>
+    <color name="color_blue_green">#4BCFAE</color>
+    <color name="color_8849F6">#8849F6</color>
+
 </resources>

@@ -1,3 +1,12 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Library</string>
+
+
+    <string name="crop__done" translatable="false">Confirm</string>
+    <string name="crop__cancel" translatable="false" tools:ignore="ButtonCase">Cancel</string>
+    <string name="crop__pick_error" translatable="false">No image sources available</string>
+    <string name="crop__saving" translatable="false">Saving picture…</string>
+    <string name="crop__wait" translatable="false">Please wait…</string>
+
+
 </resources>

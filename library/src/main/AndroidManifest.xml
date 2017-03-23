@@ -12,7 +12,7 @@
             android:name="BUG_HD_SDK_GENERAL_KEY"
             android:value="bc19a3b234f00e9c1b858853e61b8e73"/>
 
-        <activity android:name=".base.AppInfoActivity"/>
+        <activity android:name=".controller.AppInfoActivity"/>
 
     </application>
 

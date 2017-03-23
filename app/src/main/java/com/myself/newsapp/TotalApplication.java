@@ -2,8 +2,8 @@ package com.myself.newsapp;
 
 import android.content.Context;
 
-import com.myself.library.base.ActivityManager;
-import com.myself.library.base.BaseApplication;
+import com.myself.library.controller.ActivityManager;
+import com.myself.library.controller.BaseApplication;
 import com.myself.library.utils.Logger;
 import com.myself.library.utils.SDCardUtils;
 

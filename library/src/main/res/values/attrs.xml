@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--RoundProgressBar-->
+    <declare-styleable name="RoundProgressBar">
+        <attr name="roundColor" format="color"/>
+        <attr name="roundProgressColor" format="color"/>
+        <attr name="roundWidth" format="dimension"></attr>
+        <attr name="textColor" format="color"/>
+        <attr name="textSize" format="dimension"/>
+        <attr name="max" format="integer"></attr>
+        <attr name="textIsDisplayable" format="boolean"></attr>
+        <attr name="style">
+            <enum name="STROKE" value="0"></enum>
+            <enum name="FILL" value="1"></enum>
+        </attr>
+    </declare-styleable>
+
+    <!--ImageDraweeView-->
+    <declare-styleable name="ImageDraweeView">
+        <attr name="aspect_ratio" format="float"/>
+        <attr name="default_drawable" format="reference"/>
+    </declare-styleable>
+
+    <!--NavigationBar-->
+    <declare-styleable name="NavigationBar">
+        <attr name="nav_left_icon" format="reference"/>
+        <attr name="nav_right_icon" format="reference"/>
+        <attr name="nav_main_title" format="string"/>
+        <attr name="nav_main_title_color" format="color"/>
+        <attr name="nav_dis_main_title_color" format="color"/>
+        <attr name="nav_main_title_size" format="dimension|reference"/>
+        <attr name="nav_left_title" format="string"/>
+        <attr name="nav_left_title_color" format="color"/>
+        <attr name="nav_dis_left_title_color" format="color"/>
+        <attr name="nav_left_title_size" format="dimension|reference"/>
+        <attr name="nav_right_title" format="string"/>
+        <attr name="nav_right_title_color" format="color"/>
+        <attr name="nav_dis_right_title_color" format="color"/>
+        <attr name="nav_right_title_size" format="dimension|reference"/>
+        <attr name="nav_divider_color" format="color"/>
+        <attr name="nav_has_divider" format="boolean"/>
+        <attr name="nav_has_right_title_icon" format="boolean"/>
+        <attr name="nav_right_title_indicator_background" format="reference"/>
+        <attr name="nav_right_title_icon_text_color" format="color"/>
+    </declare-styleable>
+
+</resources>
