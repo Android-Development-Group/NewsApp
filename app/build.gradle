@@ -1,0 +1,106 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "25.0.0"
+    defaultConfig {
+        applicationId "com.myself.newsapp"
+        minSdkVersion 18
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.1"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        externalNativeBuild {
+            cmake {
+                cppFlags ""
+            }
+        }
+        //设置NDK的模块名称及平台
+        ndk {
+            moduleName "native-lib"
+            abiFilters "armeabi"
+        }
+    }
+    //签名
+    signingConfigs {
+        release {
+            storeFile file("../newsapp.jks")
+            storePassword "app123"
+            keyAlias "newsapp"
+            keyPassword "app123"
+        }
+    }
+
+    //源码集
+    sourceSets {
+        main {
+            //设置本地代码，[]内容去掉则禁止AS的NDK自动编译。
+            jni.srcDirs = ['src/main/cpp']
+            java.srcDirs = ['src/main/java']
+            assets.srcDirs = ['src/main/assets']
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+        }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
+        }
+    }
+
+    //产品渠道配置
+    productFlavors {
+        local_release { versionName = "V" + defaultConfig.versionName }
+//        local_debug { versionName = "D" + defaultConfig.versionName }
+//        channel_360 { versionName = "V" + defaultConfig.versionName }
+//          ... ...
+        productFlavors.all { flavor ->
+            flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.android.support:design:23.4.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha9'
+    testCompile 'junit:junit:4.12'
+    compile 'com.jakewharton:butterknife:8.4.0'
+    apt 'com.jakewharton:butterknife-compiler:8.4.0'
+    compile 'com.google.code.gson:gson:2.8.0'
+}
+
+//编译结束后删除unaligned包
+android.applicationVariants.all { variant ->
+    variant.assemble.doLast {
+        variant.outputs.each { output ->
+            println "aligned " + output.outputFile
+            println "unaligned " + output.packageApplication.outputFile
+
+            File file = output.packageApplication.outputFile;
+            if (variant.buildType.zipAlignEnabled && file.getName().contains("unaligned")) {
+                println "deleting " + file.getName()
+                file.delete()
+            }
+        }
+    }
+}
