@@ -55,7 +55,10 @@ public class TotalApplication extends BaseApplication {
 
     @Override
     protected String getBuglyKey() {
-        return "123456789";
+
+//        app id-ad473298bc
+//        app key-664c08fa-2104-4be8-9d1e-0c443ac9e81f
+        return "ad473298bc";
     }
 
     @Override
