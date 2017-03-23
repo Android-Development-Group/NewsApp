@@ -1,15 +1,19 @@
 package com.myself.newsapp;
 
-import android.app.Application;
 import android.content.Context;
-import android.util.Log;
 
-import butterknife.ButterKnife;
+import com.myself.library.base.ActivityManager;
+import com.myself.library.base.BaseApplication;
+import com.myself.library.utils.Logger;
+import com.myself.library.utils.SDCardUtils;
+
+import java.io.File;
+
 import im.fir.sdk.FIR;
 
 
 /**
- * Description: Application
+ * Description: BaseApplication
  * Copyright  : Copyright (c) 2016
  * Email      : jusenr@163.com
  * Company    : 葡萄科技
@@ -17,7 +21,7 @@ import im.fir.sdk.FIR;
  * Date       : 2017/3/23 11:00.
  */
 
-public class TotalApplication extends Application {
+public class TotalApplication extends BaseApplication {
     private static final String TAG = "Jni-Test";
     public static final String FIR_API_TOKEN = "1b91eb3eaaea5f64ed127882014995dd";
     public static Context mContext;
@@ -26,31 +30,62 @@ public class TotalApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        mContext = getApplicationContext();
-        //是否Debug环境
-        isDebug = configEnvironment();
-        //ButterKnife的Debug模式
-        ButterKnife.setDebug(isDebug);
+
         //Fir-SDk配置
         FIR.init(this);
 
-        //捕捉系统崩溃异常
-//        CrashHandler.instance().init(new CrashHandler.OnCrashHandler() {
-//            @Override
-//            public void onCrashHandler(Throwable ex) {
-//                onCrash(ex);
-//            }
-//        });
     }
 
-    /**
-     * 网络环境切换
-     *
-     * @return
-     */
-    protected boolean configEnvironment() {
+    @Override
+    protected void initEnvironment() {
+        //初始化Service Api
+        BaseApi.init(BaseApi.HOST_FORMAL);
+    }
 
-        return false;
+    @Override
+    public String appDeviceId() {
+        return null;
+    }
+
+    @Override
+    protected boolean isDebug() {
+        //根据需求更改
+        return BaseApi.isInnerEnvironment();
+    }
+
+    @Override
+    protected String getBuglyKey() {
+        return "123456789";
+    }
+
+    @Override
+    public String getPackageName() {
+        return "com.myself.newsapp";
+    }
+
+    @Override
+    protected String getLogTag() {
+        return "NewsApp_log";
+    }
+
+    @Override
+    protected String getSdCardPath() {
+        return SDCardUtils.getSDCardPath() + File.separator + getLogTag();
+    }
+
+    @Override
+    protected String getNetworkCacheDirectoryPath() {
+        return sdCardPath + File.separator + "http_cache";
+    }
+
+    @Override
+    protected int getNetworkCacheSize() {
+        return 20 * 1024 * 1024;
+    }
+
+    @Override
+    protected int getNetworkCacheMaxAgeTime() {
+        return 0;
     }
 
     /**
@@ -58,10 +93,10 @@ public class TotalApplication extends Application {
      *
      * @param ex 异常信息
      */
+    @Override
     protected void onCrash(Throwable ex) {
-        Log.e(TAG, "APP崩溃了,错误信息是" + ex.getMessage());
+        Logger.e("APP崩溃了,错误信息是" + ex.getMessage());
         ex.printStackTrace();
-
-//        ActivityManager.getInstance().finishAllActivity();
+        ActivityManager.getInstance().finishAllActivity();
     }
 }

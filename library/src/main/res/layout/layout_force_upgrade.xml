@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_centerInParent="true"
+              android:layout_marginLeft="32dp"
+              android:layout_marginRight="32dp"
+              android:background="@drawable/bg_round_rect_white"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_tips_upgrade"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="火速升级版本"
+            android:textColor="#8B49F6"
+            android:textSize="20sp"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_upgrade_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_top_layout"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginTop="15dp"
+        android:textColor="#4a4a4a"
+        android:textSize="14sp"/>
+
+    <TextView
+        android:id="@+id/tv_quickly_upgrade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="升级到新版本,功能将更丰富多彩。"
+        android:textColor="#4a4a4a"
+        android:textSize="14sp"/>
+
+    <TextView
+        android:id="@+id/tv_goto_upgrade"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/btn_goto_upgrade"
+        android:elevation="4dp"
+        android:gravity="center"
+        android:padding="12dp"
+        android:text="马上升级"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/tv_exit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:padding="15dp"
+        android:text="退出"
+        android:textColor="#8B49F6"
+        android:textSize="14sp"/>
+
+</LinearLayout>
