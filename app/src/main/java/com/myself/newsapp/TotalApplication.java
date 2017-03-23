@@ -1,7 +1,5 @@
 package com.myself.newsapp;
 
-import android.content.Context;
-
 import com.myself.library.controller.ActivityManager;
 import com.myself.library.controller.BaseApplication;
 import com.myself.library.utils.Logger;
@@ -24,8 +22,6 @@ import im.fir.sdk.FIR;
 public class TotalApplication extends BaseApplication {
     private static final String TAG = "Jni-Test";
     public static final String FIR_API_TOKEN = "1b91eb3eaaea5f64ed127882014995dd";
-    public static Context mContext;
-    private static boolean isDebug;
 
     @Override
     public void onCreate() {
