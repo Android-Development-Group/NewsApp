@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--标题栏-->
+    <com.myself.library.view.NavigationBar
+        style="@style/style_navigation_bar"
+        app:nav_has_divider="true"
+        app:nav_left_icon="@drawable/back_selector"
+        app:nav_main_title="@string/store_title"
+        app:nav_main_title_color="@color/text_color"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/navigation_bar"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/edittext_title_publish"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:hint="标题"/>
+
+            <EditText
+                android:id="@+id/edittext_discription_publish"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="top"
+                android:hint="@string/goods_discription"
+                android:minHeight="66dp"/>
+
+            <EditText
+                android:id="@+id/edittext_price_publish"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:hint="金额"
+                android:inputType="number"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/button_select_publish"
+                    style="?android:textAppearanceSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_weight="1"
+                    android:text="@string/seletct_a_pic"
+                    android:textStyle="bold"/>
+
+                <ImageView
+                    android:id="@+id/imageview_select_publish"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="16dp"
+                    android:layout_weight="1"
+                    android:scaleType="centerCrop"
+                    android:src="@android:drawable/screen_background_light_transparent"/>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/button_submit_publish"
+                style="?android:textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/submit"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/mProgess"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
+
+</RelativeLayout>

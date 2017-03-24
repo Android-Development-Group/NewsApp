@@ -52,6 +52,11 @@ public abstract class BaseActivity<App extends BaseApplication> extends AppCompa
      */
     protected abstract void onViewCreatedFinish(Bundle saveInstanceState);
 
+    /**
+     * 初始化
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
