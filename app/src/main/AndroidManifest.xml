@@ -11,6 +11,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"/>
+    <uses-permission android:name="android.permission.READ_LOGS"/>
 
     <application
         android:name=".TotalApplication"
@@ -47,6 +48,23 @@
             android:name="BUG_HD_SDK_GENERAL_KEY"
             android:value="bc19a3b234f00e9c1b858853e61b8e73"/>
 
+        <!-- 实时通信模块、推送（均需要加入以下声明） START -->
+        <!-- 实时通信模块、推送都要使用 PushService -->
+        <service android:name="com.avos.avoscloud.PushService"/>
+        <receiver android:name="com.avos.avoscloud.AVBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.USER_PRESENT"/>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+        </receiver>
+        <!-- 实时通信模块、推送 END -->
+
+        <!-- 反馈组件（需要加入以下声明）START -->
+        <activity
+            android:name="com.avos.avoscloud.feedback.ThreadActivity"/>
+        <!-- 反馈组件 END -->
+
         <!-- 使用opengles 2.0 -->
         <uses-feature
             android:glEsVersion="0x00020000"
@@ -54,6 +72,14 @@
 
         <!-- ***************************************  ↑  *************************************** -->
 
+        <!--登录-->
+        <activity
+            android:name=".user.LoginActivity"
+            android:label="@string/title_activity_login"/>
+        <!--注册-->
+        <activity
+            android:name=".user.RegisterActivity"
+            android:label="@string/title_activity_register"/>
 
     </application>
 

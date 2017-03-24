@@ -17,6 +17,7 @@
         auto:nav_left_icon="@drawable/back_selector"
         auto:nav_main_title="@string/main_title"
         auto:nav_main_title_color="@color/text_color"
+        auto:nav_right_title="@string/action_logout"
         auto:nav_right_title_color="@drawable/text_select"/>
 
     <TextView

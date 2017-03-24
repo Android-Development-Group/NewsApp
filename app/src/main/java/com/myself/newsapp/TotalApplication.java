@@ -1,5 +1,7 @@
 package com.myself.newsapp;
 
+import com.avos.avoscloud.AVAnalytics;
+import com.avos.avoscloud.AVOSCloud;
 import com.myself.library.controller.ActivityManager;
 import com.myself.library.controller.BaseApplication;
 import com.myself.library.utils.Logger;
@@ -22,6 +24,8 @@ import im.fir.sdk.FIR;
 public class TotalApplication extends BaseApplication {
     private static final String TAG = "Jni-Test";
     public static final String FIR_API_TOKEN = "1b91eb3eaaea5f64ed127882014995dd";
+    public static final String LEANCLOUD_APP_ID = "fNshYwdYYVigz6EWN0fbyJXz-gzGzoHsz";
+    public static final String LEANCLOUD_APP_KEY = "nGC0m8TuRcnVpHlvNA3N85Mx";
 
     @Override
     public void onCreate() {
@@ -30,12 +34,19 @@ public class TotalApplication extends BaseApplication {
         //Fir-SDk配置
         FIR.init(this);
 
+        //LeanCloud初始化参数依次为 this, AppId, AppKey
+        AVOSCloud.initialize(this, LEANCLOUD_APP_ID, LEANCLOUD_APP_KEY);
+        //Debug模式SDK 初始化语句 AVOSCloud.initialize() 后面，只需要调用一次即可
+        AVOSCloud.setDebugLogEnabled(isDebug);
+        //Crash上报
+        AVAnalytics.enableCrashReport(this, true);
+
     }
 
     @Override
     protected void initEnvironment() {
         //初始化Service Api
-        BaseApi.init(BaseApi.HOST_FORMAL);
+        BaseApi.init(BaseApi.HOST_TEST);
     }
 
     @Override
