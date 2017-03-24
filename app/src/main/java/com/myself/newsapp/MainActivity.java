@@ -12,7 +12,6 @@ import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.SaveCallback;
 import com.myself.newsapp.base.TitleActivity;
 import com.myself.newsapp.jninative.NativeLib;
-import com.myself.newsapp.na_store.GoodsListActivity;
 import com.myself.newsapp.user.LoginActivity;
 
 import butterknife.BindView;
@@ -64,7 +63,7 @@ public class MainActivity extends TitleActivity {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_text:
-                startActivity(GoodsListActivity.class);
+
                 break;
         }
     }

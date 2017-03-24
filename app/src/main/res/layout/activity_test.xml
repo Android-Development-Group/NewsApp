@@ -25,7 +25,7 @@
             android:id="@+id/tv_test_0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="测试"
+            android:text="测试商城"
             android:textAllCaps="false"/>
 
         <Button

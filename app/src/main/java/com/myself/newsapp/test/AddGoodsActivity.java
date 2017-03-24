@@ -2,152 +2,138 @@ package com.myself.newsapp.test;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.provider.MediaStore;
-import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.avos.avoscloud.AVAnalytics;
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVFile;
 import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.SaveCallback;
 import com.myself.newsapp.R;
+import com.myself.newsapp.base.TitleActivity;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class AddGoodsActivity extends AppCompatActivity {
+import butterknife.BindView;
+import butterknife.OnClick;
 
-  private ImageView mImageViewSelect;
-  private byte[] mImageBytes = null;
-  private Handler mHandler = new Handler();
-  private ProgressBar mProgerss;
-//  private ProgressCallback mImageUploadProgressCallback = new ProgressCallback() {
-//    @Override
-//    public void done(Integer integer) {
-//      final int mProgressStatus = integer;
-//      mProgerss.setProgress(mProgressStatus);
-//    }
-//  };
+public class AddGoodsActivity extends TitleActivity {
 
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_publish);
+    @BindView(R.id.progess)
+    ProgressBar mProgess;
+    @BindView(R.id.edittext_title_publish)
+    EditText mEdittextTitlePublish;
+    @BindView(R.id.edittext_discription_publish)
+    EditText mEdittextDiscriptionPublish;
+    @BindView(R.id.edittext_price_publish)
+    EditText mEdittextPricePublish;
+    @BindView(R.id.imageview_select_publish)
+    ImageView mImageviewSelectPublish;
 
-    mImageViewSelect = (ImageView) findViewById(R.id.imageview_select_publish);
-    mProgerss = (ProgressBar) findViewById(R.id.mProgess);
+    private byte[] mImageBytes = null;
 
-    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    getSupportActionBar().setTitle(getString(R.string.publish));
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_add_goods;
+    }
 
-    Button mButtonSelect = (Button) findViewById(R.id.button_select_publish);
-    mButtonSelect.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        intent.setType("image/*");
-        startActivityForResult(intent, 42);
-      }
-    });
+    @Override
+    protected void onViewCreatedFinish(Bundle saveInstanceState) {
+        addNavigation();
 
-    final EditText mDiscriptionEdit = (EditText) findViewById(R.id.edittext_discription_publish);
-    final EditText mTitleEdit = (EditText) findViewById(R.id.edittext_title_publish);
-    final EditText mPriceEdit = (EditText) findViewById(R.id.edittext_price_publish);
+    }
 
-    findViewById(R.id.button_submit_publish).setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        if ("".equals(mTitleEdit.getText().toString())) {
-          Toast.makeText(AddGoodsActivity.this, "请输入标题", Toast.LENGTH_SHORT).show();
-          return;
+    @OnClick({R.id.button_select_publish, R.id.button_submit_publish})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.button_select_publish:
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.setType("image/*");
+                startActivityForResult(intent, 42);
+                break;
+            case R.id.button_submit_publish:
+                submitPublish();
+                break;
         }
-        if ("".equals(mDiscriptionEdit.getText().toString())) {
-          Toast.makeText(AddGoodsActivity.this, "请输入商品描述", Toast.LENGTH_SHORT).show();
-          return;
+    }
+
+    /**
+     * 提交
+     */
+    public void submitPublish() {
+        if ("".equals(mEdittextTitlePublish.getText().toString())) {
+            Toast.makeText(AddGoodsActivity.this, "请输入标题", Toast.LENGTH_SHORT).show();
+            return;
         }
-        if ("".equals(mPriceEdit.getText().toString())) {
-          Toast.makeText(AddGoodsActivity.this, "请输入金额", Toast.LENGTH_SHORT).show();
-          return;
+        if ("".equals(mEdittextDiscriptionPublish.getText().toString())) {
+            Toast.makeText(AddGoodsActivity.this, "请输入商品描述", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if ("".equals(mEdittextPricePublish.getText().toString())) {
+            Toast.makeText(AddGoodsActivity.this, "请输入金额", Toast.LENGTH_SHORT).show();
+            return;
         }
         if (mImageBytes == null) {
-          Toast.makeText(AddGoodsActivity.this, "请选择一张照片", Toast.LENGTH_SHORT).show();
-          return;
+            Toast.makeText(AddGoodsActivity.this, "请选择一张照片", Toast.LENGTH_SHORT).show();
+            return;
         }
-        mProgerss.setVisibility(View.VISIBLE);
+        mProgess.setVisibility(View.VISIBLE);
         AVObject product = new AVObject("Product");
-        product.put("title", mTitleEdit.getText().toString());
-        product.put("description", mDiscriptionEdit.getText().toString());
-        product.put("price", Integer.parseInt(mPriceEdit.getText().toString()));
+        product.put("title", mEdittextTitlePublish.getText().toString());
+        product.put("description", mEdittextDiscriptionPublish.getText().toString());
+        product.put("price", Integer.parseInt(mEdittextPricePublish.getText().toString()));
         product.put("owner", AVUser.getCurrentUser());
         product.put("image", new AVFile("productPic", mImageBytes));
         product.saveInBackground(new SaveCallback() {
-          @Override
-          public void done(AVException e) {
-            if (e == null) {
-              mProgerss.setVisibility(View.GONE);
-              AddGoodsActivity.this.finish();
-            } else {
-              mProgerss.setVisibility(View.GONE);
-              Toast.makeText(AddGoodsActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            @Override
+            public void done(AVException e) {
+                if (e == null) {
+                    mProgess.setVisibility(View.GONE);
+                    AddGoodsActivity.this.finish();
+                } else {
+                    mProgess.setVisibility(View.GONE);
+                    Toast.makeText(AddGoodsActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
-          }
         });
-//        }, mImageUploadProgressCallback);
-      }
-    });
-  }
-
-  @Override
-  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    super.onActivityResult(requestCode, resultCode, data);
-    if (requestCode == 42 && resultCode == RESULT_OK) {
-      try {
-        mImageViewSelect.setImageBitmap(MediaStore.Images.Media.getBitmap(this.getContentResolver(), data.getData()));
-        mImageBytes = getBytes(getContentResolver().openInputStream(data.getData()));
-      } catch (IOException e) {
-        e.printStackTrace();
-      }
     }
-  }
 
-  public byte[] getBytes(InputStream inputStream) throws IOException {
-    ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-    int bufferSize = 1024;
-    byte[] buffer = new byte[bufferSize];
-    int len;
-    while ((len = inputStream.read(buffer)) != -1) {
-      byteArrayOutputStream.write(buffer, 0, len);
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 42 && resultCode == RESULT_OK) {
+            try {
+                mImageviewSelectPublish.setImageBitmap(MediaStore.Images.Media.getBitmap(this.getContentResolver(), data.getData()));
+                mImageBytes = getBytes(getContentResolver().openInputStream(data.getData()));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
-    return byteArrayOutputStream.toByteArray();
-  }
 
-  @Override
-  public boolean onOptionsItemSelected(MenuItem item) {
-    if (item.getItemId() == android.R.id.home) {
-      onBackPressed();
+    /**
+     * 输入流
+     *
+     * @param inputStream
+     * @return
+     * @throws IOException
+     */
+    public byte[] getBytes(InputStream inputStream) throws IOException {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        int bufferSize = 1024;
+        byte[] buffer = new byte[bufferSize];
+        int len;
+        while ((len = inputStream.read(buffer)) != -1) {
+            byteArrayOutputStream.write(buffer, 0, len);
+        }
+        byteArrayOutputStream.close();
+        return byteArrayOutputStream.toByteArray();
     }
-    return super.onOptionsItemSelected(item);
-  }
-
-  @Override
-  protected void onPause() {
-    super.onPause();
-    AVAnalytics.onPause(this);
-  }
-
-  @Override
-  protected void onResume() {
-    super.onResume();
-    AVAnalytics.onResume(this);
-  }
 }

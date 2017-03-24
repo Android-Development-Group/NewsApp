@@ -40,8 +40,6 @@ public class GoodsListActivity extends TitleActivity {
         mRvGoodslist.setLayoutManager(new LinearLayoutManager(this));
         mStoreAdapter = new StoreAdapter(mList, this);
         mRvGoodslist.setAdapter(mStoreAdapter);
-
-        initData();
     }
 
     private void initData() {
@@ -71,5 +69,9 @@ public class GoodsListActivity extends TitleActivity {
         }
     }
 
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initData();
+    }
 }

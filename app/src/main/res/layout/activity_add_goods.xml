@@ -10,8 +10,17 @@
         style="@style/style_navigation_bar"
         app:nav_has_divider="true"
         app:nav_left_icon="@drawable/back_selector"
-        app:nav_main_title="@string/store_title"
+        app:nav_main_title="@string/add_goods_title"
         app:nav_main_title_color="@color/text_color"/>
+
+    <ProgressBar
+        android:id="@+id/progess"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/navigation_bar"
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -86,13 +95,5 @@
         </LinearLayout>
 
     </ScrollView>
-
-    <ProgressBar
-        android:id="@+id/mProgess"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:visibility="gone"/>
 
 </RelativeLayout>
