@@ -19,20 +19,22 @@ import android.widget.Toast;
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.LogInCallback;
+import com.myself.library.controller.BaseActivity;
 import com.myself.library.view.CleanableEditText;
 import com.myself.newsapp.MainActivity;
 import com.myself.newsapp.R;
 import com.myself.newsapp.account.AccountHelper;
-import com.myself.newsapp.base.TitleActivity;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
  * 登录页面
  * Created by Jusenr on 2017/3/25.
  */
-public class LoginActivity extends TitleActivity {
+public class LoginActivity extends BaseActivity {
+
 
     @BindView(R.id.login_progress)
     ProgressBar mLoginProgress;
@@ -42,6 +44,7 @@ public class LoginActivity extends TitleActivity {
     CleanableEditText mEtPassword;
     @BindView(R.id.ll_login_form)
     LinearLayout mLlLoginForm;
+
 
     @Override
     protected int getLayoutId() {
@@ -69,14 +72,12 @@ public class LoginActivity extends TitleActivity {
         });
     }
 
-    @Override
-    public void onLeftAction() {
-        LoginActivity.this.finish();
-    }
-
-    @OnClick({R.id.btn_login, R.id.tv_register, R.id.tv_forget})
+    @OnClick({R.id.left_title, R.id.btn_login, R.id.tv_register, R.id.tv_forget})
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.left_title:
+                LoginActivity.this.finish();
+                break;
             case R.id.btn_login:
                 attemptLogin();
                 break;
@@ -177,6 +178,13 @@ public class LoginActivity extends TitleActivity {
             onBackPressed();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
     }
 }
 

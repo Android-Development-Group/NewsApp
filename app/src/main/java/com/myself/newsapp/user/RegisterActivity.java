@@ -6,46 +6,53 @@ import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.avos.avoscloud.AVAnalytics;
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.SignUpCallback;
+import com.myself.library.controller.BaseActivity;
 import com.myself.newsapp.MainActivity;
 import com.myself.newsapp.R;
+
+import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * 注册页面
  * Created by Jusenr on 2017/3/25.
  */
-public class RegisterActivity extends AppCompatActivity {
-    private AutoCompleteTextView mUsernameView;
-    private EditText mPasswordView;
-    private View mProgressView;
-    private View mRegisterFormView;
+public class RegisterActivity extends BaseActivity {
+
+    @BindView(R.id.register_form)
+    ScrollView mRegisterForm;
+    @BindView(R.id.register_progress)
+    ProgressBar mRegisterProgress;
+    @BindView(R.id.username)
+    AutoCompleteTextView mUsername;
+    @BindView(R.id.password)
+    EditText mPassword;
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+    protected int getLayoutId() {
+        return R.layout.activity_register;
+    }
 
-        // Set up the register form.
-        mUsernameView = (AutoCompleteTextView) findViewById(R.id.username);
+    @Override
+    protected void onViewCreatedFinish(Bundle saveInstanceState) {
 
-        mPasswordView = (EditText) findViewById(R.id.password);
-        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        mPassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
                 if (id == R.id.register || id == EditorInfo.IME_NULL) {
@@ -55,38 +62,39 @@ public class RegisterActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
 
-        Button musernameSignInButton = (Button) findViewById(R.id.username_register_button);
-        musernameSignInButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
+    @OnClick({R.id.left_title, R.id.username_register_button})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.left_title:
+                RegisterActivity.this.finish();
+                break;
+            case R.id.username_register_button:
                 attemptRegister();
-            }
-        });
-
-        mRegisterFormView = findViewById(R.id.register_form);
-        mProgressView = findViewById(R.id.register_progress);
+                break;
+        }
     }
 
     private void attemptRegister() {
-        mUsernameView.setError(null);
-        mPasswordView.setError(null);
+        mUsername.setError(null);
+        mPassword.setError(null);
 
-        String username = mUsernameView.getText().toString();
-        String password = mPasswordView.getText().toString();
+        String username = mUsername.getText().toString();
+        String password = mPassword.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
 
         if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
-            mPasswordView.setError(getString(R.string.error_invalid_password));
-            focusView = mPasswordView;
+            mPassword.setError(getString(R.string.error_invalid_password));
+            focusView = mPassword;
             cancel = true;
         }
 
         if (TextUtils.isEmpty(username)) {
-            mUsernameView.setError(getString(R.string.error_field_required));
-            focusView = mUsernameView;
+            mUsername.setError(getString(R.string.error_field_required));
+            focusView = mUsername;
             cancel = true;
         }
 
@@ -122,7 +130,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
-        return password.length() > 4;
+        return password.length() > 5;
     }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
@@ -133,28 +141,28 @@ public class RegisterActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
             int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
 
-            mRegisterFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-            mRegisterFormView.animate().setDuration(shortAnimTime).alpha(
+            mRegisterForm.setVisibility(show ? View.GONE : View.VISIBLE);
+            mRegisterForm.animate().setDuration(shortAnimTime).alpha(
                     show ? 0 : 1).setListener(new AnimatorListenerAdapter() {
                 @Override
                 public void onAnimationEnd(Animator animation) {
-                    mRegisterFormView.setVisibility(show ? View.GONE : View.VISIBLE);
+                    mRegisterForm.setVisibility(show ? View.GONE : View.VISIBLE);
                 }
             });
 
-            mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-            mProgressView.animate().setDuration(shortAnimTime).alpha(
+            mRegisterProgress.setVisibility(show ? View.VISIBLE : View.GONE);
+            mRegisterProgress.animate().setDuration(shortAnimTime).alpha(
                     show ? 1 : 0).setListener(new AnimatorListenerAdapter() {
                 @Override
                 public void onAnimationEnd(Animator animation) {
-                    mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
+                    mRegisterProgress.setVisibility(show ? View.VISIBLE : View.GONE);
                 }
             });
         } else {
             // The ViewPropertyAnimator APIs are not available, so simply show
             // and hide the relevant UI components.
-            mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-            mRegisterFormView.setVisibility(show ? View.GONE : View.VISIBLE);
+            mRegisterProgress.setVisibility(show ? View.VISIBLE : View.GONE);
+            mRegisterForm.setVisibility(show ? View.GONE : View.VISIBLE);
         }
     }
 
@@ -164,18 +172,6 @@ public class RegisterActivity extends AppCompatActivity {
             onBackPressed();
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        AVAnalytics.onPause(this);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        AVAnalytics.onResume(this);
     }
 }
 

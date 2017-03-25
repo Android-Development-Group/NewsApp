@@ -1,19 +1,49 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:id="@+id/login_form"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="@drawable/pic_008"
+              android:background="@drawable/pic_009"
               android:orientation="vertical">
 
     <!--标题栏-->
-    <com.myself.library.view.NavigationBar
-        style="@style/style_navigation_bar"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
         android:background="@color/transparent"
-        app:nav_left_title="@string/cancel"
-        app:nav_left_title_color="@drawable/text_select"
-        app:nav_main_title="@string/login"
-        app:nav_main_title_color="@color/text_color"/>
+        android:minHeight="?attr/actionBarSize">
+
+        <TextView
+            android:id="@+id/main_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="5dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:lines="1"
+            android:maxWidth="240dp"
+            android:text="@string/login"
+            android:textColor="@color/text_color"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/left_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:clickable="true"
+            android:drawablePadding="4dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="8dp"
+            android:paddingRight="15dp"
+            android:text="@string/cancel"
+            android:textColor="@drawable/text_select"
+            android:textSize="16sp"/>
+
+    </RelativeLayout>
 
     <!-- Login progress -->
     <ProgressBar
@@ -27,9 +57,9 @@
 
     <LinearLayout
         android:id="@+id/ll_login_form"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -123,11 +153,11 @@
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/view"
+            android:layout_gravity="center_horizontal"
             android:layout_margin="16dp"
             android:background="@drawable/btn_los_focus"
             android:clickable="false"
             android:text="@string/login"
-            android:layout_gravity="center_horizontal"
             android:textAllCaps="false"
             android:textColor="#FFFFFF"
             android:textSize="@dimen/text_size_16sp"/>
