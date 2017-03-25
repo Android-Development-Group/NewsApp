@@ -56,6 +56,14 @@
                 android:hint="金额"
                 android:inputType="number"/>
 
+            <EditText
+                android:id="@+id/edittext_integral_publish"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:hint="积分"
+                android:inputType="number"/>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="100dp"

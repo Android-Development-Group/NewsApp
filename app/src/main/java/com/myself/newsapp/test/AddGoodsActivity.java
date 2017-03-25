@@ -38,6 +38,8 @@ public class AddGoodsActivity extends TitleActivity {
     EditText mEdittextDiscriptionPublish;
     @BindView(R.id.edittext_price_publish)
     EditText mEdittextPricePublish;
+    @BindView(R.id.edittext_integral_publish)
+    EditText mEdittextIntegralPublish;
     @BindView(R.id.imageview_select_publish)
     ImageView mImageviewSelectPublish;
 
@@ -82,6 +84,9 @@ public class AddGoodsActivity extends TitleActivity {
         }
         if ("".equals(mEdittextPricePublish.getText().toString())) {
             Toast.makeText(AddGoodsActivity.this, "请输入金额", Toast.LENGTH_SHORT).show();
+        }
+        if ("".equals(mEdittextIntegralPublish.getText().toString())) {
+            Toast.makeText(AddGoodsActivity.this, "请输入积分", Toast.LENGTH_SHORT).show();
             return;
         }
         if (mImageBytes == null) {
@@ -93,6 +98,7 @@ public class AddGoodsActivity extends TitleActivity {
         product.put("title", mEdittextTitlePublish.getText().toString());
         product.put("description", mEdittextDiscriptionPublish.getText().toString());
         product.put("price", Integer.parseInt(mEdittextPricePublish.getText().toString()));
+        product.put("integral", Integer.parseInt(mEdittextIntegralPublish.getText().toString()));
         product.put("owner", AVUser.getCurrentUser());
         product.put("image", new AVFile("productPic", mImageBytes));
         product.saveInBackground(new SaveCallback() {

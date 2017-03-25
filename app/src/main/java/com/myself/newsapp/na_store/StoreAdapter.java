@@ -36,10 +36,15 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
 
     @Override
     public void onBindViewHolder(StoreViewHolder holder, final int position) {
-        holder.mTitle.setText((CharSequence) mList.get(position).get("title"));
+        Picasso.with(mContext)
+                .load(mList.get(position).getAVFile("image") == null ? "www" : mList.get(position).getAVFile("image").getUrl())
+                .transform(new RoundedTransformation(9, 0))
+                .into(holder.mPicture);
+        holder.mTitle.setText(mList.get(position).getAVUser("owner") == null ? "" : mList.get(position).getAVUser("owner").getUsername());
+        holder.mSubtitle.setText((CharSequence) mList.get(position).get("title"));
         holder.mPrice.setText(mList.get(position).get("price") == null ? "￥" : "￥ " + mList.get(position).get("price"));
-        holder.mName.setText(mList.get(position).getAVUser("owner") == null ? "" : mList.get(position).getAVUser("owner").getUsername());
-        Picasso.with(mContext).load(mList.get(position).getAVFile("image") == null ? "www" : mList.get(position).getAVFile("image").getUrl()).transform(new RoundedTransformation(9, 0)).into(holder.mPicture);
+        holder.mIntegral.setText(mList.get(position).get("integral") == null ? "0" : String.valueOf(mList.get(position).get("integral")));
+
         holder.mItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,19 +61,21 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
     }
 
     class StoreViewHolder extends RecyclerView.ViewHolder {
-        private TextView mName;
-        private TextView mPrice;
-        private TextView mTitle;
         private CardView mItem;
         private ImageView mPicture;
+        private TextView mTitle;
+        private TextView mSubtitle;
+        private TextView mPrice;
+        private TextView mIntegral;
 
         public StoreViewHolder(View itemView) {
             super(itemView);
-            mName = (TextView) itemView.findViewById(R.id.name_item_main);
-            mTitle = (TextView) itemView.findViewById(R.id.title_item_main);
-            mPrice = (TextView) itemView.findViewById(R.id.price_item_main);
-            mPicture = (ImageView) itemView.findViewById(R.id.picture_item_main);
             mItem = (CardView) itemView.findViewById(R.id.item_main);
+            mPicture = (ImageView) itemView.findViewById(R.id.item_picture);
+            mTitle = (TextView) itemView.findViewById(R.id.item_maintitle);
+            mSubtitle = (TextView) itemView.findViewById(R.id.item_subtitle);
+            mPrice = (TextView) itemView.findViewById(R.id.item_price);
+            mIntegral = (TextView) itemView.findViewById(R.id.item_integral);
         }
     }
 }
