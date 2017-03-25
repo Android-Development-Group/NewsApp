@@ -11,10 +11,8 @@ import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
-import android.widget.AutoCompleteTextView;
-import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +20,7 @@ import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.SignUpCallback;
 import com.myself.library.controller.BaseActivity;
+import com.myself.library.view.CleanableEditText;
 import com.myself.newsapp.MainActivity;
 import com.myself.newsapp.R;
 
@@ -35,13 +34,13 @@ import butterknife.OnClick;
 public class RegisterActivity extends BaseActivity {
 
     @BindView(R.id.register_form)
-    ScrollView mRegisterForm;
+    LinearLayout mRegisterForm;
     @BindView(R.id.register_progress)
     ProgressBar mRegisterProgress;
     @BindView(R.id.username)
-    AutoCompleteTextView mUsername;
+    CleanableEditText mUsername;
     @BindView(R.id.password)
-    EditText mPassword;
+    CleanableEditText mPassword;
 
 
     @Override
@@ -64,13 +63,13 @@ public class RegisterActivity extends BaseActivity {
         });
     }
 
-    @OnClick({R.id.left_title, R.id.username_register_button})
+    @OnClick({R.id.left_title, R.id.btn_register})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.left_title:
                 RegisterActivity.this.finish();
                 break;
-            case R.id.username_register_button:
+            case R.id.btn_register:
                 attemptRegister();
                 break;
         }

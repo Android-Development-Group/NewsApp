@@ -62,105 +62,77 @@
         android:layout_marginTop="10dp"
         android:orientation="vertical">
 
-        <RelativeLayout
+        <!--Email-->
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <!--手机号码-->
-            <LinearLayout
-                android:id="@+id/ll_phone"
+
+            <com.myself.library.view.CleanableEditText
+                android:id="@+id/et_email"
+                style="@style/NewsText.EditText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="48dp"
+                android:background="@null"
+                android:drawableRight="@drawable/close_selector"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:singleLine="true"/>
 
+        </android.support.design.widget.TextInputLayout>
 
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+        <!--间隔线-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@color/divider_color"/>
 
-                    <com.myself.library.view.CleanableEditText
-                        android:id="@+id/et_email"
-                        style="@style/NewsText.EditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:background="@null"
-                        android:drawableRight="@drawable/close_selector"
-                        android:hint="@string/email"
-                        android:inputType="textEmailAddress"
-                        android:maxLines="1"
-                        android:singleLine="true"/>
+        <!--登录密码-->
 
-                </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-                <!--间隔线-->
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1px"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:background="@color/divider_color"/>
-            </LinearLayout>
-
-            <!--登录密码-->
-            <LinearLayout
-                android:id="@+id/ll_password"
+            <com.myself.library.view.CleanableEditText
+                android:id="@+id/et_password"
+                style="@style/NewsText.EditText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/ll_phone"
-                android:orientation="vertical">
+                android:layout_height="48dp"
+                android:background="@null"
+                android:drawableRight="@drawable/close_selector"
+                android:hint="@string/login_password"
+                android:imeActionId="@+id/login"
+                android:imeActionLabel="@string/action_sign_in_short"
+                android:imeOptions="actionUnspecified"
+                android:inputType="textPassword"/>
 
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+        </android.support.design.widget.TextInputLayout>
 
-                    <com.myself.library.view.CleanableEditText
-                        android:id="@+id/et_password"
-                        style="@style/NewsText.EditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:background="@null"
-                        android:drawableRight="@drawable/close_selector"
-                        android:hint="@string/login_password"
-                        android:imeActionId="@+id/login"
-                        android:imeActionLabel="@string/action_sign_in_short"
-                        android:imeOptions="actionUnspecified"
-                        android:inputType="textPassword"/>
-
-                </android.support.design.widget.TextInputLayout>
-
-                <!--间隔线-->
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1px"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:background="@color/divider_color"/>
-            </LinearLayout>
-
-            <!--间隔线-->
-            <View
-                android:id="@+id/view"
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:layout_below="@id/ll_password"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:background="@color/divider_color"/>
-        </RelativeLayout>
+        <!--间隔线-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@color/divider_color"/>
 
         <!--登录按钮-->
         <Button
             android:id="@+id/btn_login"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/view"
             android:layout_gravity="center_horizontal"
             android:layout_margin="16dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/btn_los_focus"
             android:clickable="false"
             android:text="@string/login"
             android:textAllCaps="false"
             android:textColor="#FFFFFF"
-            android:textSize="@dimen/text_size_16sp"/>
+            android:textSize="@dimen/text_size_16sp"
+            android:textStyle="bold"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
