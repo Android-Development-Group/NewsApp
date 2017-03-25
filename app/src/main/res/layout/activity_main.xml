@@ -3,25 +3,71 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:id="@+id/rl_index_main"
     android:layout_height="match_parent"
     android:background="@color/bg_EBEBEB">
 
-    <!--标题栏-->
-    <com.myself.library.view.NavigationBar
-        style="@style/style_navigation_bar"
-        app:nav_has_divider="true"
-        app:nav_left_title="Test"
-        app:nav_main_title="@string/main_title"
-        app:nav_main_title_color="@color/text_color"
-        app:nav_right_title="@string/action_logout"
-        app:nav_right_title_color="@drawable/text_select"/>
+    <!--分割线-->
+    <View
+        android:id="@+id/v_line_horizontal"
+        style="@style/line_horizontal"
+        android:layout_above="@+id/tb_index_tab"/>
 
 
-    <TextView
-        android:id="@+id/sample_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="@string/main_title"/>
+    <!--首页显示标题栏-->
+    <com.myself.library.view.select.TabBar
+        android:id="@+id/tb_index_tab"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tab_bar_height"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <!--附近-->
+        <com.myself.library.view.select.TabItem
+            android:id="@+id/ti_index_nearby"
+            style="@style/style_tab_bar"
+            app:active="true"
+            app:activeDrawable="@drawable/tab_bar_p_sel"
+            app:inactiveDrawable="@drawable/tab_bar_p_nor"/>
+
+        <!--商城-->
+        <com.myself.library.view.select.TabItem
+            android:id="@+id/ti_index_store"
+            style="@style/style_tab_bar"
+            app:active="false"
+            app:activeDrawable="@drawable/tab_bar_store_sel"
+            app:inactiveDrawable="@drawable/tab_bar_store_nor"/>
+
+        <!--发现-->
+        <com.myself.library.view.select.TabItem
+            android:id="@+id/ti_index_find"
+            style="@style/style_tab_bar"
+            app:activeDrawable="@drawable/tab_bar_c_sel"
+            app:inactiveDrawable="@drawable/tab_bar_c_nor"/>
+
+        <!--我-->
+        <com.myself.library.view.select.TabItem
+            android:id="@+id/ti_index_me"
+            style="@style/style_tab_bar"
+            app:active="false"
+            app:activeDrawable="@drawable/tab_bar_me_sel"
+            app:inactiveDrawable="@drawable/tab_bar_me_nor"/>
+    </com.myself.library.view.select.TabBar>
+
+    <!--主页面-->
+    <com.myself.library.view.viewpager.UnScrollableViewPager
+        android:id="@+id/vp_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/v_line_horizontal"/>
+
+    <ImageView
+        android:id="@+id/ivBlur"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@null"
+        android:visibility="gone"/>
 
 </RelativeLayout>

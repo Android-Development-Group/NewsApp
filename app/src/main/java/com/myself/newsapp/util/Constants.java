@@ -7,6 +7,8 @@ package com.myself.newsapp.util;
 public class Constants {
 
     public static class EventKey {
+        public static final String EVENT_INDEX_SET_ITEM = "event_index_set_item";
+        public static final String EVENT_REFRESH_ME_TAB = "event_refresh_me_tab";
 
     }
 

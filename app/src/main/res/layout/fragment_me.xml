@@ -6,27 +6,12 @@
     android:layout_height="match_parent"
     android:background="@color/bg_EBEBEB">
 
-    <!--标题栏-->
-    <!--  <com.myself.library.view.NavigationBar
-          style="@style/style_navigation_bar"
-          app:nav_has_divider="true"
-          app:nav_left_title="Test"
-          app:nav_main_title="@string/main_title"
-          app:nav_main_title_color="@color/text_color"
-          app:nav_right_title="@string/action_logout"
-          app:nav_right_title_color="@drawable/text_select"/>
-  -->
-    <FrameLayout
-        android:id="@+id/main_frameLayout"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
-
     <TextView
+        android:id="@+id/tv_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="发现"
+        android:text="我"
         android:textSize="@dimen/text_size_18sp"/>
 
 </RelativeLayout>

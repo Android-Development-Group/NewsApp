@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <!--标题栏延时-->
+    <!--navigation_bar-->
     <style name="style_navigation_bar">
         <item name="android:id">@id/navigation_bar</item>
         <item name="android:layout_width">match_parent</item>
@@ -19,6 +19,27 @@
     <style name="divider">
         <item name="android:layout_height">1px</item>
         <item name="android:background">@color/divider_color</item>
+    </style>
+
+    <!-- 水平线 -->
+    <style name="line_horizontal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:background">@color/divider_color</item>
+    </style>
+
+    <!-- 竖直线 -->
+    <style name="line_vertical">
+        <item name="android:layout_width">0.5dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/divider_color</item>
+    </style>
+
+    <!--tabBar-->
+    <style name="style_tab_bar">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
     </style>
 
     <!--Crop-->

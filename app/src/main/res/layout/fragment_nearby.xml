@@ -23,10 +23,11 @@
         android:layout_weight="1"/>
 
     <TextView
+        android:id="@+id/tv_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="发现"
+        android:text="附近"
         android:textSize="@dimen/text_size_18sp"/>
 
 </RelativeLayout>

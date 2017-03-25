@@ -50,6 +50,14 @@
         <attr name="maxLength" format="integer"/>
     </declare-styleable>
 
+    <!--TabItem-->
+    <declare-styleable name="TabItem">
+        <attr name="indicator_radius" format="integer"/>
+        <attr name="activeDrawable" format="reference"/>
+        <attr name="inactiveDrawable" format="reference"/>
+        <attr name="active" format="boolean"/>
+    </declare-styleable>
+
     <!--TimeButton-->
     <declare-styleable name="TimeButton">
         <attr name="countdown_time" format="integer"/>
