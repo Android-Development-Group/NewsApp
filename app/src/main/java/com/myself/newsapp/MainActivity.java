@@ -1,6 +1,5 @@
 package com.myself.newsapp;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -8,9 +7,10 @@ import android.widget.TextView;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
-import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.SaveCallback;
+import com.myself.newsapp.account.AccountHelper;
 import com.myself.newsapp.base.TitleActivity;
+import com.myself.newsapp.guidance.GuidanceActivity;
 import com.myself.newsapp.jninative.NativeLib;
 import com.myself.newsapp.user.LoginActivity;
 
@@ -39,7 +39,7 @@ public class MainActivity extends TitleActivity {
         mSampleText.setText(nativeLib.stringFromJNI());
 
 
-        if (AVUser.getCurrentUser() == null) {
+        if (!AccountHelper.isLogin()) {
             startActivity(LoginActivity.class);
             this.finish();
         }
@@ -72,8 +72,8 @@ public class MainActivity extends TitleActivity {
      * 注销
      */
     private void logOut() {
-        AVUser.getCurrentUser().logOut();
-        startActivity(new Intent(MainActivity.this, LoginActivity.class));
+        AccountHelper.logout();
+        startActivity(GuidanceActivity.class);
         MainActivity.this.finish();
     }
 

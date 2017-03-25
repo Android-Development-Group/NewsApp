@@ -5,6 +5,9 @@
     <color name="colorAccent">#FF4081</color>
 
 
+    <color name="btn_login">#985CC9</color>
+
+
     <!--TextColor-->
     <color name="text_main_color_sel">#B57DE4</color>
     <color name="text_main_color_nor">#985EC9</color>

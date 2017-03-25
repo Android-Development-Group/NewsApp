@@ -25,6 +25,7 @@ import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.LogInCallback;
 import com.myself.newsapp.MainActivity;
 import com.myself.newsapp.R;
+import com.myself.newsapp.account.AccountHelper;
 
 public class LoginActivity extends AppCompatActivity {
     private AutoCompleteTextView mUsernameView;
@@ -38,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         if (AVUser.getCurrentUser() != null) {
+            AccountHelper.login();
             startActivity(new Intent(LoginActivity.this, MainActivity.class));
             LoginActivity.this.finish();
         }
