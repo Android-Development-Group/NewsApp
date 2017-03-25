@@ -12,7 +12,7 @@ import com.myself.library.utils.hawk.LogLevel;
 import butterknife.ButterKnife;
 
 /**
- * Description:
+ * Description: Application
  * Copyright  : Copyright (c) 2016
  * Email      : jusenr@163.com
  * Company    : 葡萄科技

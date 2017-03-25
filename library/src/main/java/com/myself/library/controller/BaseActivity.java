@@ -25,6 +25,11 @@ import com.myself.library.utils.ToastUtils;
 
 import butterknife.ButterKnife;
 
+/**
+ * Activity基类
+ *
+ * @param <App>
+ */
 public abstract class BaseActivity<App extends BaseApplication> extends AppCompatActivity {
     public static final String TAG = BaseActivity.class.getSimpleName();
 

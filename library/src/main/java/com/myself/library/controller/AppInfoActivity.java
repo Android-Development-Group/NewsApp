@@ -12,6 +12,10 @@ import com.myself.library.utils.DateUtils;
 import com.myself.library.utils.FileUtils;
 import com.myself.library.utils.StringUtils;
 
+/**
+ * App版本信息
+ * Created by Jusenr on 2017/03/25.
+ */
 public class AppInfoActivity extends AppCompatActivity {
     public static final String BUNDLE_APP_INFO = "BUNDLE_APP_INFO";
 
