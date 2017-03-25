@@ -9,6 +9,7 @@
 #### 如果你只要打某个渠道的 
 --gradlew assembleBaiduRelease
 
+--
 
 #### LeanCloud测试
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <!--RoundProgressBar-->
     <declare-styleable name="RoundProgressBar">
         <attr name="roundColor" format="color"/>
@@ -47,6 +48,22 @@
     <!--CleanableEditText-->
     <declare-styleable name="CleanableEditText">
         <attr name="maxLength" format="integer"/>
+    </declare-styleable>
+
+    <!--TimeButton-->
+    <declare-styleable name="TimeButton">
+        <attr name="countdown_time" format="integer"/>
+        <attr name="text_before" format="string"/>
+        <attr name="text_after" format="string"/>
+        <attr name="click_background" format="reference"/>
+        <attr name="unclick_background" format="reference"/>
+    </declare-styleable>
+
+    <!--SwitchButton-->
+    <declare-styleable name="SwitchButton">
+        <attr name="isSelect" format="boolean"/>
+        <attr name="selDrawable" format="reference"/>
+        <attr name="norDrawable" format="reference"/>
     </declare-styleable>
 
 </resources>

@@ -41,16 +41,16 @@
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-           <!-- <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
+            <!-- <intent-filter>
+                 <action android:name="android.intent.action.VIEW"/>
 
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                 <category android:name="android.intent.category.DEFAULT"/>
+                 <category android:name="android.intent.category.BROWSABLE"/>
 
-                <data
-                    android:host="newsapp"
-                    android:scheme="news"/>
-            </intent-filter>-->
+                 <data
+                     android:host="newsapp"
+                     android:scheme="news"/>
+             </intent-filter>-->
         </activity>
 
         <!-- ***************************************  ↓  *************************************** -->
@@ -94,11 +94,18 @@
 
         <!-- ***************************************  ↑  *************************************** -->
 
-
         <!-- 登录 -->
         <activity
             android:name=".user.LoginActivity"
             android:label="@string/title_activity_login"/>
+        <!-- 注册 -->
+        <activity
+            android:name=".user.RegisterActivity"
+            android:label="@string/title_activity_register"/>
+        <!-- 忘记密码 -->
+        <activity
+            android:name=".user.ForgetPasswordActivity"
+            android:label="@string/title_activity_forgetpassword"/>
         <!-- NewsApp主页 -->
         <activity
             android:name=".MainActivity"
@@ -107,10 +114,6 @@
         <activity
             android:name=".guidance.GuidanceActivity"
             android:label="@string/title_activity_guidance"/>
-        <!-- 注册 -->
-        <activity
-            android:name=".user.RegisterActivity"
-            android:label="@string/title_activity_register"/>
         <!--商品列表-->
         <activity
             android:name=".na_store.GoodsListActivity"

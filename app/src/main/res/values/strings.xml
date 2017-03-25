@@ -42,6 +42,7 @@
     <string name="title_activity_guidance">引导页</string>
     <string name="title_activity_login">登录</string>
     <string name="title_activity_register">注册</string>
+    <string name="title_activity_forgetpassword">忘记密码</string>
     <string name="title_activity_goodslist">商品列表</string>
     <string name="title_activity_goodsdetail">商品详情</string>
     <string name="title_activity_test">测试</string>
@@ -59,6 +60,29 @@
     <string name="get_verify_after">获取验证码($s后重发)</string>
     <string name="login_password">登录密码(6-18位)</string>
     <string name="forget_password">忘记密码</string>
+    <string name="password_old_hint">旧密码(数字和字母6-18位)</string>
+    <string name="password_new_hint">新密码(数字和字母6-18位)</string>
+    <string name="password_repeat_hint">重复新密码(数字和字母6-18位)</string>
+    <string name="password_fomart">密码只能是数字和字母</string>
+    <string name="password_new_empty">请输入新密码</string>
+    <string name="password_repeat_not_same">两次输入的密码不一致</string>
+    <string name="password_modify_success">密码修改成功</string>
+    <string name="password_new_same_old">新密码与旧密码相同</string>
+
+    <string name="email_not_null">邮箱不能为空</string>
+    <string name="password_not_null">密码不能为空</string>
+    <string name="verify_code_send">验证码已发送</string>
+    <string name="email_format_error">邮箱格式错误</string>
+    <string name="account_not_exist">账号不存在</string>
+    <string name="missing_user_information">完善用户信息</string>
+    <string name="nickname_not_null">昵称不能为空</string>
+    <string name="nickname_format_error">昵称格式错误</string>
+
+    <string name="create_child_toast_8">请输入2到24位中英文数字账号</string>
+    <string name="create_child_toast_9">请输入6-18位英文数字密码</string>
+    <string name="create_child_toast_10">请输入1-12位中英文数字昵称</string>
+    <string name="create_child_toast_11">请输入1-4位英文数字昵称</string>
+
     <string name="goods_discription">商品描述</string>
     <string name="seletct_a_pic">从相册选择一张照片</string>
     <string name="prompt_password">密码</string>
