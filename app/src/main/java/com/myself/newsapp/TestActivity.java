@@ -8,6 +8,10 @@ import com.myself.newsapp.na_store.GoodsListActivity;
 
 import butterknife.OnClick;
 
+/**
+ * 测试页面
+ * Created by Jusenr on 2017/03/25.
+ */
 public class TestActivity extends TitleActivity {
 
 

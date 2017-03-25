@@ -22,7 +22,7 @@ import im.fir.sdk.FIR;
  */
 
 public class TotalApplication extends BaseApplication {
-    private static final String TAG = "Jni-Test";
+    private static final String TAG = "NewsApp_Log";
     public static final String FIR_API_TOKEN = "1b91eb3eaaea5f64ed127882014995dd";
     public static final String LEANCLOUD_APP_ID = "fNshYwdYYVigz6EWN0fbyJXz-gzGzoHsz";
     public static final String LEANCLOUD_APP_KEY = "nGC0m8TuRcnVpHlvNA3N85Mx";

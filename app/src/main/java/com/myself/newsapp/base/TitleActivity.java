@@ -12,8 +12,8 @@ import com.myself.newsapp.R;
 import butterknife.BindView;
 
 /**
- * 葡萄纬度的基础FragmentActivity
- * Created by guchenkai on 2015/11/25.
+ * 基础FragmentActivity
+ * Created by Jusenr on 2017/03/25.
  */
 public abstract class TitleActivity<App extends BaseApplication> extends BaseActivity<App> implements NavigationBar.ActionsListener {
     @BindView(R.id.navigation_bar)

@@ -24,6 +24,10 @@ import java.io.InputStream;
 import butterknife.BindView;
 import butterknife.OnClick;
 
+/**
+ * 添加商品
+ * Created by Jusenr on 2017/03/25.
+ */
 public class AddGoodsActivity extends TitleActivity {
 
     @BindView(R.id.progess)

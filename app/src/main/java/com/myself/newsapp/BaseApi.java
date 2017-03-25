@@ -1,7 +1,7 @@
 package com.myself.newsapp;
 
 /**
- * Description:
+ * Description: API管理
  * Copyright  : Copyright (c) 2016
  * Email      : jusenr@163.com
  * Company    : 葡萄科技

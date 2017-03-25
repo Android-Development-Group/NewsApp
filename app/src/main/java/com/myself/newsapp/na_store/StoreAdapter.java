@@ -17,7 +17,8 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 /**
- * Created by BinaryHB on 11/24/15.
+ * 商品列表
+ * Created by Jusenr on 2017/03/25.
  */
 public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHolder> {
     private Context mContext;

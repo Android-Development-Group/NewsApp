@@ -17,6 +17,10 @@ import com.myself.newsapp.user.LoginActivity;
 import butterknife.BindView;
 import butterknife.OnClick;
 
+/**
+ * 主页
+ * Created by Jusenr on 2017/03/25.
+ */
 public class MainActivity extends TitleActivity {
 
     @BindView(R.id.sample_text)

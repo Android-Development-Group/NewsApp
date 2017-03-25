@@ -13,6 +13,10 @@ import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 
+/**
+ * 商品详情页
+ * Created by Jusenr on 2017/03/25.
+ */
 public class GoodsDetailActivity extends TitleActivity {
 
     @BindView(R.id.name_detail)

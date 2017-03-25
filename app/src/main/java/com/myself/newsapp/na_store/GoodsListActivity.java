@@ -19,6 +19,10 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 
+/**
+ * 商品列表
+ * Created by Jusenr on 2017/03/25.
+ */
 public class GoodsListActivity extends TitleActivity {
 
     @BindView(R.id.rv_goodslist)
