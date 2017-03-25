@@ -26,6 +26,10 @@ import com.avos.avoscloud.SignUpCallback;
 import com.myself.newsapp.MainActivity;
 import com.myself.newsapp.R;
 
+/**
+ * 注册页面
+ * Created by Jusenr on 2017/3/25.
+ */
 public class RegisterActivity extends AppCompatActivity {
     private AutoCompleteTextView mUsernameView;
     private EditText mPasswordView;

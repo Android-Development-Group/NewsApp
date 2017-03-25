@@ -44,4 +44,9 @@
         <attr name="nav_right_title_icon_text_color" format="color"/>
     </declare-styleable>
 
+    <!--CleanableEditText-->
+    <declare-styleable name="CleanableEditText">
+        <attr name="maxLength" format="integer"/>
+    </declare-styleable>
+
 </resources>

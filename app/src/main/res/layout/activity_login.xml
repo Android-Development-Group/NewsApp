@@ -1,80 +1,160 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/login_form"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            android:padding="10dp">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:id="@+id/login_form"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@drawable/pic_008"
+              android:orientation="vertical">
 
+    <!--标题栏-->
+    <com.myself.library.view.NavigationBar
+        style="@style/style_navigation_bar"
+        android:background="@color/transparent"
+        app:nav_left_title="@string/cancel"
+        app:nav_left_title_color="@drawable/text_select"
+        app:nav_main_title="@string/login"
+        app:nav_main_title_color="@color/text_color"/>
+
+    <!-- Login progress -->
+    <ProgressBar
+        android:id="@+id/login_progress"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="8dp"
+        android:visibility="gone"/>
 
     <LinearLayout
-        android:id="@+id/email_login_form"
+        android:id="@+id/ll_login_form"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-
-        <!-- Login progress -->
-        <ProgressBar
-            android:id="@+id/login_progress"
-            style="?android:attr/progressBarStyleLarge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:visibility="gone"/>
-
-
-        <android.support.design.widget.TextInputLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
-            <AutoCompleteTextView
-                android:id="@+id/username"
+            <!--手机号码-->
+            <LinearLayout
+                android:id="@+id/ll_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/username"
-                android:inputType="text"
-                android:maxLines="1"
-                android:singleLine="true"/>
+                android:orientation="vertical">
 
-        </android.support.design.widget.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-            <EditText
-                android:id="@+id/password"
+                    <com.myself.library.view.CleanableEditText
+                        android:id="@+id/et_email"
+                        style="@style/NewsText.EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:background="@null"
+                        android:drawableRight="@drawable/close_selector"
+                        android:hint="@string/email"
+                        android:inputType="textEmailAddress"
+                        android:maxLines="1"
+                        android:singleLine="true"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <!--间隔线-->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@color/divider_color"/>
+            </LinearLayout>
+
+            <!--登录密码-->
+            <LinearLayout
+                android:id="@+id/ll_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/prompt_password"
-                android:imeActionId="@+id/login"
-                android:imeActionLabel="@string/action_sign_in_short"
-                android:imeOptions="actionUnspecified"
-                android:inputType="textPassword"
-                android:maxLines="1"
-                android:singleLine="true"/>
+                android:layout_below="@id/ll_phone"
+                android:orientation="vertical">
 
-        </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
+                    <com.myself.library.view.CleanableEditText
+                        android:id="@+id/et_password"
+                        style="@style/NewsText.EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:background="@null"
+                        android:drawableRight="@drawable/close_selector"
+                        android:hint="@string/login_password"
+                        android:imeActionId="@+id/login"
+                        android:imeActionLabel="@string/action_sign_in_short"
+                        android:imeOptions="actionUnspecified"
+                        android:inputType="textPassword"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <!--间隔线-->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@color/divider_color"/>
+            </LinearLayout>
+
+            <!--间隔线-->
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_below="@id/ll_password"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:background="@color/divider_color"/>
+        </RelativeLayout>
+
+        <!--登录按钮-->
         <Button
-            android:id="@+id/username_login_button"
-            style="?android:textAppearanceSmall"
-            android:layout_width="match_parent"
+            android:id="@+id/btn_login"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_below="@id/view"
+            android:layout_margin="16dp"
+            android:background="@drawable/btn_los_focus"
+            android:clickable="false"
             android:text="@string/login"
-            android:textStyle="bold"/>
+            android:layout_gravity="center_horizontal"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="@dimen/text_size_16sp"/>
 
-        <Button
-            android:id="@+id/username_register_button"
-            style="?android:textAppearanceSmall"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/btn_login"
             android:layout_marginTop="16dp"
-            android:text="@string/register"
-            android:textStyle="bold"/>
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp">
+
+            <!--注册新用户-->
+            <TextView
+                android:id="@+id/tv_register"
+                style="@style/style_login_text"
+                android:layout_alignParentLeft="true"
+                android:text="@string/register"/>
+
+            <!--忘记密码-->
+            <TextView
+                android:id="@+id/tv_forget"
+                style="@style/style_login_text"
+                android:layout_alignParentRight="true"
+                android:text="@string/forget_password"/>
+        </RelativeLayout>
 
     </LinearLayout>
-</ScrollView>
+
+</LinearLayout>

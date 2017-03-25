@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
+    <color name="transparent">@android:color/transparent</color>
 
     <color name="btn_login">#985CC9</color>
 
