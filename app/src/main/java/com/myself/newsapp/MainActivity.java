@@ -2,31 +2,30 @@ package com.myself.newsapp;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.TextView;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.SaveCallback;
+import com.myself.library.controller.BaseActivity;
 import com.myself.newsapp.account.AccountHelper;
-import com.myself.newsapp.base.TitleActivity;
 import com.myself.newsapp.guidance.GuidanceActivity;
 import com.myself.newsapp.jninative.NativeLib;
 import com.myself.newsapp.user.LoginActivity;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 
 /**
  * 主页
  * Created by Jusenr on 2017/03/25.
  */
-public class MainActivity extends TitleActivity {
+public class MainActivity extends BaseActivity {
 
     @BindView(R.id.sample_text)
     TextView mSampleText;
-    @BindView(R.id.tv_text)
-    TextView mTvText;
+//    @BindView(R.id.tv_text)
+//    TextView mTvText;
+
 
     @Override
     protected int getLayoutId() {
@@ -35,7 +34,7 @@ public class MainActivity extends TitleActivity {
 
     @Override
     protected void onViewCreatedFinish(Bundle saveInstanceState) {
-        addNavigation();
+//        addNavigation();
 
 //        FirInfoBean infoBean = FirImConfig.getFirAppVersionInfo(this, TotalApplication.FIR_API_TOKEN);
 
@@ -49,28 +48,27 @@ public class MainActivity extends TitleActivity {
         }
 
 //        testLeanCloudSDK();
-
     }
 
-    @Override
-    public void onLeftAction() {
-        startActivity(TestActivity.class);
-    }
+//    @Override
+//    public void onLeftAction() {
+//        startActivity(TestActivity.class);
+//    }
+//
+//    @Override
+//    public void onRightAction() {
+//        super.onRightAction();
+//        logOut();
+//    }
 
-    @Override
-    public void onRightAction() {
-        super.onRightAction();
-        logOut();
-    }
-
-    @OnClick({R.id.tv_text})
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.tv_text:
-
-                break;
-        }
-    }
+//    @OnClick({R.id.tv_text})
+//    public void onClick(View v) {
+//        switch (v.getId()) {
+//            case R.id.tv_text:
+//
+//                break;
+//        }
+//    }
 
     /**
      * 注销

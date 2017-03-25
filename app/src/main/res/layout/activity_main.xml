@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_EBEBEB"
-    android:orientation="vertical">
+    android:background="@color/bg_EBEBEB">
 
     <!--标题栏-->
     <com.myself.library.view.NavigationBar
@@ -17,21 +16,12 @@
         app:nav_right_title="@string/action_logout"
         app:nav_right_title_color="@drawable/text_select"/>
 
+
     <TextView
         android:id="@+id/sample_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:text="Hello World!"/>
+        android:layout_centerInParent="true"
+        android:text="@string/main_title"/>
 
-    <TextView
-        android:id="@+id/tv_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:text="Store"
-        android:visibility="gone"/>
-
-</LinearLayout>
+</RelativeLayout>
