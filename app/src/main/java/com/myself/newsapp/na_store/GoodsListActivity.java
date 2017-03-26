@@ -11,6 +11,7 @@ import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.FindCallback;
 import com.myself.newsapp.R;
 import com.myself.newsapp.base.TitleActivity;
+import com.myself.newsapp.home.adapter.StoreAdapter;
 import com.myself.newsapp.test.AddGoodsActivity;
 
 import java.util.ArrayList;

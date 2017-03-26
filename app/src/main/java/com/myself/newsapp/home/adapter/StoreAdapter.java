@@ -1,4 +1,4 @@
-package com.myself.newsapp.na_store;
+package com.myself.newsapp.home.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import com.avos.avoscloud.AVObject;
 import com.myself.newsapp.R;
+import com.myself.newsapp.na_store.GoodsDetailActivity;
+import com.myself.newsapp.na_store.RoundedTransformation;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

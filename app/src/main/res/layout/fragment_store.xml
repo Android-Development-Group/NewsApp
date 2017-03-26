@@ -1,33 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rl_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_EBEBEB">
+    android:background="@color/bg_EBEBEB"
+    android:orientation="vertical">
 
-    <!--标题栏-->
-    <!--  <com.myself.library.view.NavigationBar
-          style="@style/style_navigation_bar"
-          app:nav_has_divider="true"
-          app:nav_left_title="Test"
-          app:nav_main_title="@string/main_title"
-          app:nav_main_title_color="@color/text_color"
-          app:nav_right_title="@string/action_logout"
-          app:nav_right_title_color="@drawable/text_select"/>
-  -->
-    <FrameLayout
-        android:id="@+id/main_frameLayout"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="商城"
-        android:textSize="@dimen/text_size_18sp"/>
+        <!--标题-->
+        <RelativeLayout
+            android:id="@+id/rl_top"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/color_8849F6"
+            android:orientation="vertical">
 
-</RelativeLayout>
+            <TextView
+                android:id="@+id/main_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="商城"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_18sp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_goodslist"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="16dp"
+                android:src="@android:drawable/ic_input_add"/>
+
+            <com.myself.library.mvp.widgets.LoadStateView
+                android:id="@+id/load_state_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

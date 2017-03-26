@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="120dp">
+
+    <TextView
+        android:id="@id/refresh_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="下拉刷新"
+        android:textColor="#646464"
+        android:textSize="14sp" />
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ani_loading_refresh_bg" />
+
+    <ImageView
+        android:id="@id/refresh_view"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_alignTop="@id/image"
+        android:layout_marginLeft="-109dp"
+        android:layout_marginTop="-7.5dp"
+        android:layout_toEndOf="@id/image"
+        android:layout_toRightOf="@id/image"
+        android:src="@drawable/ani_loading_screw" />
+</RelativeLayout>

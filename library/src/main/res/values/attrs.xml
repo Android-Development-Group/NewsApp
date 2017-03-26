@@ -22,6 +22,27 @@
         <attr name="default_drawable" format="reference"/>
     </declare-styleable>
 
+    <!--ScrollableLayout-->
+    <declare-styleable name="ScrollableLayout">
+        <attr name="scrollable_maxScroll" format="dimension"/>
+        <attr name="scrollable_scrollerFlywheel" format="boolean"/>
+        <attr name="scrollable_considerIdleMillis" format="integer"/>
+        <attr name="scrollable_defaultCloseUp" format="boolean"/>
+        <attr name="scrollable_friction" format="float"/>
+        <attr name="scrollable_closeUpAnimationMillis" format="integer"/>
+        <attr name="scrollable_closeUpAnimatorInterpolator" format="reference"/>
+    </declare-styleable>
+
+    <!--PullToRefreshLayout-->
+    <declare-styleable name="PullToRefreshLayout">
+        <attr name="refresh_layout" format="reference"/>
+        <attr name="refresh_layout_height" format="integer"/>
+        <attr name="refresh_prepare_text" format="string|reference"/>
+        <attr name="refresh_recycle_text" format="string|reference"/>
+        <attr name="refresh_loading_text" format="string|reference"/>
+        <attr name="refresh_complete_text" format="string|reference"/>
+    </declare-styleable>
+
     <!--NavigationBar-->
     <declare-styleable name="NavigationBar">
         <attr name="nav_left_icon" format="reference"/>
@@ -50,12 +71,31 @@
         <attr name="maxLength" format="integer"/>
     </declare-styleable>
 
+    <!--CircleTextView-->
+    <declare-styleable name="CircleTextView">
+        <attr name="background_color" format="color|reference"/>
+    </declare-styleable>
+
     <!--TabItem-->
     <declare-styleable name="TabItem">
         <attr name="indicator_radius" format="integer"/>
         <attr name="activeDrawable" format="reference"/>
         <attr name="inactiveDrawable" format="reference"/>
         <attr name="active" format="boolean"/>
+    </declare-styleable>
+
+    <!--SettingItem-->
+    <declare-styleable name="SettingItem">
+        <attr name="setting_icon" format="reference"/>
+        <attr name="setting_text" format="string"/>
+        <attr name="setting_divider" format="enum">
+            <enum name="none" value="0"/>
+            <enum name="top" value="1"/>
+            <enum name="bottom" value="2"/>
+        </attr>
+        <attr name="setting_divider_color" format="color|reference"/>
+        <attr name="setting_indicator_background" format="reference"/>
+        <attr name="setting_indicator_color" format="color|reference"/>
     </declare-styleable>
 
     <!--TimeButton-->
@@ -72,6 +112,38 @@
         <attr name="isSelect" format="boolean"/>
         <attr name="selDrawable" format="reference"/>
         <attr name="norDrawable" format="reference"/>
+    </declare-styleable>
+
+    <!--BasicRecyclerView-->
+    <declare-styleable name="BasicRecyclerView">
+        <attr name="layout_mode" format="enum">
+            <enum name="horizontal" value="0"/>
+            <enum name="vertical" value="1"/>
+            <enum name="invalid_offset" value="2"/>
+            <enum name="grid" value="3"/>
+        </attr>
+        <attr name="column_num" format="integer"/>
+        <attr name="has_row_divider" format="boolean"/>
+        <attr name="has_rank_divider" format="boolean"/>
+        <attr name="divider_width" format="dimension"/>
+        <attr name="divider_height" format="dimension"/>
+        <attr name="divider_marginLeft" format="dimension"/>
+        <attr name="divider_marginRight" format="dimension"/>
+        <attr name="divider_marginTop" format="dimension"/>
+        <attr name="divider_marginBottom" format="dimension"/>
+        <attr name="divider_color" format="color"/>
+        <attr name="is_inner" format="boolean"/>
+        <attr name="is_process" format="boolean"/>
+        <attr name="process_background" format="integer|reference"/>
+        <attr name="is_start_animator" format="boolean"/>
+        <attr name="is_first_only" format="boolean"/>
+        <attr name="duration_animator" format="integer"/>
+    </declare-styleable>
+
+    <!--LoadMoreRecyclerView-->
+    <declare-styleable name="LoadMoreRecyclerView">
+        <attr name="loading_text" format="string"/>
+        <attr name="no_more_text" format="string"/>
     </declare-styleable>
 
 </resources>

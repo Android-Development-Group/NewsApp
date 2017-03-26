@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--没有资源时-->
+    <RelativeLayout
+        android:id="@+id/rl_no_data"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_EBEBEB"
+        android:visibility="visible">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
+
+            <ImageView
+                android:id="@+id/img_no_data"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/img_page_empty"/>
+
+            <TextView
+                android:id="@+id/tv_empty_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/img_no_data"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp"
+                android:text="@string/empty_data"
+                android:textColor="@color/text_color_gray"
+                android:textSize="@dimen/text_size_18sp"/>
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <!--数据加载失败时-->
+    <RelativeLayout
+        android:id="@+id/rl_load_failed"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_EBEBEB"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
+
+            <ImageView
+                android:id="@+id/iv_load_failed"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/img_page_empty"/>
+
+            <TextView
+                android:id="@+id/tv_load_failed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/iv_load_failed"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp"
+                android:text="@string/loading_fail"
+                android:textColor="@color/text_color_gray"
+                android:textSize="@dimen/text_size_16sp"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</merge>
