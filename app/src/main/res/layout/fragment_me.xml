@@ -32,7 +32,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/pic_014"/>
+                    android:src="@drawable/pic_016"/>
 
                 <LinearLayout
                     android:id="@+id/ll_user"

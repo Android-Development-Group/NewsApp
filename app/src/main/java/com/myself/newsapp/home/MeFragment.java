@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.myself.library.controller.BaseFragment;
 import com.myself.library.view.SettingItem;
 import com.myself.newsapp.R;
-import com.myself.newsapp.na_me.SettingActivity;
+import com.myself.newsapp.na_me.setting.SettingActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;

@@ -97,7 +97,10 @@
 
         <!-- ***************************************  ↑  *************************************** -->
 
-
+        <!-- 测试 -->
+        <activity
+            android:name=".TestActivity"
+            android:label="@string/title_activity_test"/>
         <!-- 登录 -->
         <activity
             android:name=".user.LoginActivity"
@@ -126,18 +129,13 @@
         <activity
             android:name=".na_store.GoodsDetailActivity"
             android:label="@string/title_activity_goodsdetail"/>
-        <!-- 测试 -->
-        <activity
-            android:name=".TestActivity"
-            android:label="@string/title_activity_test"/>
-
         <!-- 添加商品 -->
         <activity
             android:name=".test.AddGoodsActivity"
             android:label="@string/title_activity_addgoods"/>
         <!--设置-->
         <activity
-            android:name=".na_me.SettingActivity"
+            android:name=".na_me.setting.SettingActivity"
             android:label="@string/title_activity_setting"/>
 
     </application>

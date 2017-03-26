@@ -98,6 +98,17 @@
     <string name="me_default_name">SuperMan</string>
     <string name="me_message">消息中心</string>
     <string name="me_advice">意见反馈</string>
-
+    <string name="me_personal_information">个人信息</string>
+    <string name="me_personal_image">头像</string>
+    <string name="me_nickname">用户昵称</string>
+    <string name="me_sex">性别</string>
+    <string name="me_region">地区</string>
+    <string name="me_phone">手机号</string>
+    <string name="me_password">密码</string>
+    <string name="me_personal_profile">个人简介</string>
+    <string name="me_Personal_profile_restriction">限制在40字以内</string>
+    <string name="me_leave_name">这个用户很懒</string>
+    <string name="me_personal_profile_not_modified">个人简介信息未进行修改</string>
+    <string name="me_profile_not_empty">简介不能为空</string>
 
 </resources>
