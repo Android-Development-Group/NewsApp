@@ -42,10 +42,10 @@ public class MainActivity extends BaseActivity {
 
     @BindView(R.id.rl_index_main)
     RelativeLayout mRlIndexMain;
-    @BindView(R.id.ti_index_nearby)
-    TabItem mTiIndexNearby;
     @BindView(R.id.ti_index_store)
     TabItem mTiIndexStore;
+    @BindView(R.id.ti_index_nearby)
+    TabItem mTiIndexNearby;
     @BindView(R.id.ti_index_find)
     TabItem mTiIndexFind;
     @BindView(R.id.ti_index_me)
@@ -89,7 +89,7 @@ public class MainActivity extends BaseActivity {
             }
         });
         mVpContent.setOffscreenPageLimit(4);
-        mTbIndexTab.setTabItemSelected(R.id.ti_index_nearby);
+        mTbIndexTab.setTabItemSelected(R.id.ti_index_store);
         mVpContent.setCurrentItem(0);
         refreshMeDot(0);
 
@@ -101,8 +101,8 @@ public class MainActivity extends BaseActivity {
      */
     private void addFragments() {
         mFragments = new SparseArray<>();
-        mFragments.put(0, Fragment.instantiate(mContext, NearbyFragment.class.getName()));
-        mFragments.put(1, Fragment.instantiate(mContext, StoreFragment.class.getName()));
+        mFragments.put(0, Fragment.instantiate(mContext, StoreFragment.class.getName()));
+        mFragments.put(1, Fragment.instantiate(mContext, NearbyFragment.class.getName()));
         mFragments.put(2, Fragment.instantiate(mContext, FindFragment.class.getName()));
         mFragments.put(3, Fragment.instantiate(mContext, MeFragment.class.getName()));
     }
@@ -205,10 +205,10 @@ public class MainActivity extends BaseActivity {
     private void setCurrentItem(int position) {
         switch (position) {
             case 0:
-                mTbIndexTab.setTabItemSelected(R.id.ti_index_nearby);
+                mTbIndexTab.setTabItemSelected(R.id.ti_index_store);
                 break;
             case 1:
-                mTbIndexTab.setTabItemSelected(R.id.ti_index_store);
+                mTbIndexTab.setTabItemSelected(R.id.ti_index_nearby);
                 break;
             case 2:
                 mTbIndexTab.setTabItemSelected(R.id.ti_index_find);

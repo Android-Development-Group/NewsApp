@@ -97,6 +97,7 @@
 
         <!-- ***************************************  ↑  *************************************** -->
 
+
         <!-- 测试 -->
         <activity
             android:name=".TestActivity"
@@ -133,11 +134,14 @@
         <activity
             android:name=".test.AddGoodsActivity"
             android:label="@string/title_activity_addgoods"/>
-        <!--设置-->
+        <!-- 设置 -->
         <activity
             android:name=".na_me.setting.SettingActivity"
             android:label="@string/title_activity_setting"/>
-
+        <activity android:name=".na_me.feedback.FeedbackActivity">
+        </activity>
+        <activity android:name=".na_me.message.MessageActivity">
+        </activity>
     </application>
 
 </manifest>

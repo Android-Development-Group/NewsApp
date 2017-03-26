@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_EBEBEB"
+    android:orientation="vertical">
+
+    <!--标题栏-->
+    <com.myself.library.view.NavigationBar
+        style="@style/style_navigation_bar"
+        app:nav_has_divider="true"
+        app:nav_left_icon="@drawable/back_selector"
+        app:nav_main_title="消息"
+        app:nav_main_title_color="@color/text_color"/>
+
+</LinearLayout>

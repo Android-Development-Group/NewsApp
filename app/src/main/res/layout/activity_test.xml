@@ -32,7 +32,7 @@
             android:id="@+id/tv_test_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="测试1"
+            android:text="测试红点"
             android:textAllCaps="false"/>
 
         <Button

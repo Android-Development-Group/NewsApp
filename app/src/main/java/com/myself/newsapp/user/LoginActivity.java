@@ -3,7 +3,6 @@ package com.myself.newsapp.user;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -52,12 +51,6 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void onViewCreatedFinish(Bundle saveInstanceState) {
-
-        if (AVUser.getCurrentUser() != null) {
-            AccountHelper.login();
-            startActivity(MainActivity.class);
-            LoginActivity.this.finish();
-        }
 
         mEtPassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -121,7 +114,8 @@ public class LoginActivity extends BaseActivity {
                 public void done(AVUser avUser, AVException e) {
                     if (e == null) {
                         LoginActivity.this.finish();
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        AccountHelper.login();
+                        startActivity(MainActivity.class);
                     } else {
                         showProgress(false);
                         Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();

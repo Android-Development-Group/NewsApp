@@ -3,8 +3,10 @@ package com.myself.newsapp;
 import android.os.Bundle;
 import android.view.View;
 
+import com.myself.library.controller.eventbus.EventBusHelper;
 import com.myself.newsapp.base.TitleActivity;
 import com.myself.newsapp.na_store.GoodsListActivity;
+import com.myself.newsapp.util.Constants;
 
 import butterknife.OnClick;
 
@@ -33,6 +35,7 @@ public class TestActivity extends TitleActivity {
                 startActivity(GoodsListActivity.class);
                 break;
             case R.id.tv_test_1:
+                EventBusHelper.post(3, Constants.EventKey.EVENT_REFRESH_ME_TAB);
                 break;
             case R.id.tv_test_2:
                 break;

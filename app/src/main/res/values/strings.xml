@@ -96,6 +96,12 @@
 
 
     <string name="me_default_name">SuperMan</string>
+    <string name="me_my_order">我的订单</string>
+    <string name="me_pending_payment">待付款</string>
+    <string name="me_wait_for_delivery">待发货</string>
+    <string name="me_receiving_goods">待收货</string>
+    <string name="me_pending_evaluation">待评价</string>
+    <string name="me_sale_refund">退款/售后</string>
     <string name="me_message">消息中心</string>
     <string name="me_advice">意见反馈</string>
     <string name="me_personal_information">个人信息</string>

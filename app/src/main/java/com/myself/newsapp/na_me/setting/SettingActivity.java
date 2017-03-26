@@ -18,6 +18,10 @@ import com.myself.newsapp.util.Constants;
 import butterknife.BindView;
 import butterknife.OnClick;
 
+/**
+ * 设置
+ * Created by Jusenr on 2017/03/26.
+ */
 public class SettingActivity extends TitleActivity {
 
 

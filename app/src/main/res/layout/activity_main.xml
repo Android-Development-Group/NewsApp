@@ -2,8 +2,8 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
     android:id="@+id/rl_index_main"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_EBEBEB">
 
@@ -24,26 +24,27 @@
         android:orientation="horizontal"
         android:visibility="visible">
 
-        <!--附近-->
-        <com.myself.library.view.select.TabItem
-            android:id="@+id/ti_index_nearby"
-            style="@style/style_tab_bar"
-            app:active="true"
-            app:activeDrawable="@drawable/tab_bar_p_sel"
-            app:inactiveDrawable="@drawable/tab_bar_p_nor"/>
-
         <!--商城-->
         <com.myself.library.view.select.TabItem
             android:id="@+id/ti_index_store"
             style="@style/style_tab_bar"
-            app:active="false"
+            app:active="true"
             app:activeDrawable="@drawable/tab_bar_store_sel"
             app:inactiveDrawable="@drawable/tab_bar_store_nor"/>
+
+        <!--附近-->
+        <com.myself.library.view.select.TabItem
+            android:id="@+id/ti_index_nearby"
+            style="@style/style_tab_bar"
+            app:active="false"
+            app:activeDrawable="@drawable/tab_bar_p_sel"
+            app:inactiveDrawable="@drawable/tab_bar_p_nor"/>
 
         <!--发现-->
         <com.myself.library.view.select.TabItem
             android:id="@+id/ti_index_find"
             style="@style/style_tab_bar"
+            app:active="false"
             app:activeDrawable="@drawable/tab_bar_c_sel"
             app:inactiveDrawable="@drawable/tab_bar_c_nor"/>
 

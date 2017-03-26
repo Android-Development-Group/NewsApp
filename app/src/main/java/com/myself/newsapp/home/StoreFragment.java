@@ -24,7 +24,7 @@ import butterknife.OnClick;
 
 /**
  * 商城
- * Created by Jusenr on 2017/3/25.
+ * Created by Jusenr on 2017/03/26.
  */
 
 public class StoreFragment extends BaseFragment {
