@@ -91,22 +91,22 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile project(':library')
-    testCompile 'junit:junit:4.12'
-    apt 'com.jakewharton:butterknife-compiler:8.4.0'
-    //    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha9'
     // LeanCloud 基础包-sdk:v3.+
     // 推送与实时聊天需要的包-push:v3.+@aar
     // LeanCloud 统计包-statistics:v3.+
     // LeanCloud 用户反馈包-feedback:v3.+@aar
     // avoscloud-sns：LeanCloud 第三方登录包-sns:v3.+@aar/qq-sdk:1.6.1-leancloud
     // LeanCloud 应用内搜索包-search:v3.+@aar
-    compile 'cn.leancloud.android:avoscloud-sdk:v3.+'
     compile('cn.leancloud.android:avoscloud-push:v3.+@aar') { transitive = true }
+    compile 'cn.leancloud.android:avoscloud-sdk:v3.+'
     compile 'cn.leancloud.android:avoscloud-statistics:v3.+'
     compile 'cn.leancloud.android:avoscloud-feedback:v3.+@aar'
     compile 'cn.leancloud.android:avoscloud-sns:v3.+@aar'
     compile 'cn.leancloud.android:qq-sdk:1.6.1-leancloud'
     compile 'cn.leancloud.android:avoscloud-search:v3.+@aar'
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
+    testCompile 'junit:junit:4.12'
+    apt 'com.jakewharton:butterknife-compiler:8.4.0'
 }
 
 //编译结束后删除unaligned包

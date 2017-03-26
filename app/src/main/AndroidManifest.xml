@@ -41,7 +41,8 @@
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-            <!-- <intent-filter>
+            <!--
+             <intent-filter>
                  <action android:name="android.intent.action.VIEW"/>
 
                  <category android:name="android.intent.category.DEFAULT"/>
@@ -50,10 +51,12 @@
                  <data
                      android:host="newsapp"
                      android:scheme="news"/>
-             </intent-filter>-->
+             </intent-filter>
+            -->
         </activity>
 
         <!-- ***************************************  ↓  *************************************** -->
+
 
         <!-- 友盟 -->
         <meta-data
@@ -94,6 +97,7 @@
 
         <!-- ***************************************  ↑  *************************************** -->
 
+
         <!-- 登录 -->
         <activity
             android:name=".user.LoginActivity"
@@ -114,24 +118,27 @@
         <activity
             android:name=".guidance.GuidanceActivity"
             android:label="@string/title_activity_guidance"/>
-        <!--商品列表-->
+        <!-- 商品列表 -->
         <activity
             android:name=".na_store.GoodsListActivity"
             android:label="@string/title_activity_goodslist"/>
-        <!--商品详情-->
+        <!-- 商品详情 -->
         <activity
             android:name=".na_store.GoodsDetailActivity"
             android:label="@string/title_activity_goodsdetail"/>
-        <!--测试-->
+        <!-- 测试 -->
         <activity
             android:name=".TestActivity"
             android:label="@string/title_activity_test"/>
 
-
-        <!--添加商品-->
+        <!-- 添加商品 -->
         <activity
             android:name=".test.AddGoodsActivity"
             android:label="@string/title_activity_addgoods"/>
+        <!--设置-->
+        <activity
+            android:name=".na_me.SettingActivity"
+            android:label="@string/title_activity_setting"/>
 
     </application>
 

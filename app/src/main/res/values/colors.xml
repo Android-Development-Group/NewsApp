@@ -7,6 +7,7 @@
     <color name="transparent">@android:color/transparent</color>
 
     <color name="btn_login">#985CC9</color>
+    <color name="bg_F5F5F5">#F5F5F5</color>
 
 
     <!--TextColor-->

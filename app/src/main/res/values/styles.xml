@@ -43,4 +43,16 @@
         <item name="android:textSize">@dimen/text_size_18sp</item>
     </style>
 
+    <!--设置行-->
+    <style name="style_setting">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">48dp</item>
+    </style>
+    <!--分享行-->
+    <style name="style_share_row">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:paddingTop">20dp</item>
+    </style>
+
 </resources>

@@ -6,12 +6,141 @@
     android:layout_height="match_parent"
     android:background="@color/bg_EBEBEB">
 
-    <TextView
-        android:id="@+id/tv_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="我"
-        android:textSize="@dimen/text_size_18sp"/>
+    <com.myself.library.view.scroll.SupportScrollView
+        android:id="@+id/sv_me"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/ll_me"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingBottom="20dp">
+
+            <!--用户头像昵称栏-->
+            <RelativeLayout
+                android:id="@+id/rl_user_head_icon"
+                android:layout_width="match_parent"
+                android:layout_height="220dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/btn_get_focus_sel"/>
+
+                <LinearLayout
+                    android:id="@+id/ll_user"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="vertical">
+
+                    <!--用户图象-->
+                    <ImageView
+                        android:id="@+id/iv_user_icon"
+                        android:layout_width="88dp"
+                        android:layout_height="88dp"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/img_page_empty"/>
+
+                    <!--昵称-->
+                    <TextView
+                        android:id="@+id/tv_user_nickname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/me_default_name"
+                        android:textColor="@color/text_color_white"
+                        android:textSize="@dimen/text_size_18sp"/>
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:background="@color/setting_item_background_normal"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/divider_color"/>
+
+                <!--消息中心-->
+                <com.myself.library.view.SettingItem
+                    android:id="@+id/si_message"
+                    style="@style/style_setting"
+                    app:setting_icon="@drawable/icon_20_62"
+                    app:setting_text="@string/me_message"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_marginLeft="45dp"
+                    android:background="@color/divider_color"/>
+
+                <!--意见反馈-->
+                <com.myself.library.view.SettingItem
+                    android:id="@+id/si_advice"
+                    style="@style/style_setting"
+                    app:setting_icon="@drawable/icon_20_78"
+                    app:setting_text="@string/me_advice"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/divider_color"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:background="@color/setting_item_background_normal"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/divider_color"/>
+
+                <!--我的收藏-->
+                <com.myself.library.view.SettingItem
+                    android:id="@+id/si_collection"
+                    style="@style/style_setting"
+                    app:setting_icon="@drawable/icon_20_39"
+                    app:setting_text="我的收藏"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/divider_color"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </com.myself.library.view.scroll.SupportScrollView>
+
+    <!--设置-->
+    <ImageView
+        android:id="@+id/iv_setting"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:padding="5dp"
+        android:src="@drawable/setting_selector"/>
 
 </RelativeLayout>
