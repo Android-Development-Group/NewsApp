@@ -33,6 +33,7 @@ public class SplashActivity extends BaseActivity {
                 if (!AccountHelper.isLogin()) {
                     startActivity(GuidanceActivity.class);
                 } else {
+                    AccountHelper.login();
                     startActivity(MainActivity.class);
                 }
                 finish();

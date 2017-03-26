@@ -1,8 +1,11 @@
 package com.myself.newsapp.account;
 
+import android.util.Log;
+
 import com.avos.avoscloud.AVUser;
 import com.myself.library.utils.PreferenceUtils;
 import com.myself.library.utils.StringUtils;
+import com.myself.newsapp.user.UserInfoBean;
 import com.myself.newsapp.util.Constants;
 
 /**
@@ -11,17 +14,31 @@ import com.myself.newsapp.util.Constants;
  */
 
 public class AccountHelper {
-
+    public static final String TAG = AccountHelper.class.getSimpleName();
 
     /**
      * 登录
      */
     public static void login() {
         AVUser avUser = AVUser.getCurrentUser();
-        String uid = avUser.getObjectId();
+        if (avUser != null) {
+            String uuid = avUser.getUuid();
+            Log.e(TAG, "login: uuid--" + uuid);
+            if (!StringUtils.isEmpty(uuid))
+                PreferenceUtils.save(Constants.SPKey.PREFERENCE_KEY_UUID, uuid);
 
-        if (!StringUtils.isEmpty(uid))
-            PreferenceUtils.save(Constants.SPKey.PREFERENCE_KEY_UID, uid);
+            String uid = avUser.getObjectId();
+            if (!StringUtils.isEmpty(uid))
+                PreferenceUtils.save(Constants.SPKey.PREFERENCE_KEY_UID, uid);
+
+            String sessionToken = avUser.getSessionToken();
+            if (!StringUtils.isEmpty(sessionToken))
+                PreferenceUtils.save(Constants.SPKey.PREFERENCE_KEY_TOKEN, sessionToken);
+
+            String username = avUser.getUsername();
+            if (!StringUtils.isEmpty(username))
+                PreferenceUtils.save(Constants.SPKey.PREFERENCE_KEY_USERNAME, username);
+        }
     }
 
     /**
@@ -29,7 +46,10 @@ public class AccountHelper {
      */
     public static void logout() {
         AVUser.getCurrentUser().logOut();
+        PreferenceUtils.remove(Constants.SPKey.PREFERENCE_KEY_UUID);
         PreferenceUtils.remove(Constants.SPKey.PREFERENCE_KEY_UID);
+        PreferenceUtils.remove(Constants.SPKey.PREFERENCE_KEY_TOKEN);
+        PreferenceUtils.remove(Constants.SPKey.PREFERENCE_KEY_USERNAME);
 
     }
 
@@ -39,7 +59,7 @@ public class AccountHelper {
      * @return
      */
     public static boolean isLogin() {
-        return !StringUtils.isEmpty(getCurrentUid())/* && !StringUtils.isEmpty(getCurrentToken())*/;
+        return !StringUtils.isEmpty(getCurrentUid()) && !StringUtils.isEmpty(getCurrentToken());
     }
 
     /**
@@ -48,7 +68,7 @@ public class AccountHelper {
      * @return 当前登录的Uid
      */
     public static String getCurrentUid() {
-        return PreferenceUtils.getValue(Constants.SPKey.PREFERENCE_KEY_UID, "");
+        return PreferenceUtils.getValue(Constants.SPKey.PREFERENCE_KEY_UID, null);
     }
 
     /**
@@ -66,7 +86,7 @@ public class AccountHelper {
      * @return 当前登录的Uid
      */
     public static String getCurrentToken() {
-        return PreferenceUtils.getValue(Constants.SPKey.PREFERENCE_KEY_TOKEN, "");
+        return PreferenceUtils.getValue(Constants.SPKey.PREFERENCE_KEY_TOKEN, null);
     }
 
     /**
@@ -76,5 +96,24 @@ public class AccountHelper {
      */
     public static void setCurrentToken(String token) {
         PreferenceUtils.save(Constants.SPKey.PREFERENCE_KEY_TOKEN, token);
+    }
+
+    /**
+     * 设置当前userInfo
+     *
+     * @param userInfo
+     */
+    public static void setUserInfo(UserInfoBean userInfo) {
+        if (userInfo != null)
+            PreferenceUtils.save(Constants.SPKey.PREFERENCE_KEY_USER_INFO, userInfo);
+    }
+
+    /**
+     * 获取当前userInfo
+     *
+     * @return
+     */
+    public static UserInfoBean getCurrentUserInfo() {
+        return PreferenceUtils.getValue(Constants.SPKey.PREFERENCE_KEY_USER_INFO, null);
     }
 }

@@ -21,8 +21,11 @@ public class Constants {
     }
 
     public static class SPKey {
+        public static final String PREFERENCE_KEY_UUID = "uuid";
         public static final String PREFERENCE_KEY_UID = "uid";
+        public static final String PREFERENCE_KEY_USERNAME = "username";
         public static final String PREFERENCE_KEY_TOKEN = "token";
+        public static final String PREFERENCE_KEY_USER_INFO = "userinfo";
     }
 
     public static class TypeKey {

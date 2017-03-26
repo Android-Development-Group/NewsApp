@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.myself.library.controller.BaseFragment;
 import com.myself.library.view.SettingItem;
+import com.myself.library.view.image.RoundImageView;
 import com.myself.newsapp.R;
 import com.myself.newsapp.na_me.setting.SettingActivity;
 
@@ -24,7 +25,7 @@ public class MeFragment extends BaseFragment {
 
 
     @BindView(R.id.iv_user_icon)
-    ImageView mIvUserIcon;
+    RoundImageView mIvUserIcon;
     @BindView(R.id.tv_user_nickname)
     TextView mTvUserNickname;
     @BindView(R.id.ll_user)

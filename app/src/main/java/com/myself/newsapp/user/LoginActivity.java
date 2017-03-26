@@ -26,7 +26,6 @@ import com.myself.newsapp.R;
 import com.myself.newsapp.account.AccountHelper;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -179,13 +178,6 @@ public class LoginActivity extends BaseActivity {
             onBackPressed();
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
     }
 }
 

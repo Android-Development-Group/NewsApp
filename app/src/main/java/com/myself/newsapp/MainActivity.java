@@ -30,7 +30,6 @@ import com.myself.newsapp.home.FindFragment;
 import com.myself.newsapp.home.MeFragment;
 import com.myself.newsapp.home.NearbyFragment;
 import com.myself.newsapp.home.StoreFragment;
-import com.myself.newsapp.user.LoginActivity;
 import com.myself.newsapp.util.Constants;
 
 import butterknife.BindView;
@@ -72,12 +71,6 @@ public class MainActivity extends BaseActivity {
 
 //        NativeLib nativeLib = new NativeLib();
 //        mSampleText.setText(nativeLib.stringFromJNI());
-
-
-        if (!AccountHelper.isLogin()) {
-            startActivity(LoginActivity.class);
-            this.finish();
-        }
 
 //        testLeanCloudSDK();
 

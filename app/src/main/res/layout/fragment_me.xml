@@ -44,9 +44,8 @@
                     android:orientation="vertical">
 
                     <!--用户图象-->
-                    <ImageView
+                    <com.myself.library.view.image.RoundImageView
                         android:id="@+id/iv_user_icon"
-                        style="@style/CardView"
                         android:layout_width="88dp"
                         android:layout_height="88dp"
                         android:layout_gravity="center_horizontal"
