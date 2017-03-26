@@ -36,6 +36,6 @@ dependencies {
     compile 'com.bartoszlipinski:recyclerviewheader2:2.0.1'
     compile 'in.srain.cube:ultra-ptr:1.0.9@aar'
     compile 'com.squareup.picasso:picasso:2.5.2'
-    compile 'com.alibaba:fastjson:1.2.7'
+//    compile 'com.alibaba:fastjson:1.2.7'
     compile 'com.google.code.gson:gson:2.8.0'
 }

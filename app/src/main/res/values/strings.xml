@@ -95,7 +95,7 @@
     <string name="error_field_required">Email不能为空</string>
 
 
-    <string name="me_default_name">superman</string>
+    <string name="me_default_name">SuperMan</string>
     <string name="me_message">消息中心</string>
     <string name="me_advice">意见反馈</string>
 

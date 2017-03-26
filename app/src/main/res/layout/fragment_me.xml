@@ -32,7 +32,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/btn_get_focus_sel"/>
+                    android:src="@drawable/pic_014"/>
 
                 <LinearLayout
                     android:id="@+id/ll_user"
@@ -46,10 +46,11 @@
                     <!--用户图象-->
                     <ImageView
                         android:id="@+id/iv_user_icon"
+                        style="@style/CardView"
                         android:layout_width="88dp"
                         android:layout_height="88dp"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/img_page_empty"/>
+                        android:src="@drawable/img_head_default"/>
 
                     <!--昵称-->
                     <TextView
@@ -65,6 +66,106 @@
 
             </RelativeLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/ll_integral"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="3dp"
+                        android:text="我的积分"
+                        android:textSize="@dimen/text_size_16sp"/>
+
+                    <TextView
+                        android:id="@+id/tv_me_integral"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:maxEms="6"
+                        android:padding="5dp"
+                        android:singleLine="true"
+                        android:text="6666"
+                        android:textColor="@color/text_color_red"
+                        android:textSize="@dimen/text_size_14sp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_collection"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="3dp"
+                        android:text="商品收藏"
+                        android:textSize="@dimen/text_size_16sp"/>
+
+                    <TextView
+                        android:id="@+id/tv_me_m_collection"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:maxEms="5"
+                        android:padding="5dp"
+                        android:singleLine="true"
+                        android:text="0"
+                        android:textColor="@color/text_color_red"
+                        android:textSize="@dimen/text_size_14sp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_concern"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="3dp"
+                        android:text="商户关注"
+                        android:textSize="@dimen/text_size_16sp"/>
+
+                    <TextView
+                        android:id="@+id/tv_me_m_concern"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:maxEms="4"
+                        android:padding="5dp"
+                        android:singleLine="true"
+                        android:text="20"
+                        android:textColor="@color/text_color_red"
+                        android:textSize="@dimen/text_size_14sp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!--SettingItem-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

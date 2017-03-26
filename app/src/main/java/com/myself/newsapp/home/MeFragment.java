@@ -40,6 +40,13 @@ public class MeFragment extends BaseFragment {
     @BindView(R.id.iv_setting)
     ImageView mIvSetting;
 
+    @BindView(R.id.tv_me_integral)
+    TextView mTvMeIntegral;
+    @BindView(R.id.tv_me_m_collection)
+    TextView mTvMeMCollection;
+    @BindView(R.id.tv_me_m_concern)
+    TextView mTvMeMConcern;
+
 
     @Override
     protected int getLayoutId() {
@@ -57,9 +64,15 @@ public class MeFragment extends BaseFragment {
     }
 
 
-    @OnClick({R.id.si_message, R.id.si_advice, R.id.si_collection, R.id.iv_setting})
+    @OnClick({R.id.ll_integral, R.id.ll_collection, R.id.ll_concern, R.id.si_message, R.id.si_advice, R.id.si_collection, R.id.iv_setting})
     public void onViewClicked(View view) {
         switch (view.getId()) {
+            case R.id.ll_integral:
+//                break;
+            case R.id.ll_collection:
+//                break;
+            case R.id.ll_concern:
+//                break;
             case R.id.si_message:
 //                break;
             case R.id.si_advice:
