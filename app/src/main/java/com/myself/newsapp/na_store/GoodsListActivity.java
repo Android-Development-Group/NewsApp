@@ -43,7 +43,7 @@ public class GoodsListActivity extends TitleActivity {
 
         mRvGoodslist.setHasFixedSize(true);
         mRvGoodslist.setLayoutManager(new LinearLayoutManager(this));
-        mStoreAdapter = new StoreAdapter(mList, this);
+        mStoreAdapter = new StoreAdapter(this, mList);
         mRvGoodslist.setAdapter(mStoreAdapter);
     }
 

@@ -26,7 +26,7 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
     private Context mContext;
     private List<AVObject> mList;
 
-    public StoreAdapter(List<AVObject> list, Context context) {
+    public StoreAdapter(Context context, List<AVObject> list) {
         this.mContext = context;
         this.mList = list;
     }

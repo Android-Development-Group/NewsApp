@@ -52,7 +52,7 @@ public class StoreFragment extends BaseFragment {
 
         mRvGoodslist.setHasFixedSize(true);
         mRvGoodslist.setLayoutManager(new LinearLayoutManager(mActivity));
-        mStoreAdapter = new StoreAdapter(mList, mActivity);
+        mStoreAdapter = new StoreAdapter(mActivity, mList);
         mRvGoodslist.setAdapter(mStoreAdapter);
     }
 
