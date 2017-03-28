@@ -31,7 +31,7 @@ import butterknife.ButterKnife;
 /**
  * Created by riven_chris on 16/7/1.
  */
-public abstract class PTActivity<P extends IPresenter> extends AppCompatActivity {
+public abstract class MVPBaseActivity<P extends IPresenter> extends AppCompatActivity {
 
     protected P mPresenter;
     private static final int WHAT_ON_HOME_CLICK = 0x1;

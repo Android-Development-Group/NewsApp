@@ -5,7 +5,7 @@ import android.os.Bundle;
 /**
  * Created by riven_chris on 16/7/1.
  */
-public abstract class PTLazyFragment extends PTFragment {
+public abstract class MVPBaseLazyFragment extends MVPBaseFragment {
 
     private boolean isFirstResume = true;
     private boolean isFirstVisible = true;

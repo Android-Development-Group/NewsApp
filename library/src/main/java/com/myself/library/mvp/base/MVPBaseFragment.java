@@ -20,7 +20,7 @@ import butterknife.ButterKnife;
 /**
  * Created by riven_chris on 16/7/1.
  */
-public abstract class PTFragment<P extends IPresenter> extends Fragment {
+public abstract class MVPBaseFragment<P extends IPresenter> extends Fragment {
 
     protected P mPresenter;
     private View mFragmentView = null;
@@ -138,7 +138,7 @@ public abstract class PTFragment<P extends IPresenter> extends Fragment {
      * @param targetClass 目标Activity类型
      */
     protected void startActivity(Class<? extends Activity> targetClass) {
-        ((PTActivity) getActivity()).startActivity(targetClass);
+        ((MVPBaseActivity) getActivity()).startActivity(targetClass);
     }
 
     /**
@@ -148,7 +148,7 @@ public abstract class PTFragment<P extends IPresenter> extends Fragment {
      * @param args        传递参数
      */
     public void startActivity(Class<? extends Activity> targetClass, Bundle args) {
-        ((PTActivity) getActivity()).startActivity(targetClass, args);
+        ((MVPBaseActivity) getActivity()).startActivity(targetClass, args);
     }
 
     /**
@@ -157,7 +157,7 @@ public abstract class PTFragment<P extends IPresenter> extends Fragment {
      * @param action 隐式动作
      */
     public void startActivity(String action) {
-        ((PTActivity) getActivity()).startActivity(action);
+        ((MVPBaseActivity) getActivity()).startActivity(action);
     }
 
     /**
@@ -166,7 +166,7 @@ public abstract class PTFragment<P extends IPresenter> extends Fragment {
      * @param action 隐式动作
      */
     public void startActivity(String action, Bundle args) {
-        ((PTActivity) getActivity()).startActivity(action, args);
+        ((MVPBaseActivity) getActivity()).startActivity(action, args);
     }
 
     /**
@@ -175,7 +175,7 @@ public abstract class PTFragment<P extends IPresenter> extends Fragment {
      * @param targetClass 目标Service类型
      */
     public void startService(Class<? extends Service> targetClass) {
-        ((PTActivity) getActivity()).startService(targetClass);
+        ((MVPBaseActivity) getActivity()).startService(targetClass);
     }
 
     /**

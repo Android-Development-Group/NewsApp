@@ -5,9 +5,9 @@ import android.support.v7.widget.RecyclerView;
 /**
  * Created by riven_chris on 16/7/1.
  */
-public abstract class PTViewHolder<T> /*extends BasicViewHolder*/ {
+public abstract class MVPViewHolder<T> /*extends BasicViewHolder*/ {
 
-//    public PTViewHolder(View itemView) {
+//    public MVPViewHolder(View itemView) {
 //        super(itemView);
 //    }
 
