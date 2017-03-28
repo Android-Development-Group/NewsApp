@@ -75,6 +75,7 @@ public class StoreFragment extends BaseFragment {
                     mStoreAdapter.notifyDataSetChanged();
                 } else {
                     e.printStackTrace();
+                    showFailedView();
                 }
             }
         });
@@ -94,6 +95,12 @@ public class StoreFragment extends BaseFragment {
                 startActivity(AddGoodsActivity.class);
                 break;
         }
+    }
+
+    private void showFailedView() {
+        mLoadStateView.onLoadFailed();
+        mLoadStateView.setFailedMessage(getString(R.string.no_network_tips));
+        mLoadStateView.setFailedView(R.drawable.ani_loading);
     }
 
     @Override
