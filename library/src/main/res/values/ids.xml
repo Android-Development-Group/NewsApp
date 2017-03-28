@@ -3,16 +3,19 @@
     <item name="fragment_container" type="id"/>
 
     <!--NavigationBar-->
-    <item name="nav_background" type="id" />
-    <item name="navigation_bar" type="id" />
+    <item name="nav_background" type="id"/>
+    <item name="navigation_bar" type="id"/>
 
     <!--PullToRefreshLayout-->
-    <item name="refresh_text" type="id" />
-    <item name="refresh_view" type="id" />
+    <item name="refresh_text" type="id"/>
+    <item name="refresh_view" type="id"/>
 
     <!--stickyHeaderLayout-->
-    <item name="stickyHeaderLayout_header" type="id" />
-    <item name="stickyHeaderLayout_sticky" type="id" />
-    <item name="stickyHeaderLayout_scrollable" type="id" />
-    <item name="sticky_layout" type="id" />
+    <item name="stickyHeaderLayout_header" type="id"/>
+    <item name="stickyHeaderLayout_sticky" type="id"/>
+    <item name="stickyHeaderLayout_scrollable" type="id"/>
+    <item name="sticky_layout" type="id"/>
+
+    <!--ConvenientBanner-->
+    <item name="cb_item_tag" type="id"></item>
 </resources>

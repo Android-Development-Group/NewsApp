@@ -2,8 +2,6 @@ package com.myself.newsapp.guidance;
 
 import android.animation.ObjectAnimator;
 import android.os.Bundle;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -14,9 +12,17 @@ import android.widget.Button;
 
 import com.myself.library.controller.ActivityManager;
 import com.myself.library.controller.BaseActivity;
+import com.myself.library.utils.DensityUtils;
+import com.myself.library.view.viewpager.banner.ConvenientBanner;
+import com.myself.library.view.viewpager.banner.holder.CBViewHolderCreator;
 import com.myself.newsapp.R;
+import com.myself.newsapp.guidance.model.bean.GuidancePicture;
+import com.myself.newsapp.guidance.view.GuidancePictureHolderView;
 import com.myself.newsapp.user.LoginActivity;
 import com.myself.newsapp.user.RegisterActivity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -29,7 +35,7 @@ public class GuidanceActivity extends BaseActivity implements View.OnClickListen
     private ObjectAnimator waveShiftAnim;//波浪动画
 
     @BindView(R.id.cb_guidance_banner)
-    ViewPager cb_guidanceBanner;
+    ConvenientBanner cb_guidanceBanner;
     //    @BindView(R.id.wv_wave)
 //    WaveView wv_wave;
     @BindView(R.id.btn_login)
@@ -55,17 +61,24 @@ public class GuidanceActivity extends BaseActivity implements View.OnClickListen
     }
 
     private void initGuidanceBanner() {
-        cb_guidanceBanner.setAdapter(new PagerAdapter() {
-            @Override
-            public int getCount() {
-                return 0;
-            }
+        List<GuidancePicture> banners = new ArrayList<GuidancePicture>();
+        banners.add(new GuidancePicture(R.drawable.img_wt_bg_01,
+                getString(R.string.guidance_title_1),
+                getString(R.string.guidance_label_1)));
+        banners.add(new GuidancePicture(R.drawable.img_wt_bg_02,
+                getString(R.string.guidance_title_2),
+                getString(R.string.guidance_label_2)));
+        banners.add(new GuidancePicture(R.drawable.img_wt_bg_03,
+                getString(R.string.guidance_title_3),
+                getString(R.string.guidance_label_3)));
 
+        cb_guidanceBanner.setPageIndicatorMarginBottom(DensityUtils.dp2px(this, 120));
+        cb_guidanceBanner.setPages(new CBViewHolderCreator() {
             @Override
-            public boolean isViewFromObject(View view, Object object) {
-                return false;
+            public Object createHolder() {
+                return new GuidancePictureHolderView();
             }
-        });
+        }, banners);
     }
 
     /**
@@ -121,7 +134,7 @@ public class GuidanceActivity extends BaseActivity implements View.OnClickListen
     @Override
     protected void onResume() {
         super.onResume();
-//        cb_guidanceBanner.startTurning(3000);
+        cb_guidanceBanner.startTurning(3000);
 //        wv_wave.setShowWave(true);
         if (waveShiftAnim != null) {
             waveShiftAnim.start();
@@ -131,7 +144,7 @@ public class GuidanceActivity extends BaseActivity implements View.OnClickListen
     @Override
     protected void onPause() {
         super.onPause();
-//        cb_guidanceBanner.stopTurning();
+        cb_guidanceBanner.stopTurning();
         if (waveShiftAnim != null) {
             waveShiftAnim.end();
         }

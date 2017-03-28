@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!--ConvenientBanner-->
+    <declare-styleable name="ConvenientBanner">
+        <attr name="canLoop" format="boolean"/>
+        <attr name="manualPageable" format="boolean"/>
+        <attr name="autoTurningTime" format="integer"/>
+        <attr name="align" format="enum">
+            <enum name="ALIGN_PARENT_LEFT" value="0"/>
+            <enum name="ALIGN_PARENT_RIGHT" value="1"/>
+            <enum name="CENTER_HORIZONTAL" value="2"/>
+        </attr>
+        <attr name="pageDrawable" format="reference"/>
+        <attr name="fillDrawable" format="reference"/>
+    </declare-styleable>
+
     <!--SwipeMenuLayout-->
     <declare-styleable name="SwipeMenuLayout">
         <attr name="swipeEnable" format="boolean"/>

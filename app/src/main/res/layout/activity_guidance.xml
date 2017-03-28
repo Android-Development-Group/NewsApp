@@ -5,18 +5,23 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-    <android.support.v4.view.ViewPager
+    <com.myself.library.view.viewpager.banner.ConvenientBanner
         android:id="@+id/cb_guidance_banner"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/text_color_gray"
-        android:visibility="gone"/>
+        app:align="CENTER_HORIZONTAL"
+        app:autoTurningTime="3"
+        app:fillDrawable="@drawable/dot_8_nor"
+        app:pageDrawable="@drawable/dot_8_sel"/>
+
 
     <ImageView
-        android:scaleType="centerCrop"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/pic_001"/>
+        android:scaleType="centerCrop"
+        android:src="@drawable/pic_001"
+        android:visibility="gone"/>
 
     <!--波浪曲线背景-->
     <!-- <com.sunnybear.library.view.WaveView

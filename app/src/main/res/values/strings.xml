@@ -117,4 +117,13 @@
     <string name="me_personal_profile_not_modified">个人简介信息未进行修改</string>
     <string name="me_profile_not_empty">简介不能为空</string>
 
+    <!--引导页-->
+    <string name="guidance_title_1">Keep Track</string>
+    <string name="guidance_label_1">Keep track of your kids\' activites and manage their screen time.</string>
+    <string name="guidance_title_2">Data Analysis</string>
+    <string name="guidance_label_2">Data analysis helps you understand your child\'s hidden potential.</string>
+    <string name="guidance_title_3">Online Monitoring</string>
+    <string name="guidance_label_3">Check your child\'s progress wherever you are.</string>
+
+
 </resources>
