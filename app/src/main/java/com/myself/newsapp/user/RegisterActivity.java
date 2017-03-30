@@ -20,6 +20,7 @@ import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.SignUpCallback;
 import com.myself.library.controller.BaseActivity;
+import com.myself.library.utils.StringUtils;
 import com.myself.library.view.CleanableEditText;
 import com.myself.newsapp.MainActivity;
 import com.myself.newsapp.R;
@@ -85,16 +86,28 @@ public class RegisterActivity extends BaseActivity {
         boolean cancel = false;
         View focusView = null;
 
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
-            mPassword.setError(getString(R.string.error_invalid_password));
+        if (TextUtils.isEmpty(password)) {
+            mPassword.setError(getString(R.string.error_field_required_password));
             focusView = mPassword;
             cancel = true;
+        } else {
+            if (!isPasswordValid(password)) {
+                mPassword.setError(getString(R.string.error_invalid_password));
+                focusView = mPassword;
+                cancel = true;
+            }
         }
 
         if (TextUtils.isEmpty(username)) {
             mUsername.setError(getString(R.string.error_field_required));
             focusView = mUsername;
             cancel = true;
+        } else {
+            if (!isusernameValid(username)) {
+                mUsername.setError(getString(R.string.error_invalid_email));
+                focusView = mUsername;
+                cancel = true;
+            }
         }
 
         if (cancel) {
@@ -124,12 +137,13 @@ public class RegisterActivity extends BaseActivity {
 
     private boolean isusernameValid(String username) {
         //TODO: Replace this with your own logic
-        return username.contains("@");
+
+        return StringUtils.checkEmailFormat(username);
     }
 
     private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
-        return password.length() > 5;
+        return StringUtils.checkPasswordFormat(password);
     }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
