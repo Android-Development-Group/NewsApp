@@ -118,6 +118,7 @@ public class RegisterActivity extends BaseActivity {
             AVUser user = new AVUser();// 新建 AVUser 对象实例
             user.setUsername(username);// 设置用户名
             user.setPassword(password);// 设置密码
+
             user.signUpInBackground(new SignUpCallback() {
                 @Override
                 public void done(AVException e) {
