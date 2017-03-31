@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <com.myself.library.view.viewpager.banner.ConvenientBanner
+        android:id="@+id/cb_banner"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="@color/text_color_gray"
+        app:align="ALIGN_PARENT_RIGHT"
+        app:autoTurningTime="3"
+        app:fillDrawable="@drawable/dot_8_nor"
+        app:pageDrawable="@drawable/dot_8_sel"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/img_jifenhaoli"/>
+
+        <TextView
+            android:id="@+id/tv_integral"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:text="1024"
+            android:textColor="#f00"
+            android:textSize="@dimen/text_size_16sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@+id/tv_integral"
+            android:layout_toStartOf="@+id/tv_integral"
+            android:drawableLeft="@drawable/iconfont_204"
+            android:drawablePadding="8dp"
+            android:text="我的积分"
+            android:textSize="@dimen/text_size_16sp"/>
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/iv_integral"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/img_jf"/>
+
+</merge>

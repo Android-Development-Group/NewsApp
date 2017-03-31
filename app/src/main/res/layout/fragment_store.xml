@@ -1,61 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/rl_root"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_EBEBEB"
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/ll_tab_bar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!--标题-->
-        <RelativeLayout
-            android:id="@+id/rl_top"
+        <!--title-->
+        <include layout="@layout/layout_store_title"/>
+
+        <!--tab-->
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabTitle"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/color_8849F6"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/main_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="商城"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_size_18sp"/>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/rl_main"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_goodslist"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/fab"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
-                android:layout_gravity="bottom|end"
-                android:layout_margin="16dp"
-                android:src="@android:drawable/ic_input_add"/>
-
-            <com.myself.library.mvp.widgets.LoadStateView
-                android:id="@+id/load_state_view"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-        </RelativeLayout>
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:clickable="false"
+            app:tabIndicatorColor="@color/color_FF5959"
+            app:tabIndicatorHeight="3dp"
+            app:tabPadding="3dp"
+            app:tabSelectedTextColor="@color/color_FF5959"
+            app:tabTextAppearance="@style/TabLayoutTextStyle"
+            app:tabTextColor="@color/color_FF5959"/>
 
     </LinearLayout>
 
-</android.support.design.widget.CoordinatorLayout>
+    <!--content-->
+    <com.myself.library.view.scroll.SupportScrollView
+        android:id="@+id/lrv_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_tab_bar"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/layout_banner"/>
+
+            <include layout="@layout/layout_goods_list"/>
+
+        </LinearLayout>
+
+    </com.myself.library.view.scroll.SupportScrollView>
+
+</LinearLayout>

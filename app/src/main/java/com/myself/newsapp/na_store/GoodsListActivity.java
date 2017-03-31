@@ -11,7 +11,7 @@ import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.FindCallback;
 import com.myself.newsapp.R;
 import com.myself.newsapp.base.TitleActivity;
-import com.myself.newsapp.home.adapter.StoreAdapter;
+import com.myself.newsapp.home.adapter.Store1Adapter;
 import com.myself.newsapp.test.AddGoodsActivity;
 
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ public class GoodsListActivity extends TitleActivity {
     @BindView(R.id.rv_goodslist)
     RecyclerView mRvGoodslist;
 
-    private StoreAdapter mStoreAdapter;
+    private Store1Adapter mStore1Adapter;
     private List<AVObject> mList = new ArrayList<>();
 
     @Override
@@ -43,8 +43,8 @@ public class GoodsListActivity extends TitleActivity {
 
         mRvGoodslist.setHasFixedSize(true);
         mRvGoodslist.setLayoutManager(new LinearLayoutManager(this));
-        mStoreAdapter = new StoreAdapter(this, mList);
-        mRvGoodslist.setAdapter(mStoreAdapter);
+        mStore1Adapter = new Store1Adapter(this, mList);
+        mRvGoodslist.setAdapter(mStore1Adapter);
     }
 
     private void initData() {
@@ -57,7 +57,7 @@ public class GoodsListActivity extends TitleActivity {
             public void done(List<AVObject> list, AVException e) {
                 if (e == null) {
                     mList.addAll(list);
-                    mStoreAdapter.notifyDataSetChanged();
+                    mStore1Adapter.notifyDataSetChanged();
                 } else {
                     e.printStackTrace();
                 }

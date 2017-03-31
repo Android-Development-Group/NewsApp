@@ -28,6 +28,10 @@
         <item name="android:background">#FFFFFF</item>
     </style>
 
+    <style name="TabLayoutTextStyle">
+        <item name="android:textSize">16sp</item>
+    </style>
+
     <!--登录框-->
     <style name="style_login">
         <item name="android:layout_width">match_parent</item>

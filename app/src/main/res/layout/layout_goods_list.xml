@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/white"
+              android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/text_size_10sp"
+        android:background="@color/bg_EBEBEB"/>
+
+    <!--热销单品 -->
+    <TextView
+        android:id="@+id/tv_daily_specials"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:drawableLeft="@drawable/iconfont_tejia"
+        android:drawablePadding="8dp"
+        android:padding="10dp"
+        android:text="@string/store_daily_specials"
+        android:textSize="@dimen/text_size_16sp"/>
+
+    <com.myself.library.view.recycler.BasicRecyclerView
+        android:id="@+id/rv_daily_specials"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_daily_specials"
+        android:background="@color/bg_EBEBEB"
+        android:scrollbars="none"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/text_size_10sp"
+        android:background="@color/bg_EBEBEB"/>
+
+    <!--热销单品-->
+    <TextView
+        android:id="@+id/tv_hot_single"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:drawableLeft="@drawable/iconfont_rexiao"
+        android:drawablePadding="8dp"
+        android:padding="10dp"
+        android:text="@string/store_hot_single"
+        android:textSize="@dimen/text_size_16sp"/>
+
+    <com.myself.library.view.recycler.BasicRecyclerView
+        android:id="@+id/rv_hotSell"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tv_hot_single"
+        android:background="@color/bg_EBEBEB"
+        android:dividerHeight="10dp"
+        android:scrollbars="none"/>
+
+</LinearLayout>

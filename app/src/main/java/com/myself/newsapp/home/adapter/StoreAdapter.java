@@ -1,83 +1,76 @@
 package com.myself.newsapp.home.adapter;
 
 import android.content.Context;
-import android.content.Intent;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.avos.avoscloud.AVObject;
-import com.myself.newsapp.R;
-import com.myself.newsapp.na_store.GoodsDetailActivity;
-import com.myself.newsapp.na_store.RoundedTransformation;
-import com.squareup.picasso.Picasso;
+import com.myself.library.view.recycler.BasicViewHolder;
+import com.myself.library.view.recycler.adapter.LoadMoreAdapter;
+import com.myself.newsapp.model.StoreResource;
 
+import java.text.ParseException;
 import java.util.List;
 
 /**
- * 商品列表
- * Created by Jusenr on 2017/03/25.
+ * Created by Jusenr on 2017/3/31.
  */
-public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHolder> {
-    private Context mContext;
-    private List<AVObject> mList;
 
-    public StoreAdapter(Context context, List<AVObject> list) {
-        this.mContext = context;
-        this.mList = list;
+public class StoreAdapter extends LoadMoreAdapter<StoreResource, BasicViewHolder> {
+    private static final int KEY_BANNER = 0XFD;// 置顶banner
+    private static final int KEY_RESOURCE = 0XFC;//文章条目
+    private static final int KEY_HOT_TAG = 0XFA;//文章标签
+
+
+    public StoreAdapter(Context context, List<StoreResource> storeResources) {
+        super(context, storeResources);
     }
 
     @Override
-    public StoreViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new StoreViewHolder(LayoutInflater.from(mContext).inflate(R.layout.item_list_main, parent, false));
+    public int getLayoutId(int viewType) {
+        return 0;
     }
 
     @Override
-    public void onBindViewHolder(StoreViewHolder holder, final int position) {
-        Picasso.with(mContext)
-                .load(mList.get(position).getAVFile("image") == null ? "www" : mList.get(position).getAVFile("image").getUrl())
-                .transform(new RoundedTransformation(9, 0))
-                .into(holder.mPicture);
-        holder.mTitle.setText(mList.get(position).getAVUser("owner") == null ? "" : mList.get(position).getAVUser("owner").getUsername());
-        holder.mSubtitle.setText((CharSequence) mList.get(position).get("title"));
-        holder.mPrice.setText(mList.get(position).get("price") == null ? "￥" : "￥ " + mList.get(position).get("price"));
-        holder.mIntegral.setText(mList.get(position).get("integral") == null ? "0" : String.valueOf(mList.get(position).get("integral")));
-
-        holder.mItem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(mContext, GoodsDetailActivity.class);
-                intent.putExtra("goodsObjectId", mList.get(position).getObjectId());
-                mContext.startActivity(intent);
-            }
-        });
+    public int getMultiItemViewType(int position) {
+        if (position == 0) {
+            return KEY_BANNER;
+        } else if (position == 1) {
+            return KEY_HOT_TAG;
+        } else {
+            return KEY_RESOURCE;
+        }
     }
 
     @Override
-    public int getItemCount() {
-        return mList.size();
+    public BasicViewHolder getViewHolder(View itemView, int viewType) {
+        if (KEY_HOT_TAG == viewType) {
+            return new StoreAdapter.HotTagHolder(itemView);
+        } else {
+            return new StoreAdapter.ResourceHolder(itemView);
+        }
     }
 
-    class StoreViewHolder extends RecyclerView.ViewHolder {
-        private CardView mItem;
-        private ImageView mPicture;
-        private TextView mTitle;
-        private TextView mSubtitle;
-        private TextView mPrice;
-        private TextView mIntegral;
+    @Override
+    public void onBindItem(BasicViewHolder holder, StoreResource storeResource, int position) throws ParseException {
+//        if (position == 1) {
+//            setHotTags(holder);//标签列表数据展示
+//        } else if (position == 0)
+//            setitemData(holder, mTop); //top展示
+//        else
+//            setitemData(holder, resou);//item展示
+    }
 
-        public StoreViewHolder(View itemView) {
+
+    public static class HotTagHolder extends BasicViewHolder {
+
+        public HotTagHolder(View itemView) {
             super(itemView);
-            mItem = (CardView) itemView.findViewById(R.id.item_main);
-            mPicture = (ImageView) itemView.findViewById(R.id.item_picture);
-            mTitle = (TextView) itemView.findViewById(R.id.item_maintitle);
-            mSubtitle = (TextView) itemView.findViewById(R.id.item_subtitle);
-            mPrice = (TextView) itemView.findViewById(R.id.item_price);
-            mIntegral = (TextView) itemView.findViewById(R.id.item_integral);
+        }
+    }
+
+    public static class ResourceHolder extends BasicViewHolder {
+
+        public ResourceHolder(View itemView) {
+            super(itemView);
         }
     }
 }

@@ -30,7 +30,23 @@
 
     <string name="main_title">NewsApp主页</string>
 
+    <!--商城-->
     <string name="store_title">商城</string>
+    <string name="store_scan">扫一扫</string>
+    <string name="store_message">消 息</string>
+    <string name="store_find_goods">寻找商品</string>
+    <string name="store_search_merchant">搜索商户</string>
+    <string name="store_location">常州</string>
+    <string name="store_daily_specials">每日特价</string>
+    <string name="store_hot_single">热销单品</string>
+    <string name="store_week_preferred">本周优选</string>
+
+    <!--app bottombar-->
+    <string name="bottomBar1">商城</string>
+    <string name="bottomBar2">附近</string>
+    <string name="bottomBar3">购物车</string>
+    <string name="bottomBar4">我的</string>
+
 
     <string name="test_title">测试数据</string>
     <string name="add_goods_title">添加商品</string>
