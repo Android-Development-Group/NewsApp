@@ -7,6 +7,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.avos.avoscloud.feedback.FeedbackAgent;
 import com.myself.library.controller.BaseFragment;
 import com.myself.library.view.SettingItem;
 import com.myself.library.view.image.RoundImageView;
@@ -69,15 +70,17 @@ public class MeFragment extends BaseFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ll_integral:
-//                break;
+                break;
             case R.id.ll_collection:
-//                break;
+                break;
             case R.id.ll_concern:
-//                break;
+                break;
             case R.id.si_message:
-//                break;
+                break;
             case R.id.si_advice:
-//                break;
+                FeedbackAgent agent = new FeedbackAgent(mActivity);
+                agent.startDefaultThreadActivity();
+                break;
             case R.id.si_collection:
 //                break;
             case R.id.iv_setting:

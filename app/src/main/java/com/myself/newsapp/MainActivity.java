@@ -75,6 +75,7 @@ public class MainActivity extends BaseActivity {
 //        testLeanCloudSDK();
 
 //        upgradeSubscription = UpgradeHelper.checkUpgradeInfo(this);
+
         addFragments();
         addListener();
         mVpContent.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
