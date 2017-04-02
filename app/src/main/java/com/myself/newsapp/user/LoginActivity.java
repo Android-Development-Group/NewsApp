@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.LogInCallback;
+import com.myself.leancloudlibrary.TipsUtils;
 import com.myself.library.controller.BaseActivity;
 import com.myself.library.utils.StringUtils;
 import com.myself.library.view.CleanableEditText;
@@ -132,6 +133,7 @@ public class LoginActivity extends BaseActivity {
                     } else {
                         showProgress(false);
                         Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                        TipsUtils.getPrompt(mContext, e.getCode());
                     }
                 }
             });

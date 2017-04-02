@@ -2,6 +2,7 @@ package com.myself.library.utils;
 
 import android.util.Log;
 
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
@@ -23,7 +24,7 @@ public final class DateUtils {
     private static final String TAG = DateUtils.class.getSimpleName();
     private static final SimpleDateFormat mDataFormat = new SimpleDateFormat(YMD_PATTERN);
     private static final SimpleDateFormat mTimeFormat = new SimpleDateFormat(YMD_HMS_PATTERN);
-
+    public static final String[] MONTHS = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 
     //    private long mToday;
 //
@@ -40,6 +41,42 @@ public final class DateUtils {
 
     private static final int ONE_DAY = 24 * 60 * 60 * 1000;
     private static final int A_WEEK = 7 * 24 * 60 * 60 * 1000;
+
+    /**
+     * 获取当前时区
+     *
+     * @return UTC时区差 String
+     */
+    public static String getCurrentTimeZone() {
+        TimeZone tz = TimeZone.getDefault();
+        String strTz = tz.getDisplayName(false, TimeZone.SHORT);
+        Log.e("####", "getCurrentTimeZone: " + strTz);
+        return strTz;
+    }
+
+    /**
+     * 获取当前时区
+     *
+     * @return UTC时区差 float
+     */
+    public static float getCurrentTimeZone2Int() {
+        String timeZone = getCurrentTimeZone();//GMT+05:45,GMT-07:00
+        String[] split = timeZone.split(":");
+        String sub0 = split[0].substring(split[0].length() - 3, split[0].length());
+        int anInt = Integer.parseInt(split[1]);
+        String s = new DecimalFormat("#.00").format((float) anInt / 60);
+        float index = Float.parseFloat(sub0) + Float.parseFloat(anInt > 0 ? s : "0");
+        Log.e("####", "getCurrentTimeZone2Int: " + index);
+        return index;
+    }
+
+
+    public static long generateGMTTimeStamp(long utc) {
+        float v = getCurrentTimeZone2Int() * 60 * 60;
+        long parseLong = utc + (int) v;
+        Log.e("####", "generateGMTTimeStamp: " + parseLong);
+        return parseLong;
+    }
 
     /**
      * 通过先将 当前时间 格式化成 年月日形式 ，然后又将所得到的字符串 解析成 Date类型 即 当天0点
@@ -160,7 +197,7 @@ public final class DateUtils {
             day = (int) ((date.getTime() - myDate.getTime()) / (24 * 60 * 60 * 1000));
         } catch (ParseException e) {
             e.printStackTrace();
-            Log.e(TAG, e.toString());
+            Logger.e(TAG, e);
         }
         return isAbs ? Math.abs(day) : day;
     }
@@ -229,7 +266,7 @@ public final class DateUtils {
             return getWeekDate(d);
         } catch (ParseException e) {
             e.printStackTrace();
-            Log.e(TAG, e.toString());
+            Logger.e(TAG, e);
         }
         return "星期数未知";
     }
@@ -243,7 +280,7 @@ public final class DateUtils {
      */
     public static String millisecondToDate(long millisecond, String pattern) {
         SimpleDateFormat format = new SimpleDateFormat(pattern);
-        Date date = new Date(millisecond * 1000L);
+        Date date = new Date(millisecond);
         return format.format(date);
     }
 
@@ -289,6 +326,32 @@ public final class DateUtils {
             return diff / (1000 * 60 * 60 * 24) + "天以前";
         else if (diff >= 1000L * 60 * 60 * 24 * 30 && diff < 1000L * 60 * 60 * 24 * 30 * 12) {
             return diff / (1000L * 60 * 60 * 24 * 30) + "月以前";
+        } else {
+            SimpleDateFormat format = new SimpleDateFormat(YMD_PATTERN);
+            Date date = new Date(millisecond);
+            return format.format(date);
+        }
+    }
+
+    /**
+     * 时间计算
+     *
+     * @param millisecond 毫秒数
+     * @return 计算后显示的English
+     */
+    public static String timeCalculationReturnEN(long millisecond) {
+        String result = "";
+        long diff = System.currentTimeMillis() - millisecond;//时间差
+        if (diff < 1000 * 60/* && diff > 0*/)
+            return " just";
+        else if (diff >= 1000 * 60 && diff < 1000 * 60 * 60)
+            return diff / (1000 * 60) + " minutes ago";
+        else if (diff >= 1000 * 60 * 60 && diff < 1000 * 60 * 60 * 24)
+            return diff / (1000 * 60 * 60) + "  hours ago";
+        else if (diff >= 1000 * 60 * 60 * 24 && diff < 1000L * 60 * 60 * 24 * 30)
+            return diff / (1000 * 60 * 60 * 24) + " days ago";
+        else if (diff >= 1000L * 60 * 60 * 24 * 30 && diff < 1000L * 60 * 60 * 24 * 30 * 12) {
+            return "before " + diff / (1000L * 60 * 60 * 24 * 30);
         } else {
             SimpleDateFormat format = new SimpleDateFormat(YMD_PATTERN);
             Date date = new Date(millisecond);
@@ -390,5 +453,16 @@ public final class DateUtils {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(mills);
         return calendar.get(Calendar.MINUTE);
+    }
+
+    /**
+     * 根据int类型的月份返回对应的英文
+     *
+     * @param mills
+     * @return
+     */
+    public static String getMonthInt2English(long mills) {
+        int monthInMills = getMonthInMills(mills);
+        return MONTHS[monthInMills - 1];
     }
 }

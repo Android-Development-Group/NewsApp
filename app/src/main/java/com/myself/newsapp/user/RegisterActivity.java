@@ -21,8 +21,8 @@ import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.SignUpCallback;
 import com.myself.library.controller.BaseActivity;
 import com.myself.library.utils.StringUtils;
+import com.myself.library.utils.ToastUtils;
 import com.myself.library.view.CleanableEditText;
-import com.myself.newsapp.MainActivity;
 import com.myself.newsapp.R;
 
 import butterknife.BindView;
@@ -38,8 +38,8 @@ public class RegisterActivity extends BaseActivity {
     LinearLayout mRegisterForm;
     @BindView(R.id.register_progress)
     ProgressBar mRegisterProgress;
-    @BindView(R.id.username)
-    CleanableEditText mUsername;
+    @BindView(R.id.email)
+    CleanableEditText mEmail;
     @BindView(R.id.password)
     CleanableEditText mPassword;
 
@@ -77,10 +77,10 @@ public class RegisterActivity extends BaseActivity {
     }
 
     private void attemptRegister() {
-        mUsername.setError(null);
+        mEmail.setError(null);
         mPassword.setError(null);
 
-        String username = mUsername.getText().toString();
+        final String username = mEmail.getText().toString();
         String password = mPassword.getText().toString();
 
         boolean cancel = false;
@@ -99,13 +99,13 @@ public class RegisterActivity extends BaseActivity {
         }
 
         if (TextUtils.isEmpty(username)) {
-            mUsername.setError(getString(R.string.error_field_required));
-            focusView = mUsername;
+            mEmail.setError(getString(R.string.error_field_required));
+            focusView = mEmail;
             cancel = true;
         } else {
             if (!isusernameValid(username)) {
-                mUsername.setError(getString(R.string.error_invalid_email));
-                focusView = mUsername;
+                mEmail.setError(getString(R.string.error_invalid_email));
+                focusView = mEmail;
                 cancel = true;
             }
         }
@@ -117,14 +117,31 @@ public class RegisterActivity extends BaseActivity {
 
             AVUser user = new AVUser();// 新建 AVUser 对象实例
             user.setUsername(username);// 设置用户名
+            user.setEmail(username);// 设置邮箱
             user.setPassword(password);// 设置密码
+
+            //重新发送验证邮箱
+//            AVUser.requestEmailVerifyInBackground(username, new RequestEmailVerifyCallback() {
+//                @Override
+//                public void done(AVException e) {
+//                    if (e == null) {
+//                        // 求重发验证邮件成功
+//                        ToastUtils.showToastShort(mContext, "请去邮箱" + username + "验证");
+//                    } else {
+//                        showProgress(false);
+//                        String message = e.getMessage();
+//                        ToastUtils.showToastShort(mContext, message);
+//                    }
+//                }
+//            });
 
             user.signUpInBackground(new SignUpCallback() {
                 @Override
                 public void done(AVException e) {
                     if (e == null) {
                         // 注册成功，把用户对象赋值给当前用户 AVUser.getCurrentUser()
-                        startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+                        ToastUtils.showToastShort(mContext, "请去邮箱" + username + "验证后方可登录！");
+                        startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                         RegisterActivity.this.finish();
                     } else {
                         // 失败的原因可能有多种，常见的是用户名已经存在。
@@ -138,7 +155,6 @@ public class RegisterActivity extends BaseActivity {
 
     private boolean isusernameValid(String username) {
         //TODO: Replace this with your own logic
-
         return StringUtils.checkEmailFormat(username);
     }
 

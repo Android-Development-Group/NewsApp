@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name">LeancloudLibrary</string>
+
+
+    <!--Error-Code-->
+    <string name="errcode_1">Internal server error. No information available.</string>
+    <string name="errcode_100">The connection to the AVOS servers failed.</string>
+    <string name="errcode_101">Object doesn\'t exist, or has an incorrect password.</string>
+    <string name="errcode_103">Missing or invalid classname. Classnames are case-sensitive.\n They must start with a letter, and a-zA-Z0-9_ are the only valid characters.</string>
+    <string name="errcode_104">Missing object id.</string>
+    <string name="errcode_105">Invalid key name. Keys are case-sensitive. They must start with a letter, and a-zA-Z0-9_ are the only valid characters.</string>
+    <string name="errcode_106">Malformed pointer. Pointers must be arrays of a classname and an object id.</string>
+    <string name="errcode_107">Malformed json object. A json dictionary is expected.</string>
+    <string name="errcode_108">Tried to access a feature only available internally.</string>
+    <string name="errcode_109">That operation isn\'t allowed by binding class.</string>
+    <string name="errcode_111">Field set to incorrect type.</string>
+    <string name="errcode_112">Invalid channel name. A channel name is either an empty string (the broadcast channel) or contains only a-zA-Z0-9_ characters and starts with a letter.</string>
+    <string name="errcode_113">Key is required.</string>
+    <string name="errcode_114">Invalid device token.</string>
+    <string name="errcode_116">The object is too large.</string>
+    <string name="errcode_117">The key is read only.</string>
+    <string name="errcode_119">That operation isn\'t allowed for clients.</string>
+    <string name="errcode_120">The results were not found in the cache.</string>
+    <string name="errcode_121">Keys in NSDictionary values may not include \'#39; or \'.\'.</string>
+    <string name="errcode_122">Invalid file name. A file name contains only a-zA-Z0-9_. characters and is between 1 and 36 characters.</string>
+    <string name="errcode_123">Invalid ACL. An ACL with an invalid format was saved. This should not happen if you use AVACL.</string>
+    <string name="errcode_124">The request timed out on the server. Typically this indicates the request is too expensive.</string>
+    <string name="errcode_125">The email address was invalid.</string>
+    <string name="errcode_126">Invalid user id.</string>
+    <string name="errcode_127">The mobile phone number was invalid.</string>
+    <string name="errcode_128">Invalid relation data.</string>
+    <string name="errcode_137">A unique field was given a value that is already taken.</string>
+    <string name="errcode_139">Role\'s name is invalid.</string>
+    <string name="errcode_140">More than the amount of application, please upgrade to the commercial version or contact us for processing.</string>
+    <string name="errcode_141">LeanEngine request timeout.</string>
+    <string name="errcode_142">Cloud Code validation failed.</string>
+    <string name="errcode_145">Payment is disabled on this device.</string>
+    <string name="errcode_150">Fail to convert data to image.</string>
+    <string name="errcode_154">Exceeded an application threshold setting.</string>
+    <string name="errcode_160">Insufficient balance.</string>
+
+    <string name="errcode_200">Username is missing or empty.</string>
+    <string name="errcode_201">Password is missing or empty.</string>
+    <string name="errcode_102">Username has already been taken.</string>
+
+
+    <string name="errcode_216">Email address isn\'t verified.</string>
+
+
+    <string name="errcode_70000">Unknown error.</string>
+
+
+</resources>

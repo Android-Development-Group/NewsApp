@@ -1,7 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="@drawable/pic_011"
+              android:background="@color/bg_EBEBEB"
               android:gravity="center_horizontal"
               android:orientation="vertical">
 
@@ -66,13 +66,13 @@
             android:layout_height="wrap_content">
 
             <com.myself.library.view.CleanableEditText
-                android:id="@+id/username"
+                android:id="@+id/email"
                 style="@style/NewsText.EditText"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:background="@null"
                 android:drawableRight="@drawable/close_selector"
-                android:hint="@string/username"
+                android:hint="@string/email"
                 android:maxLines="1"
                 android:singleLine="true"/>
 

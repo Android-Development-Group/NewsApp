@@ -1,3 +1,31 @@
 <resources>
     <string name="app_name">LeancloudLibrary</string>
+
+    <!--Error-Code-->
+    <string name="errcode_1">服务器内部错误或者参数错误</string>
+    <string name="errcode_100">无法建立 TCP 连接到 LeanCloud 服务器</string>
+    <string name="errcode_101">查询的 Class 不存在，或者要关联的 Pointer 对象不存在</string>
+    <string name="errcode_103">非法的 Class 名称，Class 名称大小写敏感，\n并且必须以英文字母开头，有效的字符仅限在英文字母、数字以及下划线</string>
+    <string name="errcode_104">缺少 objectId</string>
+    <string name="errcode_105">无效的 key 名称，也就是 Class 的列名无效，列名必须以英文字母开头，有效的字符仅限在英文字母、数字以及下划线</string>
+    <string name="errcode_106">无效的 Pointer 格式，Pointer必须为 JSON 对象</string>
+    <string name="errcode_107">无效的 JSON 对象，解析 JSON 数据失败</string>
+    <string name="errcode_108">此 API 仅供内部使用</string>
+    <string name="errcode_109">共享的 Class 无权限执行此操作，请检查 Class 共享的权限设置</string>
+    <string name="errcode_111">想要存储的值不匹配列的类型</string>
+    <string name="errcode_112"> 推送订阅的频道无效，频道名称必须不是空字符串，只能包含英文字母、数字以及下划线，并且只能以英文字母开头</string>
+    <string name="errcode_113">Class 中的某个字段设定成必须，保存的对象缺少该字段</string>
+
+
+
+
+
+    <string name="errcode_140">超过应用额度，请升级到商用版或联系我们处理</string>
+
+
+    <string name="errcode_216">未验证电子邮件地址</string>
+
+
+    <string name="errcode_70000">未知错误</string>
+
 </resources>
