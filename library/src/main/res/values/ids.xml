@@ -18,4 +18,7 @@
 
     <!--ConvenientBanner-->
     <item name="cb_item_tag" type="id"></item>
+
+    <!--BasicPopupWindow-->
+    <item name="popup_layout" type="id" />
 </resources>

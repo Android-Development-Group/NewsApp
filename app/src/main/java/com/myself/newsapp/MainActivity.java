@@ -1,9 +1,14 @@
 package com.myself.newsapp;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.util.Log;
@@ -32,6 +37,8 @@ import com.myself.newsapp.home.NearbyFragment;
 import com.myself.newsapp.home.StoreFragment;
 import com.myself.newsapp.util.Constants;
 
+import java.io.File;
+
 import butterknife.BindView;
 
 /**
@@ -39,6 +46,7 @@ import butterknife.BindView;
  * Created by Jusenr on 2017/03/25.
  */
 public class MainActivity extends BaseActivity {
+    public static final int REQUESTCODE = 0x00ff;
 
     @BindView(R.id.rl_index_main)
     RelativeLayout mRlIndexMain;
@@ -95,6 +103,54 @@ public class MainActivity extends BaseActivity {
         refreshMeDot(0);
 
         ActivityManager.getInstance().popOtherActivity(MainActivity.class);
+
+        createFile();
+    }
+
+    /**
+     * 返回键
+     *
+     * @param keyCode
+     * @param event
+     * @return
+     */
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            return exit();
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == REQUESTCODE) {
+            if (permissions[0].equals(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                createFile();
+            } else {
+
+            }
+        }
+
+    }
+
+    private void createFile() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            int permission = checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+            if (permission != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUESTCODE);
+                return;
+            }
+        }
+
+        File appDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getAbsolutePath() + File.separator + "NewsApp_log");
+        if (!appDir.exists()) {
+            appDir.mkdirs();
+            boolean isSuccess = appDir.mkdirs();
+            System.out.println("isSuccess:===================>" + isSuccess);
+        }
     }
 
     /**
@@ -155,21 +211,6 @@ public class MainActivity extends BaseActivity {
             }
         }
         mIvBlur.setVisibility(View.GONE);
-    }
-
-    /**
-     * 返回键
-     *
-     * @param keyCode
-     * @param event
-     * @return
-     */
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            return exit();
-        }
-        return super.onKeyDown(keyCode, event);
     }
 
 

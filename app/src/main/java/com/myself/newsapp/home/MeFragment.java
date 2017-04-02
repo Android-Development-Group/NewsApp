@@ -1,18 +1,25 @@
 package com.myself.newsapp.home;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.avos.avoscloud.AVFile;
+import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.feedback.FeedbackAgent;
 import com.myself.library.controller.BaseFragment;
+import com.myself.library.controller.eventbus.Subcriber;
+import com.myself.library.utils.StringUtils;
 import com.myself.library.view.SettingItem;
 import com.myself.library.view.image.RoundImageView;
 import com.myself.newsapp.R;
 import com.myself.newsapp.na_me.setting.SettingActivity;
+import com.myself.newsapp.na_store.RoundedTransformation;
+import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -57,7 +64,7 @@ public class MeFragment extends BaseFragment {
 
     @Override
     public void onViewCreatedFinish(Bundle savedInstanceState) {
-
+        getUserInfo(null);
     }
 
     @Override
@@ -87,5 +94,19 @@ public class MeFragment extends BaseFragment {
                 startActivity(SettingActivity.class);
                 break;
         }
+    }
+
+
+    @Subcriber(tag = SettingActivity.EVENT_PERFECT)
+    private void getUserInfo(String s) {
+        Log.e(TAG, "getUserInfo: " );
+        String nickname = AVUser.getCurrentUser().getString("nickname");
+        mTvUserNickname.setText(StringUtils.isEmpty(nickname) ? getString(R.string.me_default_name) : nickname);
+
+        AVFile userpic = AVUser.getCurrentUser().getAVFile("userpic");
+        Picasso.with(mActivity)
+                .load(userpic == null ? "www" : userpic.getUrl())
+                .transform(new RoundedTransformation(9, 0))
+                .into(mIvUserIcon);
     }
 }

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_EBEBEB"
+    android:orientation="vertical">
+
+    <!--标题栏-->
+    <com.myself.library.view.NavigationBar
+        style="@style/style_navigation_bar"
+        android:background="@color/white"
+        app:nav_divider_color="@color/divider_color"
+        app:nav_has_divider="true"
+        app:nav_left_icon="@drawable/back_selector"
+        app:nav_main_title="@string/perfect_nickname"
+        app:nav_main_title_color="@color/text_color"
+        app:nav_right_title="@string/save"
+        app:nav_right_title_color="@drawable/text_select"/>
+
+    <!--昵称-->
+    <com.myself.library.view.CleanableEditText
+        android:id="@+id/et_nickname"
+        style="@style/NewsText.EditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:drawableRight="@drawable/close_selector"
+        android:hint="请设置昵称"
+        android:maxLength="12"
+        android:paddingBottom="16dp"
+        android:paddingTop="16dp"
+        android:singleLine="true"/>
+
+    <!--简介-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+
+        <EditText
+            android:id="@+id/et_intro"
+            style="@style/NewsText.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:gravity="top"
+            android:hint="这个用户很懒，还没有留下签名"
+            android:lineSpacingExtra="5dp"
+            android:paddingBottom="16dp"
+            android:paddingTop="16dp"
+            android:textCursorDrawable="@null"/>
+
+        <TextView
+            android:id="@+id/tv_info_limit"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/et_intro"
+            android:layout_margin="10dp"
+            android:background="@drawable/text_userinfo_limit_shape"
+            android:gravity="center"
+            android:paddingBottom="4dp"
+            android:paddingTop="4dp"
+            android:text="40"
+            android:textColor="@color/white"
+            android:textSize="16sp"/>
+    </RelativeLayout>
+
+
+</LinearLayout>

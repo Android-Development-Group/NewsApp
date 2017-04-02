@@ -102,6 +102,12 @@
     <string name="action_sign_in">注册并登录</string>
     <string name="action_sign_in_short">登录</string>
 
+
+    <string name="perfect">完善用户信息</string>
+    <string name="perfect_nickname">昵称</string>
+    <string name="perfect_password">密码</string>
+
+
     <!--登录/注册-->
     <string name="login">登录</string>
     <string name="login_title">家长登录</string>
@@ -133,6 +139,7 @@
     <string name="error_field_required">Email不能为空</string>
 
     <string name="me_default_name">SuperMan</string>
+    <string name="me_default_region">上海</string>
     <string name="me_my_order">我的订单</string>
     <string name="me_pending_payment">待付款</string>
     <string name="me_wait_for_delivery">待发货</string>

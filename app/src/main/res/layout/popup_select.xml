@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/popup_background"
+                android:padding="8dp">
+
+    <LinearLayout
+        android:id="@+id/popup_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_select"
+            android:orientation="vertical">
+            <!--第一行-->
+            <LinearLayout
+                android:id="@+id/ll_first"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_first"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="拍照"
+                    android:textColor="#6666CC"
+                    android:textSize="@dimen/text_size_18sp"/>
+            </LinearLayout>
+
+            <!--间隔线-->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/divider_color"/>
+            <!--第二行-->
+            <LinearLayout
+                android:id="@+id/ll_second"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_second"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="从相册选择"
+                    android:textColor="#6666CC"
+                    android:textSize="@dimen/text_size_18sp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!--取消-->
+        <LinearLayout
+            android:id="@+id/ll_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/btn_select"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_cancel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="取消"
+                android:textColor="#6666CC"
+                android:textSize="@dimen/text_size_18sp"/>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

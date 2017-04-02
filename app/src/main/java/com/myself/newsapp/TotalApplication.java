@@ -30,6 +30,12 @@ public class TotalApplication extends BaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
+        //创建储存文件夹
+        File appDir = new File(getSdCardPath());
+        if (!appDir.exists()) {
+            boolean isSuccess = appDir.mkdirs();
+            System.out.println("Create-" + getSdCardPath() + ":===================>" + isSuccess);
+        }
 
         //Fir-SDk配置
         FIR.init(this);

@@ -23,6 +23,8 @@ import butterknife.ButterKnife;
  * Created by guchenkai on 2015/11/19.
  */
 public abstract class BaseFragment<App extends BaseApplication> extends Fragment {
+    public static final String TAG = BaseFragment.class.getSimpleName();
+
     private View mFragmentView = null;
     protected FragmentActivity mActivity;
 
