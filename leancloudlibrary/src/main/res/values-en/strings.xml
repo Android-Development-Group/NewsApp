@@ -38,14 +38,54 @@
     <string name="errcode_150">Fail to convert data to image.</string>
     <string name="errcode_154">Exceeded an application threshold setting.</string>
     <string name="errcode_160">Insufficient balance.</string>
-
     <string name="errcode_200">Username is missing or empty.</string>
     <string name="errcode_201">Password is missing or empty.</string>
-    <string name="errcode_102">Username has already been taken.</string>
-
-
+    <string name="errcode_202">Username has already been taken.</string>
+    <string name="errcode_203">Email has already been taken.</string>
+    <string name="errcode_204">The email is missing, and must be specified.</string>
+    <string name="errcode_205">A user with the specified email was not found.</string>
+    <string name="errcode_206">The user cannot be altered by a client without the session.</string>
+    <string name="errcode_207">Users can only be created through sign up.</string>
+    <string name="errcode_208">An existing account already linked to another user.</string>
+    <string name="errcode_210">The username and password mismatch.</string>
+    <string name="errcode_211">Could not find user.</string>
+    <string name="errcode_212">The mobile phone number is missing, and must be specified.</string>
+    <string name="errcode_213">A user with the specified mobile phone number was not found.</string>
+    <string name="errcode_214">Mobile phone number has already been taken.</string>
+    <string name="errcode_215">Mobile phone number isn\'t verified.</string>
     <string name="errcode_216">Email address isn\'t verified.</string>
-
+    <string name="errcode_217">Invalid username, it must be a non-blank string.</string>
+    <string name="errcode_218">Invalid password, it must be a non-blank string.</string>
+    <string name="errcode_219">Login failed more than the limit, please try again later, or by forgetting the password reset password.</string>
+    <string name="errcode_250">Linked id missing from request</string>
+    <string name="errcode_251">Invalid linked session or Invalid Weibo session.</string>
+    <string name="errcode_252">Invalid Weixin session.</string>
+    <string name="errcode_300">CQL syntax error.</string>
+    <string name="errcode_301">Fails to insert new document.</string>
+    <string name="errcode_302">Invalid GeoPoint values.</string>
+    <string name="errcode_303">Fail to execute operation on storage.</string>
+    <string name="errcode_304">Database error.</string>
+    <string name="errcode_305">No effect on updating/deleting a document.</string>
+    <string name="errcode_401">Unauthorized.</string>
+    <string name="errcode_403">Forbidden to read/write by class permissions.</string>
+    <string name="errcode_429">Too many requests.</string>
+    <string name="errcode_430">Upload files rate limit exceeded.</string>
+    <string name="errcode_431">LeanEngine hooks rate limit exceeded.</string>
+    <string name="errcode_502">Server is in maintenance.</string>
+    <string name="errcode_503">The app is temporarily disabled/readonly.</string>
+    <string name="errcode_511">Temporarily Unavailable.</string>
+    <string name="errcode_524">Complete a TCP connection to the upstream server, but did not receive a timely HTTP response.</string>
+    <string name="errcode_529">Exceeded Limit.</string>
+    <string name="errcode_600">Invalid SMS signature.</string>
+    <string name="errcode_601">Can\'t send SMS too frequently.</string>
+    <string name="errcode_602">Fails to send message.</string>
+    <string name="errcode_603">Invalid SMS code.</string>
+    <string name="errcode_604">SMS template not found.</string>
+    <string name="errcode_605">SMS template not verified.</string>
+    <string name="errcode_606">Fails to render SMS template.</string>
+    <string name="errcode_700">Nonexistent query keys.</string>
+    <string name="errcode_1006">WebSocket connection abnormal shutdown.</string>
+    <string name="errcode_4100">App not available.</string>
 
     <string name="errcode_70000">Unknown error.</string>
 

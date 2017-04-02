@@ -1,133 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="@color/bg_EBEBEB"
-              android:gravity="center_horizontal"
+              android:background="#FFF"
               android:orientation="vertical">
 
     <!--标题栏-->
+    <com.myself.library.view.NavigationBar
+        style="@style/style_navigation_bar"
+        android:background="@color/transparent"
+        app:nav_divider_color="@color/divider_color"
+        app:nav_has_divider="true"
+        app:nav_left_icon="@drawable/back_selector"
+        app:nav_main_title="@string/register"
+        app:nav_main_title_color="@color/text_color"/>
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/transparent"
-        android:minHeight="?attr/actionBarSize">
+        android:layout_height="match_parent"
+        android:layout_marginTop="30dp">
 
-        <TextView
-            android:id="@+id/main_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="5dp"
-            android:ellipsize="end"
-            android:gravity="center"
-            android:lines="1"
-            android:maxWidth="240dp"
-            android:text="@string/register"
-            android:textColor="@color/text_color"
-            android:textSize="18sp"/>
-
-        <TextView
-            android:id="@+id/left_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="5dp"
-            android:clickable="true"
-            android:drawablePadding="4dp"
-            android:gravity="center_vertical"
-            android:paddingLeft="8dp"
-            android:paddingRight="15dp"
-            android:text="@string/cancel"
-            android:textColor="@drawable/text_select"
-            android:textSize="16sp"/>
-
-    </RelativeLayout>
-
-    <!-- register progress -->
-    <ProgressBar
-        android:id="@+id/register_progress"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:visibility="gone"/>
-
-    <LinearLayout
-        android:id="@+id/register_form"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="vertical">
-
-        <android.support.design.widget.TextInputLayout
+        <!--email-->
+        <RelativeLayout
+            android:id="@+id/rl_email"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/edit_login_nor"
+            android:padding="3dp">
+
+            <ImageView
+                android:id="@+id/iv_email_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/findpassword_verificationcode_icon_n"/>
 
             <com.myself.library.view.CleanableEditText
-                android:id="@+id/email"
+                android:id="@+id/et_email"
                 style="@style/NewsText.EditText"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
+                android:layout_marginLeft="30dp"
                 android:background="@null"
                 android:drawableRight="@drawable/close_selector"
-                android:hint="@string/email"
-                android:maxLines="1"
-                android:singleLine="true"/>
-
-        </android.support.design.widget.TextInputLayout>
-
-        <!--间隔线-->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:background="@color/divider_color"/>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.myself.library.view.CleanableEditText
-                android:id="@+id/password"
-                style="@style/NewsText.EditText"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:background="@null"
-                android:drawableRight="@drawable/close_selector"
-                android:hint="@string/prompt_password"
-                android:imeActionId="@+id/register"
+                android:hint="@string/login_register_email"
                 android:imeOptions="actionUnspecified"
-                android:inputType="textPassword"
-                android:maxLines="1"
+                android:inputType="textEmailAddress"
+                app:maxLength="18"/>
+        </RelativeLayout>
+
+        <!--手机号码-->
+        <RelativeLayout
+            android:id="@+id/rl_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_email"
+            android:layout_margin="20dp"
+            android:background="@drawable/edit_login_nor"
+            android:padding="3dp"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/iv_phone_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/login_account_icon_n"/>
+
+            <com.myself.library.view.CleanableEditText
+                android:id="@+id/et_mobile"
+                style="@style/NewsText.EditText"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginLeft="30dp"
+                android:background="@null"
+                android:drawableRight="@drawable/close_selector"
+                android:hint="@string/login_register_mobile"
+                android:inputType="phone"
+                app:maxLength="11"/>
+        </RelativeLayout>
+
+        <!--短信验证码-->
+        <RelativeLayout
+            android:id="@+id/rl_sms_verify"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rl_phone"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/edit_login_nor"
+            android:padding="3dp"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/iv_sms_verify_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/findpassword_verificationcode_icon_n"/>
+
+            <com.myself.library.view.CleanableEditText
+                android:id="@+id/et_sms_verify"
+                style="@style/NewsText.EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_toLeftOf="@+id/tb_get_verify"
+                android:background="@null"
+                android:drawableRight="@drawable/close_selector"
+                android:hint="@string/register_sms_verify"
+                android:inputType="number"
+                android:lines="1"
+                android:maxLength="6"
+                android:minHeight="48dp"
                 android:singleLine="true"/>
 
-        </android.support.design.widget.TextInputLayout>
+            <!--竖向间隔线-->
+            <View
+                android:layout_width="1px"
+                android:layout_height="32dp"
+                android:layout_margin="8dp"
+                android:layout_toLeftOf="@+id/tb_get_verify"
+                android:background="@color/divider_color"/>
 
-        <!--间隔线-->
-        <View
+            <com.myself.library.view.TimeButton
+                android:id="@+id/tb_get_verify"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:layout_alignBaseline="@+id/et_sms_verify"
+                android:layout_alignBottom="@+id/et_sms_verify"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:minHeight="30dp"
+                android:textSize="@dimen/text_size_12sp"
+                app:click_background="@color/text_color_gray"
+                app:countdown_time="60"
+                app:text_after="@string/register_reset_verify"
+                app:text_before="@string/register_get_verify"/>
+
+        </RelativeLayout>
+
+        <!--注册密码-->
+        <RelativeLayout
+            android:id="@+id/rl_password"
             android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:background="@color/divider_color"/>
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rl_sms_verify"
+            android:layout_margin="20dp"
+            android:background="@drawable/edit_login_nor"
+            android:padding="3dp">
 
+            <ImageView
+                android:id="@+id/iv_password_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/login_password_icon_n"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:orientation="horizontal">
+
+                <com.myself.library.view.CleanableEditText
+                    android:id="@+id/et_password"
+                    style="@style/NewsText.EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_weight="0.8"
+                    android:background="@null"
+                    android:drawableRight="@drawable/close_selector"
+                    android:hint="@string/register_input_password_hint"
+                    android:imeActionId="@+id/register"
+                    android:imeOptions="actionUnspecified"
+                    android:inputType="textPassword"
+                    android:maxLength="18"/>
+
+                <com.myself.library.view.SwitchButton
+                    android:id="@+id/btn_is_look"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    app:norDrawable="@drawable/login_invisible_btn"
+                    app:selDrawable="@drawable/login_visible_btn"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <!--注册-->
         <Button
             android:id="@+id/btn_register"
-            android:layout_width="120dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="16dp"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/btn_los_focus"
+            android:layout_below="@+id/rl_password"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/btn_login_nor"
             android:clickable="false"
-            android:text="@string/action_sign_in"
-            android:textAllCaps="false"
+            android:padding="15dp"
+            android:text="@string/register"
             android:textColor="#FFFFFF"
-            android:textSize="@dimen/text_size_16sp"
-            android:textStyle="bold"/>
+            android:textSize="@dimen/text_size_16sp"/>
 
-    </LinearLayout>
+        <!--用户服务协议-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_register"
+            android:layout_marginTop="30dp"
+            android:paddingLeft="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/register_protocol_clock"
+                android:textColor="@color/text_color_5C2F94"
+                android:textSize="@dimen/text_size_16sp"/>
+
+            <TextView
+                android:id="@+id/tv_user_protocol"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/register_protocol"
+                android:textColor="@color/text_color_5C2F94"
+                android:textSize="@dimen/text_size_16sp"/>
+        </LinearLayout>
+    </RelativeLayout>
 </LinearLayout>

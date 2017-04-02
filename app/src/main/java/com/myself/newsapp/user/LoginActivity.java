@@ -1,30 +1,28 @@
 package com.myself.newsapp.user;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.annotation.TargetApi;
-import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.LogInCallback;
 import com.myself.leancloudlibrary.TipsUtils;
-import com.myself.library.controller.BaseActivity;
 import com.myself.library.utils.StringUtils;
 import com.myself.library.view.CleanableEditText;
 import com.myself.newsapp.MainActivity;
 import com.myself.newsapp.R;
 import com.myself.newsapp.account.AccountHelper;
+import com.myself.newsapp.base.TitleActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -33,18 +31,28 @@ import butterknife.OnClick;
  * 登录页面
  * Created by Jusenr on 2017/3/25.
  */
-public class LoginActivity extends BaseActivity {
+public class LoginActivity extends TitleActivity implements TextWatcher {
 
-
-    @BindView(R.id.login_progress)
-    ProgressBar mLoginProgress;
+    @BindView(R.id.iv_email_icon)
+    ImageView mIvEmailIcon;
     @BindView(R.id.et_email)
     CleanableEditText mEtEmail;
+    @BindView(R.id.rl_email)
+    RelativeLayout mRlEmail;
+    @BindView(R.id.iv_phone_icon)
+    ImageView mIvPhoneIcon;
+    @BindView(R.id.et_mobile)
+    CleanableEditText mEtMobile;
+    @BindView(R.id.rl_phone)
+    RelativeLayout mRlPhone;
+    @BindView(R.id.iv_password_icon)
+    ImageView mIvPasswordIcon;
     @BindView(R.id.et_password)
     CleanableEditText mEtPassword;
-    @BindView(R.id.ll_login_form)
-    LinearLayout mLlLoginForm;
-
+    @BindView(R.id.rl_password)
+    RelativeLayout mRlPassword;
+    @BindView(R.id.btn_login)
+    Button mBtnLogin;
 
     @Override
     protected int getLayoutId() {
@@ -53,6 +61,47 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void onViewCreatedFinish(Bundle saveInstanceState) {
+        addNavigation();
+        mEtEmail.addTextChangedListener(this);
+        mEtMobile.addTextChangedListener(this);
+        mEtPassword.addTextChangedListener(this);
+        mBtnLogin.setClickable(false);
+        mEtMobile.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    mRlPhone.setBackgroundResource(R.drawable.edit_login_sel);
+                    mIvPhoneIcon.setImageResource(R.drawable.login_account_icon_h);
+                } else {
+                    mRlPhone.setBackgroundResource(R.drawable.edit_login_nor);
+                    mIvPhoneIcon.setImageResource(R.drawable.login_account_icon_n);
+                }
+            }
+        });
+        mEtPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    mRlPassword.setBackgroundResource(R.drawable.edit_login_sel);
+                    mIvPasswordIcon.setImageResource(R.drawable.login_password_icon_h);
+                } else {
+                    mRlPassword.setBackgroundResource(R.drawable.edit_login_nor);
+                    mIvPasswordIcon.setImageResource(R.drawable.login_password_icon_n);
+                }
+            }
+        });
+        mEtEmail.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    mRlEmail.setBackgroundResource(R.drawable.edit_login_sel);
+                    mIvEmailIcon.setImageResource(R.drawable.findpassword_verificationcode_icon_h);
+                } else {
+                    mRlEmail.setBackgroundResource(R.drawable.edit_login_nor);
+                    mIvEmailIcon.setImageResource(R.drawable.findpassword_verificationcode_icon_n);
+                }
+            }
+        });
 
         mEtPassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -66,23 +115,53 @@ public class LoginActivity extends BaseActivity {
         });
     }
 
-    @OnClick({R.id.left_title, R.id.btn_login, R.id.tv_register, R.id.tv_forget})
-    public void onClick(View view) {
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+        if (mEtEmail.length() > 6 && mEtPassword.length() >= 6) {
+            mBtnLogin.setClickable(true);
+            mBtnLogin.setBackgroundResource(R.drawable.btn_login_sel);
+        } else {
+            mBtnLogin.setClickable(false);
+            mBtnLogin.setBackgroundResource(R.drawable.btn_login_nor);
+        }
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+
+    }
+
+    @OnClick({R.id.btn_login, R.id.tv_forget})
+    public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.left_title:
-                LoginActivity.this.finish();
-                break;
             case R.id.btn_login:
                 attemptLogin();
-                break;
-            case R.id.tv_register:
-                startActivity(RegisterActivity.class);
-                LoginActivity.this.finish();
                 break;
             case R.id.tv_forget:
                 startActivity(ForgetPasswordActivity.class);
                 break;
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private boolean isusernameValid(String username) {
+        return StringUtils.checkEmailFormat(username);
+    }
+
+    private boolean isPasswordValid(String password) {
+        return StringUtils.checkPasswordFormat(password);
     }
 
     private void attemptLogin() {
@@ -122,7 +201,6 @@ public class LoginActivity extends BaseActivity {
         if (cancel) {
             focusView.requestFocus();
         } else {
-            showProgress(true);
             AVUser.logInInBackground(username, password, new LogInCallback<AVUser>() {
                 @Override
                 public void done(AVUser avUser, AVException e) {
@@ -131,68 +209,11 @@ public class LoginActivity extends BaseActivity {
                         AccountHelper.login();
                         startActivity(MainActivity.class);
                     } else {
-                        showProgress(false);
-                        Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                         TipsUtils.getPrompt(mContext, e.getCode());
                     }
                 }
             });
         }
-    }
-
-    private boolean isusernameValid(String username) {
-        //TODO: Replace this with your own logic
-
-        return StringUtils.checkEmailFormat(username);
-    }
-
-    private boolean isPasswordValid(String password) {
-        //TODO: Replace this with your own logic
-        return StringUtils.checkPasswordFormat(password);
-    }
-
-    /**
-     * Shows the progress UI and hides the login form.
-     */
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
-    private void showProgress(final boolean show) {
-        // On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow
-        // for very easy animations. If available, use these APIs to fade-in
-        // the progress spinner.
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
-            int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
-
-            mLlLoginForm.setVisibility(show ? View.GONE : View.VISIBLE);
-            mLlLoginForm.animate().setDuration(shortAnimTime).alpha(
-                    show ? 0 : 1).setListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    mLlLoginForm.setVisibility(show ? View.GONE : View.VISIBLE);
-                }
-            });
-
-            mLoginProgress.setVisibility(show ? View.VISIBLE : View.GONE);
-            mLoginProgress.animate().setDuration(shortAnimTime).alpha(
-                    show ? 1 : 0).setListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    mLoginProgress.setVisibility(show ? View.VISIBLE : View.GONE);
-                }
-            });
-        } else {
-            // The ViewPropertyAnimator APIs are not available, so simply show
-            // and hide the relevant UI components.
-            mLoginProgress.setVisibility(show ? View.VISIBLE : View.GONE);
-            mLlLoginForm.setVisibility(show ? View.GONE : View.VISIBLE);
-        }
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            onBackPressed();
-        }
-        return super.onOptionsItemSelected(item);
     }
 }
 

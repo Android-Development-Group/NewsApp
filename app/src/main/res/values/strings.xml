@@ -50,7 +50,6 @@
 
     <string name="test_title">测试数据</string>
     <string name="add_goods_title">添加商品</string>
-
     <string name="action_logout">注销</string>
 
 
@@ -66,8 +65,6 @@
     <string name="title_activity_setting">设置</string>
 
     <string name="publish">发布</string>
-    <string name="login">登录</string>
-    <string name="register">注册</string>
     <string name="username">用户名</string>
     <string name="mobile">电话</string>
     <string name="email">E-mail</string>
@@ -75,7 +72,6 @@
     <string name="sms_verify">验证码</string>
     <string name="get_verify">获取验证码</string>
     <string name="get_verify_after">获取验证码($s后重发)</string>
-    <string name="login_password">登录密码(6-18位)</string>
     <string name="forget_password">忘记密码</string>
     <string name="password_old_hint">旧密码(数字和字母6-18位)</string>
     <string name="password_new_hint">新密码(数字和字母6-18位)</string>
@@ -105,12 +101,36 @@
     <string name="prompt_password">密码</string>
     <string name="action_sign_in">注册并登录</string>
     <string name="action_sign_in_short">登录</string>
+
+    <!--登录/注册-->
+    <string name="login">登录</string>
+    <string name="login_title">家长登录</string>
+    <string name="login_password">登录密码</string>
+    <string name="login_reg_user">注册新用户</string>
+    <string name="login_forget_password">忘记密码</string>
+    <string name="login_register_email">E-mail</string>
+    <string name="login_register_mobile">手机号码</string>
+    <string name="register">注册</string>
+    <string name="register_title">家长注册</string>
+    <string name="register_input_password_hint">新密码(6-18位字母或数字)</string>
+    <string name="register_graph_verify">图形验证码</string>
+    <string name="register_sms_verify">短信验证码</string>
+    <string name="register_reset_verify">获取验证码($s后重发)</string>
+    <string name="register_get_verify">获取验证码</string>
+    <string name="register_protocol_clock">点击"注册"表示您已同意</string>
+    <string name="register_protocol">《用户服务协议》</string>
+    <string name="register_tip_input_mobile">请输入手机号码</string>
+    <string name="register_tip_input_correct_mobile">请输入正确的手机号码</string>
+    <string name="register_tip_input_password">请输入数字或字母组成的密码</string>
+    <string name="register_tip_verification_code_sent">验证码已发送</string>
+    <string name="forgetpassword_tip_input_password">请输入6-18位的密码</string>
+    <string name="forgetpassword_tip_mobile_unregistered">该号码未注册，获取验证码失败</string>
+
     <string name="error_invalid_email">邮件格式错误</string>
     <string name="error_invalid_password">密码长度必须大于 6 位</string>
     <string name="error_field_required_password">密码不能为空</string>
     <string name="error_incorrect_password">密码错误</string>
     <string name="error_field_required">Email不能为空</string>
-
 
     <string name="me_default_name">SuperMan</string>
     <string name="me_my_order">我的订单</string>

@@ -27,8 +27,11 @@
     <color name="text_color_69D398">#69D398</color>
     <color name="text_color_985EC9">#985EC9</color>
     <color name="text_color_6666CC">#6666CC</color>
+    <color name="text_color_5C2F94">#5C2F94</color>
 
     <!--Color-->
+    <color name="color_gray">#959595</color>
+    <color name="color_5C2F94">#5C2F94</color>
     <color name="color_history_nor">#985cc9</color>
     <color name="color_history_sel">#8044b2</color>
     <color name="color_golden">#FFE875</color>

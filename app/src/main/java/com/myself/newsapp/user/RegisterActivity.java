@@ -1,29 +1,31 @@
 package com.myself.newsapp.user;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.annotation.TargetApi;
 import android.content.Intent;
-import android.os.Build;
+import android.graphics.Paint;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.SignUpCallback;
-import com.myself.library.controller.BaseActivity;
+import com.myself.leancloudlibrary.TipsUtils;
 import com.myself.library.utils.StringUtils;
 import com.myself.library.utils.ToastUtils;
 import com.myself.library.view.CleanableEditText;
+import com.myself.library.view.SwitchButton;
+import com.myself.library.view.TimeButton;
 import com.myself.newsapp.R;
+import com.myself.newsapp.base.TitleActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -32,17 +34,40 @@ import butterknife.OnClick;
  * 注册页面
  * Created by Jusenr on 2017/3/25.
  */
-public class RegisterActivity extends BaseActivity {
+public class RegisterActivity extends TitleActivity implements TextWatcher {
 
-    @BindView(R.id.register_form)
-    LinearLayout mRegisterForm;
-    @BindView(R.id.register_progress)
-    ProgressBar mRegisterProgress;
-    @BindView(R.id.email)
-    CleanableEditText mEmail;
-    @BindView(R.id.password)
-    CleanableEditText mPassword;
-
+    @BindView(R.id.iv_email_icon)
+    ImageView mIvEmailIcon;
+    @BindView(R.id.et_email)
+    CleanableEditText mEtEmail;
+    @BindView(R.id.rl_email)
+    RelativeLayout mRlEmail;
+    @BindView(R.id.iv_phone_icon)
+    ImageView mIvPhoneIcon;
+    @BindView(R.id.et_mobile)
+    CleanableEditText mEtMobile;
+    @BindView(R.id.rl_phone)
+    RelativeLayout mRlPhone;
+    @BindView(R.id.iv_sms_verify_icon)
+    ImageView mIvSmsVerifyIcon;
+    @BindView(R.id.et_sms_verify)
+    CleanableEditText mEtSmsVerify;
+    @BindView(R.id.tb_get_verify)
+    TimeButton mTbGetVerify;
+    @BindView(R.id.rl_sms_verify)
+    RelativeLayout mRlSmsVerify;
+    @BindView(R.id.iv_password_icon)
+    ImageView mIvPasswordIcon;
+    @BindView(R.id.et_password)
+    CleanableEditText mEtPassword;
+    @BindView(R.id.btn_is_look)
+    SwitchButton mBtnIsLook;
+    @BindView(R.id.rl_password)
+    RelativeLayout mRlPassword;
+    @BindView(R.id.btn_register)
+    Button mBtnRegister;
+    @BindView(R.id.tv_user_protocol)
+    TextView mTvUserProtocol;
 
     @Override
     protected int getLayoutId() {
@@ -51,8 +76,63 @@ public class RegisterActivity extends BaseActivity {
 
     @Override
     protected void onViewCreatedFinish(Bundle saveInstanceState) {
+        addNavigation();
+        mTvUserProtocol.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG); //下划线
+        mEtEmail.addTextChangedListener(this);
+        mEtMobile.addTextChangedListener(this);
+        mEtSmsVerify.addTextChangedListener(this);
+        mEtPassword.addTextChangedListener(this);
+        mBtnRegister.setClickable(false);
+        mEtMobile.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    mRlPhone.setBackgroundResource(R.drawable.edit_login_sel);
+                    mIvPhoneIcon.setImageResource(R.drawable.login_account_icon_h);
+                } else {
+                    mRlPhone.setBackgroundResource(R.drawable.edit_login_nor);
+                    mIvPhoneIcon.setImageResource(R.drawable.login_account_icon_n);
+                }
+            }
+        });
+        mEtPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    mRlPassword.setBackgroundResource(R.drawable.edit_login_sel);
+                    mIvPasswordIcon.setImageResource(R.drawable.login_password_icon_h);
+                } else {
+                    mRlPassword.setBackgroundResource(R.drawable.edit_login_nor);
+                    mIvPasswordIcon.setImageResource(R.drawable.login_password_icon_n);
+                }
+            }
+        });
+        mEtEmail.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    mRlEmail.setBackgroundResource(R.drawable.edit_login_sel);
+                    mIvEmailIcon.setImageResource(R.drawable.findpassword_verificationcode_icon_h);
+                } else {
+                    mRlEmail.setBackgroundResource(R.drawable.edit_login_nor);
+                    mIvEmailIcon.setImageResource(R.drawable.findpassword_verificationcode_icon_n);
+                }
+            }
+        });
+        mEtSmsVerify.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    mRlSmsVerify.setBackgroundResource(R.drawable.edit_login_sel);
+                    mIvSmsVerifyIcon.setImageResource(R.drawable.findpassword_verificationcode_icon_h);
+                } else {
+                    mRlSmsVerify.setBackgroundResource(R.drawable.edit_login_nor);
+                    mIvSmsVerifyIcon.setImageResource(R.drawable.findpassword_verificationcode_icon_n);
+                }
+            }
+        });
 
-        mPassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        mEtPassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
                 if (id == R.id.register || id == EditorInfo.IME_NULL) {
@@ -64,48 +144,84 @@ public class RegisterActivity extends BaseActivity {
         });
     }
 
-    @OnClick({R.id.left_title, R.id.btn_register})
-    public void onClick(View view) {
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+        if (mEtEmail.length() > 6 && mEtPassword.length() >= 6) {
+            mBtnRegister.setClickable(true);
+            mBtnRegister.setBackgroundResource(R.drawable.btn_login_sel);
+        } else {
+            mBtnRegister.setClickable(false);
+            mBtnRegister.setBackgroundResource(R.drawable.btn_login_nor);
+        }
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+
+    }
+
+    @OnClick({R.id.btn_register, R.id.tv_user_protocol})
+    public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.left_title:
-                RegisterActivity.this.finish();
-                break;
             case R.id.btn_register:
                 attemptRegister();
+                break;
+            case R.id.tv_user_protocol:
                 break;
         }
     }
 
-    private void attemptRegister() {
-        mEmail.setError(null);
-        mPassword.setError(null);
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
-        final String username = mEmail.getText().toString();
-        String password = mPassword.getText().toString();
+    private boolean isusernameValid(String username) {
+        return StringUtils.checkEmailFormat(username);
+    }
+
+    private boolean isPasswordValid(String password) {
+        return StringUtils.checkPasswordFormat(password);
+    }
+
+    private void attemptRegister() {
+        mEtEmail.setError(null);
+        mEtPassword.setError(null);
+
+        final String username = mEtEmail.getText().toString();
+        String password = mEtPassword.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
 
         if (TextUtils.isEmpty(password)) {
-            mPassword.setError(getString(R.string.error_field_required_password));
-            focusView = mPassword;
+            mEtPassword.setError(getString(R.string.error_field_required_password));
+            focusView = mEtPassword;
             cancel = true;
         } else {
             if (!isPasswordValid(password)) {
-                mPassword.setError(getString(R.string.error_invalid_password));
-                focusView = mPassword;
+                mEtPassword.setError(getString(R.string.error_invalid_password));
+                focusView = mEtPassword;
                 cancel = true;
             }
         }
 
         if (TextUtils.isEmpty(username)) {
-            mEmail.setError(getString(R.string.error_field_required));
-            focusView = mEmail;
+            mEtEmail.setError(getString(R.string.error_field_required));
+            focusView = mEtEmail;
             cancel = true;
         } else {
             if (!isusernameValid(username)) {
-                mEmail.setError(getString(R.string.error_invalid_email));
-                focusView = mEmail;
+                mEtEmail.setError(getString(R.string.error_invalid_email));
+                focusView = mEtEmail;
                 cancel = true;
             }
         }
@@ -113,8 +229,6 @@ public class RegisterActivity extends BaseActivity {
         if (cancel) {
             focusView.requestFocus();
         } else {
-            showProgress(true);
-
             AVUser user = new AVUser();// 新建 AVUser 对象实例
             user.setUsername(username);// 设置用户名
             user.setEmail(username);// 设置邮箱
@@ -139,69 +253,14 @@ public class RegisterActivity extends BaseActivity {
                 @Override
                 public void done(AVException e) {
                     if (e == null) {
-                        // 注册成功，把用户对象赋值给当前用户 AVUser.getCurrentUser()
                         ToastUtils.showToastShort(mContext, "请去邮箱" + username + "验证后方可登录！");
                         startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                         RegisterActivity.this.finish();
                     } else {
-                        // 失败的原因可能有多种，常见的是用户名已经存在。
-                        showProgress(false);
-                        Toast.makeText(RegisterActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                        TipsUtils.getPrompt(mContext, e.getCode());
                     }
                 }
             });
         }
     }
-
-    private boolean isusernameValid(String username) {
-        //TODO: Replace this with your own logic
-        return StringUtils.checkEmailFormat(username);
-    }
-
-    private boolean isPasswordValid(String password) {
-        //TODO: Replace this with your own logic
-        return StringUtils.checkPasswordFormat(password);
-    }
-
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
-    private void showProgress(final boolean show) {
-        // On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow
-        // for very easy animations. If available, use these APIs to fade-in
-        // the progress spinner.
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
-            int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
-
-            mRegisterForm.setVisibility(show ? View.GONE : View.VISIBLE);
-            mRegisterForm.animate().setDuration(shortAnimTime).alpha(
-                    show ? 0 : 1).setListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    mRegisterForm.setVisibility(show ? View.GONE : View.VISIBLE);
-                }
-            });
-
-            mRegisterProgress.setVisibility(show ? View.VISIBLE : View.GONE);
-            mRegisterProgress.animate().setDuration(shortAnimTime).alpha(
-                    show ? 1 : 0).setListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    mRegisterProgress.setVisibility(show ? View.VISIBLE : View.GONE);
-                }
-            });
-        } else {
-            // The ViewPropertyAnimator APIs are not available, so simply show
-            // and hide the relevant UI components.
-            mRegisterProgress.setVisibility(show ? View.VISIBLE : View.GONE);
-            mRegisterForm.setVisibility(show ? View.GONE : View.VISIBLE);
-        }
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            onBackPressed();
-        }
-        return super.onOptionsItemSelected(item);
-    }
 }
-
