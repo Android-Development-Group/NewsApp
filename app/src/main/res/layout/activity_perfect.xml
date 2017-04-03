@@ -14,7 +14,7 @@
         app:nav_divider_color="@color/divider_color"
         app:nav_has_divider="true"
         app:nav_left_icon="@drawable/back_selector"
-        app:nav_main_title="@string/perfect_nickname"
+        app:nav_main_title="@string/perfect"
         app:nav_main_title_color="@color/text_color"
         app:nav_right_title="@string/save"
         app:nav_right_title_color="@drawable/text_select"/>

@@ -5,6 +5,7 @@ import android.content.Context;
 
 import com.myself.library.utils.AppUtils;
 import com.myself.library.utils.CrashHandler;
+import com.myself.library.utils.DiskFileCacheHelper;
 import com.myself.library.utils.Logger;
 import com.myself.library.utils.hawk.Hawk;
 import com.myself.library.utils.hawk.LogLevel;
@@ -28,7 +29,7 @@ public abstract class BaseApplication extends Application {
     //    private static OkHttpClient mOkHttpClient;//OkHttpClient
     private static int maxAge;//网络缓存最大时间
 
-//    private static DiskFileCacheHelper mDiskFileCacheHelper;//磁盘文件缓存器
+    private static DiskFileCacheHelper mDiskFileCacheHelper;//磁盘文件缓存器
 
     public static String app_id;
     public static String app_device_id;
@@ -60,7 +61,7 @@ public abstract class BaseApplication extends Application {
         //网络缓存最大时间
         maxAge = getNetworkCacheMaxAgeTime();
         //磁盘文件缓存器
-//        mDiskFileCacheHelper = DiskFileCacheHelper.get(getApplicationContext(), getLogTag());
+        mDiskFileCacheHelper = DiskFileCacheHelper.get(getApplicationContext(), getLogTag());
         //数据库调试
 //        QueryBuilder.LOG_SQL = isDebug;
 //        QueryBuilder.LOG_VALUES = isDebug;

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.myself.library.view.select.TagBar xmlns:android="http://schemas.android.com/apk/res/android"
+                                       android:layout_width="wrap_content"
+                                       android:layout_height="wrap_content"
+                                       android:drawablePadding="5.0dip"
+                                       android:gravity="center"
+                                       android:minHeight="0.0dip"
+                                       android:paddingBottom="4.5dip"
+                                       android:paddingLeft="20.0dip"
+                                       android:paddingRight="20.0dip"
+                                       android:paddingTop="4.5dip"
+                                       android:textColor="#ff000000"
+                                       android:textSize="16.0sp"/>

@@ -5,13 +5,13 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVFile;
 import com.avos.avoscloud.AVUser;
+import com.avos.avoscloud.DeleteCallback;
 import com.avos.avoscloud.SaveCallback;
 import com.myself.library.controller.eventbus.EventBusHelper;
 import com.myself.library.utils.ImageUtils;
@@ -65,6 +65,7 @@ public class SettingActivity extends TitleActivity {
     @BindView(R.id.sv_setting)
     SupportScrollView mSvSetting;
 
+    final AVUser currentUser = AVUser.getCurrentUser();
     private SelectPopupWindow mSelectPopupWindow;
     private String mFilePath;//头像文件路径
 
@@ -99,8 +100,6 @@ public class SettingActivity extends TitleActivity {
                 .load(userpic == null ? "www" : userpic.getUrl())
                 .transform(new RoundedTransformation(9, 0))
                 .into(mIvHeaderIcon);
-
-//        mIvHeaderIcon.setImageBitmap(ImageUtils.getSmallBitmap(mFilePath, 320, 320));
     }
 
     @Override
@@ -111,7 +110,6 @@ public class SettingActivity extends TitleActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        EventBusHelper.post(EVEVT_USER_INFO, EVEVT_USER_INFO);
         if (resultCode == RESULT_OK) {
             Bitmap bitmap = null;
             switch (requestCode) {
@@ -140,22 +138,20 @@ public class SettingActivity extends TitleActivity {
                     checkSha1(mFilePath);
                     break;
                 case CHANGE_NICK:
-                    Log.e(TAG, "onActivityResult: CHANGE_NICK");
                     if (data != null) {
                         String nickname = data.getStringExtra(NICK_NAME);
                         mTvNickName.setText(nickname);
-                        initInfo(nickname);
+                        initInfo();
                     }
                     break;
                 case CHANGE_INFO:
-                    Log.e(TAG, "onActivityResult: CHANGE_INFO");
 //                    initInfo();
                     break;
             }
         }
     }
 
-    @OnClick({R.id.rl_header_icon, R.id.rl_nick_name, R.id.rl_region, R.id.tv_update_email, R.id.tv_update_password, R.id.btn_loginout})
+    @OnClick({R.id.rl_header_icon, R.id.rl_nick_name, R.id.rl_region, R.id.tv_send_email, R.id.tv_update_password, R.id.btn_loginout})
     public void onViewClicked(View view) {
         Bundle bundle = new Bundle();
         switch (view.getId()) {
@@ -172,7 +168,7 @@ public class SettingActivity extends TitleActivity {
                 break;
             case R.id.rl_region:
                 break;
-            case R.id.tv_update_email:
+            case R.id.tv_send_email:
                 break;
             case R.id.tv_update_password:
                 break;
@@ -189,18 +185,23 @@ public class SettingActivity extends TitleActivity {
      * @param uploadFilePath 上传文件路径
      */
     private void checkSha1(String uploadFilePath) {
-        final AVUser currentUser = AVUser.getCurrentUser();
         try {
-            final AVFile file = AVFile.withAbsoluteLocalPath(currentUser.getUsername().substring(0, 3) + "head_icon.png", uploadFilePath);
-            file.saveInBackground(new SaveCallback() {
+            final AVFile file = AVFile.withAbsoluteLocalPath(currentUser.getUsername().substring(0, 5) + "head_icon.png", uploadFilePath);
+            file.deleteInBackground(new DeleteCallback() {
                 @Override
                 public void done(AVException e) {
-                    Logger.d(TAG, file.getUrl());//返回一个唯一的 Url 地址
-                    if (file.getUrl() != null)
-                        Picasso.with(mContext)
-                                .load(file.getUrl())
-                                .transform(new RoundedTransformation(9, 0))
-                                .into(mIvHeaderIcon);
+
+                }
+            });
+            currentUser.put("userpic", file);
+            currentUser.saveInBackground(new SaveCallback() {
+                @Override
+                public void done(AVException e) {
+                    AVFile userpic = AVUser.getCurrentUser().getAVFile("userpic");
+                    Picasso.with(mContext)
+                            .load(userpic == null ? "www" : userpic.getUrl())
+                            .transform(new RoundedTransformation(9, 0))
+                            .into(mIvHeaderIcon);
                     EventBusHelper.post(EVENT_PERFECT, EVENT_PERFECT);
                 }
             });
@@ -209,15 +210,13 @@ public class SettingActivity extends TitleActivity {
         }
     }
 
-    private void initInfo(String nickname) {
-        final AVUser currentUser = AVUser.getCurrentUser();
+    private void initInfo() {
         try {
-            String username = currentUser.getUsername();
-            currentUser.put("nickname", nickname);
+            currentUser.put("nickname", mTvNickName.getText());
             currentUser.put("region", "上海");
             currentUser.put("age", 24);
             currentUser.put("sex", 0);//0男1女
-            AVFile file = AVFile.withAbsoluteLocalPath(username.substring(0, 3) + "head_icon.png", mFilePath);
+            AVFile file = AVFile.withAbsoluteLocalPath(currentUser.getUsername().substring(0, 5) + "head_icon.png", mFilePath);
             currentUser.put("userpic", file);
             currentUser.saveInBackground();
         } catch (FileNotFoundException e) {

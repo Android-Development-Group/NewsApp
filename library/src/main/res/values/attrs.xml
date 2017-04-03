@@ -15,6 +15,40 @@
         <attr name="fillDrawable" format="reference"/>
     </declare-styleable>
 
+    <!--FlowLayout-->
+    <declare-styleable name="FlowLayout">
+        <attr name="horizontalSpacing" format="dimension"/>
+        <attr name="verticalSpacing" format="dimension"/>
+        <attr name="orientation" format="enum">
+            <enum name="horizontal" value="0"/>
+            <enum name="vertical" value="1"/>
+        </attr>
+        <attr name="debugDraw" format="boolean"/>
+    </declare-styleable>
+    <declare-styleable name="FlowLayout_LayoutParams">
+        <attr name="layout_newLine" format="boolean"/>
+        <attr name="layout_horizontalSpacing" format="dimension"/>
+        <attr name="layout_verticalSpacing" format="dimension"/>
+    </declare-styleable>
+
+    <!--TagBar-->
+    <declare-styleable name="TagBar">
+        <attr name="tag_background_sel" format="reference"/>
+        <attr name="tag_background_nor" format="reference"/>
+        <attr name="tag_text_color_sel" format="color|reference"/>
+        <attr name="tag_text_color_nor" format="color|reference"/>
+        <attr name="tag_text_color_dis" format="color|reference"/>
+    </declare-styleable>
+
+    <!--RadioItem-->
+    <declare-styleable name="RadioItem">
+        <attr name="select_drawable" format="reference"/>
+        <attr name="select_text" format="string"/>
+        <attr name="select_text_size" format="dimension"/>
+        <attr name="select_text_color" format="color|reference"/>
+        <attr name="is_select" format="boolean"/>
+    </declare-styleable>
+
     <!--SwipeMenuLayout-->
     <declare-styleable name="SwipeMenuLayout">
         <attr name="swipeEnable" format="boolean"/>
@@ -35,12 +69,6 @@
             <enum name="STROKE" value="0"></enum>
             <enum name="FILL" value="1"></enum>
         </attr>
-    </declare-styleable>
-
-    <!--ImageDraweeView-->
-    <declare-styleable name="ImageDraweeView">
-        <attr name="aspect_ratio" format="float"/>
-        <attr name="default_drawable" format="reference"/>
     </declare-styleable>
 
     <!--RoundImageView-->

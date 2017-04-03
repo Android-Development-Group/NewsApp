@@ -12,8 +12,8 @@
         app:nav_has_divider="true"
         app:nav_left_icon="@drawable/back_selector"
         app:nav_main_title="设置"
-        app:nav_right_title="测试"
-        app:nav_main_title_color="@color/text_color"/>
+        app:nav_main_title_color="@color/text_color"
+        app:nav_right_title="测试"/>
 
     <com.myself.library.view.scroll.SupportScrollView
         android:id="@+id/sv_setting"
@@ -226,7 +226,7 @@
                     android:textSize="@dimen/text_size_22sp"
                     android:textStyle="bold"/>
 
-                <!--手机号-->
+                <!--email-->
                 <RelativeLayout
                     android:id="@+id/rl_email"
                     android:layout_width="match_parent"
@@ -249,19 +249,18 @@
 
                     <TextView
                         android:id="@+id/tv_email"
-                        android:layout_width="wrap_content"
+                        android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:layout_marginRight="15dp"
-                        android:layout_toLeftOf="@+id/tv_update_email"
+                        android:layout_toLeftOf="@+id/tv_send_email"
                         android:ellipsize="middle"
                         android:gravity="right|center_vertical"
-                        android:maxEms="12"
                         android:singleLine="true"
-                        android:text="6415446"
+                        android:text="123456@qq.com"
                         android:textSize="@dimen/text_size_14sp"/>
 
                     <TextView
-                        android:id="@+id/tv_update_email"
+                        android:id="@+id/tv_send_email"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_alignParentRight="true"
@@ -270,7 +269,7 @@
                         android:ellipsize="end"
                         android:gravity="center_vertical"
                         android:singleLine="true"
-                        android:text="更改E-mail"
+                        android:text="发送邮件"
                         android:textSize="@dimen/text_size_14sp"/>
 
                 </RelativeLayout>
@@ -343,9 +342,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:gravity="center"
-        android:textColor="@color/white"
         android:background="@android:color/holo_red_light"
-        android:text="注销"/>
+        android:gravity="center"
+        android:text="注销"
+        android:textColor="@color/white"/>
 
 </RelativeLayout>
