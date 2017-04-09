@@ -6,6 +6,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.avos.avoscloud.AVException;
@@ -56,12 +58,16 @@ public class SettingActivity extends TitleActivity {
     RoundImageView mIvHeaderIcon;
     @BindView(tv_nick_name)
     TextView mTvNickName;
+    @BindView(R.id.rg_modes)
+    RadioGroup mRgModes;
+    @BindView(R.id.rb_male)
+    RadioButton mRbMale;
+    @BindView(R.id.rb_female)
+    RadioButton mRbFemale;
     @BindView(R.id.tv_region)
     TextView mTvRegion;
     @BindView(R.id.tv_email)
     TextView mTvEmail;
-    @BindView(R.id.tv_password)
-    TextView mTvPassword;
     @BindView(R.id.sv_setting)
     SupportScrollView mSvSetting;
 
@@ -83,6 +89,14 @@ public class SettingActivity extends TitleActivity {
     protected void onViewCreatedFinish(Bundle saveInstanceState) {
         addNavigation();
 
+        mRgModes.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                final boolean indeterminate = checkedId == R.id.rb_male;
+                setIndeterminateMode(indeterminate);
+            }
+        });
+
         mFilePath = TotalApplication.sdCardPath + File.separator + "head_icon.jpg";
         showPopu();
 
@@ -91,6 +105,10 @@ public class SettingActivity extends TitleActivity {
 
         String nickname = AVUser.getCurrentUser().getString("nickname");
         mTvNickName.setText(StringUtils.isEmpty(nickname) ? getString(R.string.me_default_name) : nickname);
+
+        String sex = AVUser.getCurrentUser().getString("sex");
+        sex = StringUtils.isEmpty(sex) ? getString(R.string.me_sex_male) : sex;
+        mRgModes.check(getString(R.string.me_sex_male).equals(sex) ? R.id.rb_male : R.id.rb_female);
 
         String region = AVUser.getCurrentUser().getString("region");
         mTvRegion.setText(StringUtils.isEmpty(region) ? getString(R.string.me_default_region) : region);
@@ -151,7 +169,7 @@ public class SettingActivity extends TitleActivity {
         }
     }
 
-    @OnClick({R.id.rl_header_icon, R.id.rl_nick_name, R.id.rl_region, R.id.tv_send_email, R.id.tv_update_password, R.id.btn_loginout})
+    @OnClick({R.id.rl_header_icon, R.id.rl_nick_name, R.id.rl_region, R.id.tv_send_email, R.id.btn_loginout})
     public void onViewClicked(View view) {
         Bundle bundle = new Bundle();
         switch (view.getId()) {
@@ -169,8 +187,6 @@ public class SettingActivity extends TitleActivity {
             case R.id.rl_region:
                 break;
             case R.id.tv_send_email:
-                break;
-            case R.id.tv_update_password:
                 break;
             case R.id.btn_loginout:
                 AccountHelper.logout();
@@ -210,12 +226,17 @@ public class SettingActivity extends TitleActivity {
         }
     }
 
+    private void setIndeterminateMode(boolean indeterminate) {
+        String sex = indeterminate ? "男" : "女";
+        currentUser.put("sex", sex);
+        currentUser.saveInBackground();
+    }
+
     private void initInfo() {
         try {
             currentUser.put("nickname", mTvNickName.getText());
             currentUser.put("region", "上海");
             currentUser.put("age", 24);
-            currentUser.put("sex", 0);//0男1女
             AVFile file = AVFile.withAbsoluteLocalPath(currentUser.getUsername().substring(0, 5) + "head_icon.png", mFilePath);
             currentUser.put("userpic", file);
             currentUser.saveInBackground();

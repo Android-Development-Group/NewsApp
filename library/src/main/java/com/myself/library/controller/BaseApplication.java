@@ -9,6 +9,7 @@ import com.myself.library.utils.DiskFileCacheHelper;
 import com.myself.library.utils.Logger;
 import com.myself.library.utils.hawk.Hawk;
 import com.myself.library.utils.hawk.LogLevel;
+import com.tencent.bugly.Bugly;
 
 import butterknife.ButterKnife;
 
@@ -57,7 +58,7 @@ public abstract class BaseApplication extends Application {
 //        mOkHttpClient = initOkHttpClient();
 
         //开启bugly
-//        CrashReport.initCrashReport(getApplicationContext(), getBuglyKey(), isDebug);
+        Bugly.init(getApplicationContext(), getBuglyKey(), isDebug);
         //网络缓存最大时间
         maxAge = getNetworkCacheMaxAgeTime();
         //磁盘文件缓存器

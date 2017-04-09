@@ -59,4 +59,11 @@
         <item name="android:paddingTop">20dp</item>
     </style>
 
+    <!-- 性别选择样式 -->
+    <style name="CheckboxTheme" parent="@android:style/Widget.CompoundButton.RadioButton">
+        <!--<item name="android:button">@drawable/rb_selector</item>-->
+        <item name="android:textColor">@color/text_color_gray</item>
+        <item name="android:paddingLeft">5dp</item>
+    </style>
+
 </resources>

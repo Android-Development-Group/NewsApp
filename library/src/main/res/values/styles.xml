@@ -7,6 +7,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/navigation_bar_height</item>
         <item name="nav_has_divider">false</item>
+        <item name="android:layout_alignParentTop">true</item>
         <item name="android:background">@color/white</item>
     </style>
 
@@ -43,43 +44,43 @@
     </style>
 
     <!--图片加载主样式-->
-   <!-- <style name="image_style">
-        &lt;!&ndash;加载图片比例类型&ndash;&gt;
-        <item name="actualImageScaleType">focusCrop</item>
-        &lt;!&ndash;占位图&ndash;&gt;
-        <item name="placeholderImage">@drawable/img_image_default_l</item>
-        &lt;!&ndash;占位图比例类型&ndash;&gt;
-        <item name="placeholderImageScaleType">fitCenter</item>
-        &lt;!&ndash;加载失败图&ndash;&gt;
-        <item name="failureImage">@drawable/img_image_default_l</item>
-        &lt;!&ndash;加载失败图比例类型&ndash;&gt;
-        <item name="failureImageScaleType">centerInside</item>
-        &lt;!&ndash;加载重试图比例类型&ndash;&gt;
-        <item name="retryImageScaleType">centerCrop</item>
-        &lt;!&ndash;加载时缓冲图比例类型&ndash;&gt;
-        <item name="progressBarImageScaleType">centerInside</item>
-        &lt;!&ndash;占位图比例类型&ndash;&gt;
-        <item name="progressBarAutoRotateInterval">1000</item>
-    </style>-->
+    <!-- <style name="image_style">
+         &lt;!&ndash;加载图片比例类型&ndash;&gt;
+         <item name="actualImageScaleType">focusCrop</item>
+         &lt;!&ndash;占位图&ndash;&gt;
+         <item name="placeholderImage">@drawable/img_image_default_l</item>
+         &lt;!&ndash;占位图比例类型&ndash;&gt;
+         <item name="placeholderImageScaleType">fitCenter</item>
+         &lt;!&ndash;加载失败图&ndash;&gt;
+         <item name="failureImage">@drawable/img_image_default_l</item>
+         &lt;!&ndash;加载失败图比例类型&ndash;&gt;
+         <item name="failureImageScaleType">centerInside</item>
+         &lt;!&ndash;加载重试图比例类型&ndash;&gt;
+         <item name="retryImageScaleType">centerCrop</item>
+         &lt;!&ndash;加载时缓冲图比例类型&ndash;&gt;
+         <item name="progressBarImageScaleType">centerInside</item>
+         &lt;!&ndash;占位图比例类型&ndash;&gt;
+         <item name="progressBarAutoRotateInterval">1000</item>
+     </style>-->
     <!--4dp的圆角图片加载样式-->
     <!--<style name="image_round_4dp" parent="image_style">-->
-        <!--<item name="roundBottomLeft">true</item>-->
-        <!--<item name="roundBottomRight">true</item>-->
-        <!--<item name="roundTopLeft">true</item>-->
-        <!--<item name="roundTopRight">true</item>-->
-        <!--<item name="roundedCornerRadius">4dp</item>-->
+    <!--<item name="roundBottomLeft">true</item>-->
+    <!--<item name="roundBottomRight">true</item>-->
+    <!--<item name="roundTopLeft">true</item>-->
+    <!--<item name="roundTopRight">true</item>-->
+    <!--<item name="roundedCornerRadius">4dp</item>-->
     <!--</style>-->
     <!--10dp的圆角图片加载样式-->
     <!--<style name="image_round_10dp" parent="image_style">-->
-        <!--<item name="roundBottomLeft">true</item>-->
-        <!--<item name="roundBottomRight">true</item>-->
-        <!--<item name="roundTopLeft">true</item>-->
-        <!--<item name="roundTopRight">true</item>-->
-        <!--<item name="roundedCornerRadius">10dp</item>-->
+    <!--<item name="roundBottomLeft">true</item>-->
+    <!--<item name="roundBottomRight">true</item>-->
+    <!--<item name="roundTopLeft">true</item>-->
+    <!--<item name="roundTopRight">true</item>-->
+    <!--<item name="roundedCornerRadius">10dp</item>-->
     <!--</style>-->
     <!--圆形图片加载样式-->
     <!--<style name="image_circle" parent="image_style">-->
-        <!--<item name="roundAsCircle">true</item>-->
+    <!--<item name="roundAsCircle">true</item>-->
     <!--</style>-->
 
     <!--Crop-->

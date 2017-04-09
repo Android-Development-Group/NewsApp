@@ -68,9 +68,6 @@ public class TotalApplication extends BaseApplication {
 
     @Override
     protected String getBuglyKey() {
-
-//        app id-ad473298bc
-//        app key-664c08fa-2104-4be8-9d1e-0c443ac9e81f
         return "ad473298bc";
     }
 
@@ -114,5 +111,6 @@ public class TotalApplication extends BaseApplication {
         Logger.e("APP崩溃了,错误信息是" + ex.getMessage());
         ex.printStackTrace();
         ActivityManager.getInstance().finishAllActivity();
+        ActivityManager.getInstance().killProcess(this);
     }
 }

@@ -152,6 +152,8 @@
     <string name="me_personal_image">头像</string>
     <string name="me_nickname">用户昵称</string>
     <string name="me_sex">性别</string>
+    <string name="me_sex_male">男</string>
+    <string name="me_sex_female">女</string>
     <string name="me_region">地区</string>
     <string name="me_email">E-mail</string>
     <string name="me_password">密码</string>

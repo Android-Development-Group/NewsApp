@@ -153,6 +153,30 @@
                         android:text="@string/me_sex"
                         android:textSize="@dimen/text_size_18sp"/>
 
+                    <RadioGroup
+                        android:id="@+id/rg_modes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/dimens_8dp"
+                        android:checkedButton="@+id/rb_male"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/rb_male"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/me_sex_male"/>
+
+                        <RadioButton
+                            android:id="@+id/rb_female"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/text_size_10sp"
+                            android:text="@string/me_sex_female"/>
+                    </RadioGroup>
+
                 </RelativeLayout>
 
                 <!--地区-->
@@ -272,63 +296,6 @@
                         android:text="发送邮件"
                         android:textSize="@dimen/text_size_14sp"/>
 
-                </RelativeLayout>
-
-                <!--密码-->
-                <RelativeLayout
-                    android:id="@+id/rl_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="44dp"
-                    android:background="@color/white">
-
-                    <!--间隔线-->
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="2px"
-                        android:layout_marginLeft="10dp"
-                        android:background="@color/divider_color"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:gravity="center_vertical"
-                        android:text="@string/me_password"
-                        android:textSize="@dimen/text_size_18sp"/>
-
-                    <TextView
-                        android:id="@+id/tv_password"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginRight="15dp"
-                        android:layout_toLeftOf="@+id/tv_update_password"
-                        android:ellipsize="end"
-                        android:gravity="right|center_vertical"
-                        android:maxEms="16"
-                        android:password="true"
-                        android:singleLine="true"
-                        android:text="6415446"
-                        android:textSize="@dimen/text_size_14sp"/>
-
-                    <TextView
-                        android:id="@+id/tv_update_password"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="10dp"
-                        android:ellipsize="end"
-                        android:gravity="center_vertical"
-                        android:singleLine="true"
-                        android:text="修改密码"
-                        android:textSize="@dimen/text_size_14sp"/>
-
-                    <!--间隔线-->
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="2px"
-                        android:layout_alignParentBottom="true"
-                        android:background="@color/divider_color"/>
                 </RelativeLayout>
 
             </LinearLayout>
