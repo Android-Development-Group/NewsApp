@@ -63,7 +63,7 @@ public abstract class BaseActivity<App extends BaseApplication> extends AppCompa
      * @param savedInstanceState
      */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    final protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         int layoutId = getLayoutId();
         if (layoutId == 0)
@@ -108,6 +108,8 @@ public abstract class BaseActivity<App extends BaseApplication> extends AppCompa
         ActivityManager.getInstance().removeActivity(this);
         EventBusHelper.unregister(this);//反注册EventBus
         unregisterReceiver(mReceiver);
+        //LeakCanary内存泄露检测
+        BaseApplication.getRefWatcher().watch(this);
     }
 
     @Override

@@ -92,9 +92,9 @@ dependencies {
     })
     compile project(':library')
     compile project(':leancloudlibrary')
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
 }
 
 //编译结束后删除unaligned包

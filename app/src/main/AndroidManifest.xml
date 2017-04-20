@@ -28,7 +28,6 @@
     <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
     <uses-permission android:name="android.permission.VIBRATE"/>
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
-
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/>
@@ -108,7 +107,8 @@
         <activity android:name="com.avos.avoscloud.feedback.ThreadActivity"/>
         <!-- 反馈组件 END -->
 
-        <!--Bugly-->
+
+        <!-- Bugly -->
         <activity
             android:name="com.tencent.bugly.beta.ui.BetaActivity"
             android:theme="@android:style/Theme.Translucent"/>
@@ -117,6 +117,30 @@
         <uses-feature
             android:glEsVersion="0x00020000"
             android:required="true"/>
+
+        <!-- LeakCanary START -->
+        <service
+            android:name="com.squareup.leakcanary.internal.HeapAnalyzerService"
+            android:enabled="false"
+            android:process=":leakcanary"/>
+        <service
+            android:name="com.squareup.leakcanary.DisplayLeakService"
+            android:enabled="false"/>
+
+        <activity
+            android:name="com.squareup.leakcanary.internal.DisplayLeakActivity"
+            android:enabled="false"
+            android:icon="@drawable/leak_canary_icon"
+            android:label="@string/leak_canary_display_activity_label"
+            android:taskAffinity="com.squareup.leakcanary"
+            android:theme="@style/leak_canary_LeakCanary.Base">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <!-- LeakCanary END -->
 
         <!-- ***************************************  ↑  *************************************** -->
 
@@ -161,12 +185,10 @@
         <activity
             android:name=".na_me.setting.SettingActivity"
             android:label="@string/title_activity_setting"/>
-
         <activity android:name=".na_me.feedback.FeedbackActivity"/>
-
         <activity android:name=".na_me.message.MessageActivity"/>
-
         <activity android:name=".user.PerfectActivity"/>
+        <activity android:name=".test.LeakCanaryTestActivity"/>
 
     </application>
 

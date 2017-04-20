@@ -40,14 +40,14 @@
             android:id="@+id/tv_test_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="测试bugly"
+            android:text="测试bugly崩溃收集效率"
             android:textAllCaps="false"/>
 
         <Button
             android:id="@+id/tv_test_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="测试3"
+            android:text="LeakCanaryTest"
             android:textAllCaps="false"/>
 
         <Button

@@ -132,6 +132,9 @@ public abstract class BaseFragment<App extends BaseApplication> extends Fragment
     public void onDestroy() {
         super.onDestroy();
         EventBusHelper.unregister(this);//反注册EventBus
+
+        //LeakCanary内存泄露检测
+        BaseApplication.getRefWatcher().watch(this);
     }
 
     /**

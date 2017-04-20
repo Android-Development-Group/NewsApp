@@ -1,12 +1,14 @@
 package com.myself.newsapp;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.myself.library.controller.eventbus.EventBusHelper;
 import com.myself.newsapp.base.TitleActivity;
 import com.myself.newsapp.na_store.GoodsListActivity;
+import com.myself.newsapp.test.LeakCanaryTestActivity;
 import com.myself.newsapp.util.Constants;
 
 import butterknife.BindView;
@@ -45,6 +47,8 @@ public class TestActivity extends TitleActivity {
                 mTvTest.setText(0);
                 break;
             case R.id.tv_test_3:
+                Log.e(TAG, "onClick: LeakCanaryTestActivity" );
+                startActivity(LeakCanaryTestActivity.class);
                 break;
             case R.id.tv_test_4:
                 break;

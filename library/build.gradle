@@ -39,5 +39,10 @@ dependencies {
 //    compile 'com.alibaba:fastjson:1.2.7'
     compile 'com.google.code.gson:gson:2.8.0'
 
+    /*Bugly*/
     compile 'com.tencent.bugly:crashreport_upgrade:latest.release'
+
+    /*LeakCanary*/
+    compile 'com.squareup.leakcanary:leakcanary-android:1.5'
+    compile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
 }

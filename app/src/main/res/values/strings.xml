@@ -49,6 +49,7 @@
 
 
     <string name="test_title">测试数据</string>
+    <string name="leakcanary_title">LeakCanaryTest</string>
     <string name="add_goods_title">添加商品</string>
     <string name="action_logout">注销</string>
 

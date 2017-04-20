@@ -1,7 +1,6 @@
 package com.myself.library.controller;
 
 import android.app.Application;
-import android.content.Context;
 
 import com.myself.library.utils.AppUtils;
 import com.myself.library.utils.CrashHandler;
@@ -9,6 +8,8 @@ import com.myself.library.utils.DiskFileCacheHelper;
 import com.myself.library.utils.Logger;
 import com.myself.library.utils.hawk.Hawk;
 import com.myself.library.utils.hawk.LogLevel;
+import com.squareup.leakcanary.LeakCanary;
+import com.squareup.leakcanary.RefWatcher;
 import com.tencent.bugly.Bugly;
 
 import butterknife.ButterKnife;
@@ -24,13 +25,13 @@ import butterknife.ButterKnife;
 
 public abstract class BaseApplication extends Application {
     private static final String TAG = "BaseApplication";
-    public static final String FIR_API_TOKEN = "1b91eb3eaaea5f64ed127882014995dd";
+    private static final String FIR_API_TOKEN = "1b91eb3eaaea5f64ed127882014995dd";
     private static final String KEY_APP_ID = "app_id";
-    private static Context mContext;
     //    private static OkHttpClient mOkHttpClient;//OkHttpClient
     private static int maxAge;//网络缓存最大时间
-
     private static DiskFileCacheHelper mDiskFileCacheHelper;//磁盘文件缓存器
+    private static BaseApplication mApplication;
+    private static RefWatcher mRefWatcher;
 
     public static String app_id;
     public static String app_device_id;
@@ -42,7 +43,7 @@ public abstract class BaseApplication extends Application {
         super.onCreate();
         initEnvironment();
         isDebug = isDebug();
-        mContext = getApplicationContext();
+        mApplication = this;
         //sdCard缓存路径
         sdCardPath = getSdCardPath();
         //ButterKnife的Debug模式
@@ -69,6 +70,10 @@ public abstract class BaseApplication extends Application {
         //app_id配置
         app_id = AppUtils.getMetaData(getApplicationContext(), KEY_APP_ID);
         app_device_id = appDeviceId();
+
+        //LeakCanary配置
+        mRefWatcher = isDebug ? LeakCanary.install(this) : RefWatcher.DISABLED;
+
         //捕捉系统崩溃异常
         CrashHandler.instance().init(new CrashHandler.OnCrashHandler() {
             @Override
@@ -78,8 +83,12 @@ public abstract class BaseApplication extends Application {
         });
     }
 
-    public static Context getInstance() {
-        return mContext;
+    public static BaseApplication getInstance() {
+        return mApplication;
+    }
+
+    public static RefWatcher getRefWatcher() {
+        return getInstance().mRefWatcher;
     }
 
 //    public static OkHttpClient getOkHttpClient() {
