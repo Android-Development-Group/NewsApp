@@ -142,6 +142,7 @@
         </activity>
         <!-- LeakCanary END -->
 
+
         <!-- ***************************************  ↑  *************************************** -->
 
 
@@ -189,7 +190,8 @@
         <activity android:name=".na_me.message.MessageActivity"/>
         <activity android:name=".user.PerfectActivity"/>
         <activity android:name=".test.LeakCanaryTestActivity"/>
-
+        <activity android:name=".test.Test2Activity">
+        </activity>
     </application>
 
 </manifest>
