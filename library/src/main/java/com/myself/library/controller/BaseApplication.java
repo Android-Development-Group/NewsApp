@@ -31,7 +31,7 @@ public abstract class BaseApplication extends Application {
     private static int maxAge;//网络缓存最大时间
     private static DiskFileCacheHelper mDiskFileCacheHelper;//磁盘文件缓存器
     private static BaseApplication mApplication;
-    private static RefWatcher mRefWatcher;
+    public static RefWatcher mRefWatcher;
 
     public static String app_id;
     public static String app_device_id;
@@ -88,7 +88,7 @@ public abstract class BaseApplication extends Application {
     }
 
     public static RefWatcher getRefWatcher() {
-        return getInstance().mRefWatcher;
+        return mRefWatcher;
     }
 
 //    public static OkHttpClient getOkHttpClient() {
@@ -122,6 +122,7 @@ public abstract class BaseApplication extends Application {
      *
      * @return 工程包名
      */
+    @Override
     public abstract String getPackageName();
 
     /**

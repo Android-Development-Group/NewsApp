@@ -1,18 +1,50 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.myself.library">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.myself.library">
 
     <application
         android:allowBackup="true"
         android:label="@string/app_name"
-        android:supportsRtl="true"
-        >
+        android:supportsRtl="true">
 
         <!-- BUG_HD_SDK -->
         <meta-data
             android:name="BUG_HD_SDK_GENERAL_KEY"
-            android:value="bc19a3b234f00e9c1b858853e61b8e73"/>
+            android:value="bc19a3b234f00e9c1b858853e61b8e73" />
 
-        <activity android:name=".controller.AppInfoActivity"/>
+        <activity android:name=".controller.AppInfoActivity" />
+
+        <!-- Bugly -->
+        <activity
+            android:name="com.tencent.bugly.beta.ui.BetaActivity"
+            android:theme="@android:style/Theme.Translucent" />
+
+
+        <!-- LeakCanary START -->
+        <service
+            android:name="com.squareup.leakcanary.internal.HeapAnalyzerService"
+            android:enabled="false"
+            android:process=":leakcanary" />
+        <service
+            android:name="com.squareup.leakcanary.DisplayLeakService"
+            android:enabled="false" />
+
+        <activity
+            android:name="com.squareup.leakcanary.internal.DisplayLeakActivity"
+            android:enabled="false"
+            android:icon="@drawable/leak_canary_icon"
+            android:label="@string/leak_canary_display_activity_label"
+            android:taskAffinity="com.squareup.leakcanary"
+            android:theme="@style/leak_canary_LeakCanary.Base"
+            tools:replace="android:taskAffinity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- LeakCanary END -->
+
 
     </application>
 

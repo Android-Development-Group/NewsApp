@@ -11,7 +11,7 @@ import android.content.pm.ApplicationInfo;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.provider.Settings;
-import android.support.v7.app.NotificationCompat;
+import android.support.v4.app.NotificationCompat;
 
 import com.myself.library.R;
 

@@ -1,5 +1,7 @@
 package com.myself.newsapp;
 
+import android.content.Context;
+
 import com.avos.avoscloud.AVAnalytics;
 import com.avos.avoscloud.AVOSCloud;
 import com.myself.library.controller.ActivityManager;
@@ -45,6 +47,11 @@ public class TotalApplication extends BaseApplication {
         AVOSCloud.setDebugLogEnabled(isDebug);
         //Crash上报
         AVAnalytics.enableCrashReport(this, true);
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
     }
 
     @Override

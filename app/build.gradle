@@ -1,15 +1,22 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.neenbedankt.android-apt'
+
+
+def releaseTime() {
+//    return new Date().format("yyyyMMdd_hhmmss"/*, TimeZone.getTimeZone("UTC")*/)//刷新延迟，安装时，经常出现找不到等问题
+    return new Date().format("yyyyMMdd"/*, TimeZone.getTimeZone("UTC")*/)
+}
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "25.0.0"
+    compileSdkVersion 28
+    project.archivesBaseName = "TDFacaiApp"
+
     defaultConfig {
         applicationId "com.myself.newsapp"
-        minSdkVersion 18
-        targetSdkVersion 22
-        versionCode 5
-        versionName "2.3"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 6
+        versionName "2.4.0"
+        flavorDimensions "default"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
@@ -19,7 +26,7 @@ android {
         //设置NDK的模块名称及平台
         ndk {
             moduleName "native-lib"
-            abiFilters "armeabi"
+            abiFilters "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
         }
     }
     //为了解决部分第三方库重复打包了META-INF的问题
@@ -86,29 +93,40 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile project(':library')
-    compile project(':leancloudlibrary')
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    testCompile 'junit:junit:4.12'
-    apt 'com.jakewharton:butterknife-compiler:8.4.0'
+
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'com.android.support:cardview-v7:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+
+    implementation 'com.google.code.gson:gson:2.8.0'
+
+    implementation 'com.yqritc:recyclerview-flexibledivider:1.2.6'
+    implementation 'com.bartoszlipinski:recyclerviewheader2:2.0.1'
+    implementation 'in.srain.cube:ultra-ptr:1.0.9@aar'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+
+    api project(':library')
+    api project(':leancloudlibrary')
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.jakewharton:butterknife:8.4.0'
+    annotationProcessor  'com.jakewharton:butterknife-compiler:8.4.0'
+
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5'
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
 }
 
 //编译结束后删除unaligned包
 android.applicationVariants.all { variant ->
-    variant.assemble.doLast {
-        variant.outputs.each { output ->
-            println "aligned " + output.outputFile
-            println "unaligned " + output.packageApplication.outputFile
-
-            File file = output.packageApplication.outputFile;
-            if (variant.buildType.zipAlignEnabled && file.getName().contains("unaligned")) {
-                println "deleting " + file.getName()
-                file.delete()
-            }
+    variant.outputs.all {
+        if (outputFileName.endsWith('.apk')) {
+            //这里使用之前定义apk文件名称
+            outputFileName = "${project.archivesBaseName}_v${variant.productFlavors[0].versionName}_${variant.productFlavors[0].name}_${releaseTime()}_${variant.buildType.name}.apk"
         }
     }
 }
