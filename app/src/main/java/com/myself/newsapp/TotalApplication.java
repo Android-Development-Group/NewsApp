@@ -2,16 +2,12 @@ package com.myself.newsapp;
 
 import android.content.Context;
 
-import com.avos.avoscloud.AVAnalytics;
-import com.avos.avoscloud.AVOSCloud;
 import com.myself.library.controller.ActivityManager;
 import com.myself.library.controller.BaseApplication;
 import com.myself.library.utils.Logger;
 import com.myself.library.utils.SDCardUtils;
 
 import java.io.File;
-
-import im.fir.sdk.FIR;
 
 
 /**
@@ -39,14 +35,14 @@ public class TotalApplication extends BaseApplication {
         }
 
         //Fir-SDk配置
-        FIR.init(this);
+//        FIR.init(this);
 
         //LeanCloud初始化参数依次为 this, AppId, AppKey
-        AVOSCloud.initialize(this, LEANCLOUD_APP_ID, LEANCLOUD_APP_KEY);
+//        AVOSCloud.initialize(this, LEANCLOUD_APP_ID, LEANCLOUD_APP_KEY);
         //Debug模式SDK 初始化语句 AVOSCloud.initialize() 后面，只需要调用一次即可
-        AVOSCloud.setDebugLogEnabled(isDebug);
+//        AVOSCloud.setDebugLogEnabled(isDebug);
         //Crash上报
-        AVAnalytics.enableCrashReport(this, true);
+//        AVAnalytics.enableCrashReport(this, true);
     }
 
     @Override
@@ -78,7 +74,7 @@ public class TotalApplication extends BaseApplication {
 
     @Override
     public String getPackageName() {
-        return "com.myself.newsapp";
+        return BuildConfig.APPLICATION_ID;
     }
 
     @Override

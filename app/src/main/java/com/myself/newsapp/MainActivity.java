@@ -11,16 +11,12 @@ import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.util.Log;
 import android.util.SparseArray;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.avos.avoscloud.AVException;
-import com.avos.avoscloud.AVObject;
-import com.avos.avoscloud.SaveCallback;
 import com.myself.library.controller.ActivityManager;
 import com.myself.library.controller.BaseActivity;
 import com.myself.library.controller.eventbus.EventBusHelper;
@@ -226,22 +222,22 @@ public class MainActivity extends BaseActivity {
     /**
      * 测试SDK是否正常工作
      */
-    private void testLeanCloudSDK() {
-        AVObject testObject = new AVObject("TestObject");
-        testObject.put("name", "张文");
-        testObject.put("gender", "男");
-        testObject.put("birthday", "1993-02-05");
-        testObject.put("height", "175.5cm");
-        testObject.put("weight", "66kg");
-        testObject.saveInBackground(new SaveCallback() {
-            @Override
-            public void done(AVException e) {
-                if (e == null) {
-                    Log.d("saved", "success!");
-                }
-            }
-        });
-    }
+//    private void testLeanCloudSDK() {
+//        AVObject testObject = new AVObject("TestObject");
+//        testObject.put("name", "张文");
+//        testObject.put("gender", "男");
+//        testObject.put("birthday", "1993-02-05");
+//        testObject.put("height", "175.5cm");
+//        testObject.put("weight", "66kg");
+//        testObject.saveInBackground(new SaveCallback() {
+//            @Override
+//            public void done(AVException e) {
+//                if (e == null) {
+//                    Log.d("saved", "success!");
+//                }
+//            }
+//        });
+//    }
 
     @Subcriber(tag = Constants.EventKey.EVENT_INDEX_SET_ITEM)
     private void setCurrentItem(int position) {

@@ -10,12 +10,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import com.avos.avoscloud.AVException;
-import com.avos.avoscloud.AVFile;
-import com.avos.avoscloud.AVUser;
-import com.avos.avoscloud.DeleteCallback;
-import com.avos.avoscloud.SaveCallback;
-import com.myself.library.controller.eventbus.EventBusHelper;
 import com.myself.library.utils.ImageUtils;
 import com.myself.library.utils.Logger;
 import com.myself.library.utils.PreferenceUtils;
@@ -30,19 +24,12 @@ import com.myself.newsapp.account.AccountHelper;
 import com.myself.newsapp.base.SelectPopupWindow;
 import com.myself.newsapp.base.TitleActivity;
 import com.myself.newsapp.guidance.GuidanceActivity;
-import com.myself.newsapp.na_store.RoundedTransformation;
-import com.myself.newsapp.user.PerfectActivity;
 import com.myself.newsapp.util.Constants;
-import com.squareup.picasso.Picasso;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-
-import static com.myself.newsapp.R.id.iv_header_icon;
-import static com.myself.newsapp.R.id.tv_nick_name;
 
 /**
  * 设置
@@ -54,9 +41,9 @@ public class SettingActivity extends TitleActivity {
     public static final String NICK_NAME = "nick_name";
     public static final String USER_INFO = "user_info";
 
-    @BindView(iv_header_icon)
+    @BindView(R.id.iv_header_icon)
     RoundImageView mIvHeaderIcon;
-    @BindView(tv_nick_name)
+    @BindView(R.id.tv_nick_name)
     TextView mTvNickName;
     @BindView(R.id.rg_modes)
     RadioGroup mRgModes;
@@ -71,7 +58,7 @@ public class SettingActivity extends TitleActivity {
     @BindView(R.id.sv_setting)
     SupportScrollView mSvSetting;
 
-    final AVUser currentUser = AVUser.getCurrentUser();
+    //    final AVUser currentUser = AVUser.getCurrentUser();
     private SelectPopupWindow mSelectPopupWindow;
     private String mFilePath;//头像文件路径
 
@@ -93,7 +80,7 @@ public class SettingActivity extends TitleActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 final boolean indeterminate = checkedId == R.id.rb_male;
-                setIndeterminateMode(indeterminate);
+//                setIndeterminateMode(indeterminate);
             }
         });
 
@@ -103,21 +90,21 @@ public class SettingActivity extends TitleActivity {
         String username = PreferenceUtils.getValue(Constants.SPKey.PREFERENCE_KEY_USERNAME, null);
         mTvEmail.setText(StringUtils.isEmpty(username) ? "" : username);
 
-        String nickname = AVUser.getCurrentUser().getString("nickname");
-        mTvNickName.setText(StringUtils.isEmpty(nickname) ? getString(R.string.me_default_name) : nickname);
-
-        String sex = AVUser.getCurrentUser().getString("sex");
-        sex = StringUtils.isEmpty(sex) ? getString(R.string.me_sex_male) : sex;
-        mRgModes.check(getString(R.string.me_sex_male).equals(sex) ? R.id.rb_male : R.id.rb_female);
-
-        String region = AVUser.getCurrentUser().getString("region");
-        mTvRegion.setText(StringUtils.isEmpty(region) ? getString(R.string.me_default_region) : region);
-
-        AVFile userpic = AVUser.getCurrentUser().getAVFile("userpic");
-        Picasso.with(mContext)
-                .load(userpic == null ? "www" : userpic.getUrl())
-                .transform(new RoundedTransformation(9, 0))
-                .into(mIvHeaderIcon);
+//        String nickname = AVUser.getCurrentUser().getString("nickname");
+//        mTvNickName.setText(StringUtils.isEmpty(nickname) ? getString(R.string.me_default_name) : nickname);
+//
+//        String sex = AVUser.getCurrentUser().getString("sex");
+//        sex = StringUtils.isEmpty(sex) ? getString(R.string.me_sex_male) : sex;
+//        mRgModes.check(getString(R.string.me_sex_male).equals(sex) ? R.id.rb_male : R.id.rb_female);
+//
+//        String region = AVUser.getCurrentUser().getString("region");
+//        mTvRegion.setText(StringUtils.isEmpty(region) ? getString(R.string.me_default_region) : region);
+//
+//        AVFile userpic = AVUser.getCurrentUser().getAVFile("userpic");
+//        Picasso.with(mContext)
+//                .load(userpic == null ? "www" : userpic.getUrl())
+//                .transform(new RoundedTransformation(9, 0))
+//                .into(mIvHeaderIcon);
     }
 
     @Override
@@ -138,7 +125,7 @@ public class SettingActivity extends TitleActivity {
                             bitmap = (Bitmap) bundle.get("data");
                             mIvHeaderIcon.setImageBitmap(bitmap);
                             ImageUtils.bitmapOutSdCard(bitmap, mFilePath);
-                            checkSha1(mFilePath);
+//                            checkSha1(mFilePath);
                             return;
                         }
                     }
@@ -153,13 +140,13 @@ public class SettingActivity extends TitleActivity {
                     bitmap = ImageUtils.getSmallBitmap(picturePath, 320, 320);
                     mIvHeaderIcon.setImageBitmap(bitmap);
                     ImageUtils.bitmapOutSdCard(bitmap, mFilePath);
-                    checkSha1(mFilePath);
+//                    checkSha1(mFilePath);
                     break;
                 case CHANGE_NICK:
                     if (data != null) {
                         String nickname = data.getStringExtra(NICK_NAME);
                         mTvNickName.setText(nickname);
-                        initInfo();
+//                        initInfo();
                     }
                     break;
                 case CHANGE_INFO:
@@ -178,11 +165,11 @@ public class SettingActivity extends TitleActivity {
                 break;
             case R.id.rl_nick_name://修改用户昵称
                 // TODO: 2017/4/3
-                bundle.putString(TYPE, NICK_NAME);
-                bundle.putString(NICK_NAME, mTvNickName.getText().toString());
-                Intent nickIntent = new Intent(this, PerfectActivity.class);
-                nickIntent.putExtra(TYPE, bundle);
-                startActivityForResult(nickIntent, CHANGE_NICK);
+//                bundle.putString(TYPE, NICK_NAME);
+//                bundle.putString(NICK_NAME, mTvNickName.getText().toString());
+//                Intent nickIntent = new Intent(this, PerfectActivity.class);
+//                nickIntent.putExtra(TYPE, bundle);
+//                startActivityForResult(nickIntent, CHANGE_NICK);
                 break;
             case R.id.rl_region:
                 break;
@@ -197,55 +184,55 @@ public class SettingActivity extends TitleActivity {
     }
 
 
-    /**
-     * @param uploadFilePath 上传文件路径
-     */
-    private void checkSha1(String uploadFilePath) {
-        try {
-            final AVFile file = AVFile.withAbsoluteLocalPath(currentUser.getUsername().substring(0, 5) + "head_icon.png", uploadFilePath);
-            file.deleteInBackground(new DeleteCallback() {
-                @Override
-                public void done(AVException e) {
+//    /**
+//     * @param uploadFilePath 上传文件路径
+//     */
+//    private void checkSha1(String uploadFilePath) {
+//        try {
+//            final AVFile file = AVFile.withAbsoluteLocalPath(currentUser.getUsername().substring(0, 5) + "head_icon.png", uploadFilePath);
+//            file.deleteInBackground(new DeleteCallback() {
+//                @Override
+//                public void done(AVException e) {
+//
+//                }
+//            });
+//            currentUser.put("userpic", file);
+//            currentUser.saveInBackground(new SaveCallback() {
+//                @Override
+//                public void done(AVException e) {
+//                    AVFile userpic = AVUser.getCurrentUser().getAVFile("userpic");
+//                    Picasso.with(mContext)
+//                            .load(userpic == null ? "www" : userpic.getUrl())
+//                            .transform(new RoundedTransformation(9, 0))
+//                            .into(mIvHeaderIcon);
+//                    EventBusHelper.post(EVENT_PERFECT, EVENT_PERFECT);
+//                }
+//            });
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
-                }
-            });
-            currentUser.put("userpic", file);
-            currentUser.saveInBackground(new SaveCallback() {
-                @Override
-                public void done(AVException e) {
-                    AVFile userpic = AVUser.getCurrentUser().getAVFile("userpic");
-                    Picasso.with(mContext)
-                            .load(userpic == null ? "www" : userpic.getUrl())
-                            .transform(new RoundedTransformation(9, 0))
-                            .into(mIvHeaderIcon);
-                    EventBusHelper.post(EVENT_PERFECT, EVENT_PERFECT);
-                }
-            });
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
+//    private void setIndeterminateMode(boolean indeterminate) {
+//        String sex = indeterminate ? "男" : "女";
+//        currentUser.put("sex", sex);
+//        currentUser.saveInBackground();
+//    }
 
-    private void setIndeterminateMode(boolean indeterminate) {
-        String sex = indeterminate ? "男" : "女";
-        currentUser.put("sex", sex);
-        currentUser.saveInBackground();
-    }
-
-    private void initInfo() {
-        try {
-            currentUser.put("nickname", mTvNickName.getText());
-            currentUser.put("region", "上海");
-            currentUser.put("age", 24);
-            AVFile file = AVFile.withAbsoluteLocalPath(currentUser.getUsername().substring(0, 5) + "head_icon.png", mFilePath);
-            currentUser.put("userpic", file);
-            currentUser.saveInBackground();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        EventBusHelper.post(EVENT_PERFECT, EVENT_PERFECT);
-    }
+//    private void initInfo() {
+//        try {
+//            currentUser.put("nickname", mTvNickName.getText());
+//            currentUser.put("region", "上海");
+//            currentUser.put("age", 24);
+//            AVFile file = AVFile.withAbsoluteLocalPath(currentUser.getUsername().substring(0, 5) + "head_icon.png", mFilePath);
+//            currentUser.put("userpic", file);
+//            currentUser.saveInBackground();
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//
+//        EventBusHelper.post(EVENT_PERFECT, EVENT_PERFECT);
+//    }
 
     private void showPopu() {
         if (mSelectPopupWindow == null) {

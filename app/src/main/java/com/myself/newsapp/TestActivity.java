@@ -7,7 +7,6 @@ import android.widget.TextView;
 
 import com.myself.library.controller.eventbus.EventBusHelper;
 import com.myself.newsapp.base.TitleActivity;
-import com.myself.newsapp.na_store.GoodsListActivity;
 import com.myself.newsapp.test.LeakCanaryTestActivity;
 import com.myself.newsapp.util.Constants;
 
@@ -38,7 +37,7 @@ public class TestActivity extends TitleActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_test_0:
-                startActivity(GoodsListActivity.class);
+//                startActivity(GoodsListActivity.class);
                 break;
             case R.id.tv_test_1:
                 EventBusHelper.post(3, Constants.EventKey.EVENT_REFRESH_ME_TAB);

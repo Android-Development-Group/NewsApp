@@ -1,8 +1,5 @@
 package com.myself.newsapp.account;
 
-import android.util.Log;
-
-import com.avos.avoscloud.AVUser;
 import com.myself.library.utils.PreferenceUtils;
 import com.myself.library.utils.StringUtils;
 import com.myself.newsapp.user.UserInfoBean;
@@ -20,32 +17,32 @@ public class AccountHelper {
      * 登录
      */
     public static void login() {
-        AVUser avUser = AVUser.getCurrentUser();
-        if (avUser != null) {
-            String uuid = avUser.getUuid();
-            Log.e(TAG, "login: uuid--" + uuid);
-            if (!StringUtils.isEmpty(uuid))
-                PreferenceUtils.save(Constants.SPKey.PREFERENCE_KEY_UUID, uuid);
-
-            String uid = avUser.getObjectId();
-            if (!StringUtils.isEmpty(uid))
-                PreferenceUtils.save(Constants.SPKey.PREFERENCE_KEY_UID, uid);
-
-            String sessionToken = avUser.getSessionToken();
-            if (!StringUtils.isEmpty(sessionToken))
-                PreferenceUtils.save(Constants.SPKey.PREFERENCE_KEY_TOKEN, sessionToken);
-
-            String username = avUser.getUsername();
-            if (!StringUtils.isEmpty(username))
-                PreferenceUtils.save(Constants.SPKey.PREFERENCE_KEY_USERNAME, username);
-        }
+//        AVUser avUser = AVUser.getCurrentUser();
+//        if (avUser != null) {
+//            String uuid = avUser.getUuid();
+//            Log.e(TAG, "login: uuid--" + uuid);
+//            if (!StringUtils.isEmpty(uuid))
+//                PreferenceUtils.save(Constants.SPKey.PREFERENCE_KEY_UUID, uuid);
+//
+//            String uid = avUser.getObjectId();
+//            if (!StringUtils.isEmpty(uid))
+//                PreferenceUtils.save(Constants.SPKey.PREFERENCE_KEY_UID, uid);
+//
+//            String sessionToken = avUser.getSessionToken();
+//            if (!StringUtils.isEmpty(sessionToken))
+//                PreferenceUtils.save(Constants.SPKey.PREFERENCE_KEY_TOKEN, sessionToken);
+//
+//            String username = avUser.getUsername();
+//            if (!StringUtils.isEmpty(username))
+//                PreferenceUtils.save(Constants.SPKey.PREFERENCE_KEY_USERNAME, username);
+//        }
     }
 
     /**
      * 登出
      */
     public static void logout() {
-        AVUser.getCurrentUser().logOut();
+//        AVUser.getCurrentUser().logOut();
         PreferenceUtils.remove(Constants.SPKey.PREFERENCE_KEY_UUID);
         PreferenceUtils.remove(Constants.SPKey.PREFERENCE_KEY_UID);
         PreferenceUtils.remove(Constants.SPKey.PREFERENCE_KEY_TOKEN);

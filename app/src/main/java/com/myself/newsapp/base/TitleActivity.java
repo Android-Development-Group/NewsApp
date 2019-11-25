@@ -3,7 +3,6 @@ package com.myself.newsapp.base;
 
 import android.view.View;
 
-import com.avos.avoscloud.AVAnalytics;
 import com.myself.library.controller.BaseActivity;
 import com.myself.library.controller.BaseApplication;
 import com.myself.library.view.NavigationBar;
@@ -126,12 +125,12 @@ public abstract class TitleActivity<App extends BaseApplication> extends BaseAct
     @Override
     protected void onResume() {
         super.onResume();
-        AVAnalytics.onResume(this);
+//        AVAnalytics.onResume(this);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        AVAnalytics.onPause(this);
+//        AVAnalytics.onPause(this);
     }
 }

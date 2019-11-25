@@ -11,11 +11,8 @@ android {
     project.archivesBaseName = "TDFacaiApp"
 
     defaultConfig {
-        applicationId "com.myself.newsapp"
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 6
-        versionName "2.4.0"
         flavorDimensions "default"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
@@ -28,6 +25,9 @@ android {
             moduleName "native-lib"
             abiFilters "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
         }
+
+        aaptOptions.cruncherEnabled = false
+        aaptOptions.useNewCruncher = false
     }
     //为了解决部分第三方库重复打包了META-INF的问题
     packagingOptions {
@@ -73,7 +73,15 @@ android {
         checkReleaseBuilds false
         abortOnError false
     }
-
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+    // NDK r17 之后不再支持 mips 平台，在 build.gradle 里增加如下配置可解决
+    packagingOptions {
+        doNotStrip '*/mips/*.so'
+        doNotStrip '*/mips64/*.so'
+    }
     externalNativeBuild {
         cmake {
             path "CMakeLists.txt"
@@ -82,13 +90,48 @@ android {
 
     //产品渠道配置
     productFlavors {
-        local_release { versionName = "V" + defaultConfig.versionName }
-//        local_debug { versionName = "D" + defaultConfig.versionName }
-//        channel_360 { versionName = "V" + defaultConfig.versionName }
-//          ... ...
-        productFlavors.all { flavor ->
-            flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+        dev {
+            applicationId "com.myself.newsapp.dev"
+            versionCode 5
+            versionName "1.0.1"
+            buildConfigField 'String', 'BASE_URL', '"http://localhost:8090"'
+            manifestPlaceholders = [PGYER_APPID        : "xxxxxx",
+                                    APP_ICON           : "@drawable/icon_newsapp",
+                                    APP_NAME           : "NewsApp-dev",
+                                    JPUSH_PKGNAME      : applicationId,
+                                    JPUSH_CHANNEL      : "developer-default", //用户渠道统计的渠道名称
+                                    JPUSH_APPKEY       : "df455de001171d1826422ccb", //正式 PRD
+                                    UMENG_CHANNEL_VALUE: "dev",
+            ]
         }
+//        uat {
+//            applicationId "com.myself.newsapp.uat"
+//            versionCode 3
+//            versionName "1.1.0"
+//            buildConfigField 'String', 'BASE_URL', '"http://localhost:8090"'
+//            manifestPlaceholders = [PGYER_APPID        : "xxxxxx",
+//                                    APP_ICON           : "@drawable/icon_newsapp",
+//                                    APP_NAME           : "NewsApp-uat",
+//                                    JPUSH_PKGNAME      : applicationId,
+//                                    JPUSH_CHANNEL      : "developer-default", //用户渠道统计的渠道名称
+//                                    JPUSH_APPKEY       : "df455de001171d1826422ccb", //正式 PRD
+//                                    UMENG_CHANNEL_VALUE: "uat",
+//            ]
+//        }
+//        prd {
+//            applicationId "com.myself.newsapp.prd"
+//            versionCode 7
+//            versionName "2.4.1"
+//            buildConfigField 'String', 'BASE_URL', '"http://localhost:8090"'
+//            manifestPlaceholders = [PGYER_APPID        : "xxxxxx",
+//                                    APP_ICON           : "@drawable/icon_newsapp",
+//                                    APP_NAME           : "NewsApp-prd",
+//                                    JPUSH_PKGNAME      : applicationId,
+//                                    JPUSH_CHANNEL      : "developer-default", //用户渠道统计的渠道名称
+//                                    JPUSH_APPKEY       : "df455de001171d1826422ccb", //正式 PRD
+//                                    UMENG_CHANNEL_VALUE: "prd",
+//            ]
+//        }
     }
 }
 
@@ -111,17 +154,16 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.5.2'
 
     api project(':library')
-    api project(':leancloudlibrary')
+//    api project(':leancloudlibrary')
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     testImplementation 'junit:junit:4.12'
     implementation 'com.jakewharton:butterknife:8.4.0'
-    annotationProcessor  'com.jakewharton:butterknife-compiler:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
 
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
 }
 
-//编译结束后删除unaligned包
 android.applicationVariants.all { variant ->
     variant.outputs.all {
         if (outputFileName.endsWith('.apk')) {

@@ -13,10 +13,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.avos.avoscloud.AVException;
-import com.avos.avoscloud.AVUser;
-import com.avos.avoscloud.LogInCallback;
-import com.myself.leancloudlibrary.TipsUtils;
 import com.myself.library.utils.StringUtils;
 import com.myself.library.view.CleanableEditText;
 import com.myself.newsapp.MainActivity;
@@ -201,18 +197,22 @@ public class LoginActivity extends TitleActivity implements TextWatcher {
         if (cancel) {
             focusView.requestFocus();
         } else {
-            AVUser.logInInBackground(username, password, new LogInCallback<AVUser>() {
-                @Override
-                public void done(AVUser avUser, AVException e) {
-                    if (e == null) {
-                        LoginActivity.this.finish();
-                        AccountHelper.login();
-                        startActivity(MainActivity.class);
-                    } else {
-                        TipsUtils.getPrompt(mContext, e.getCode());
-                    }
-                }
-            });
+            LoginActivity.this.finish();
+            AccountHelper.login();
+            startActivity(MainActivity.class);
+
+//            AVUser.logInInBackground(username, password, new LogInCallback<AVUser>() {
+//                @Override
+//                public void done(AVUser avUser, AVException e) {
+//                    if (e == null) {
+//                        LoginActivity.this.finish();
+//                        AccountHelper.login();
+//                        startActivity(MainActivity.class);
+//                    } else {
+//                        TipsUtils.getPrompt(mContext, e.getCode());
+//                    }
+//                }
+//            });
         }
     }
 }

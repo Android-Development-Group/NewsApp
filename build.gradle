@@ -10,7 +10,10 @@ buildscript {
 
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.4.1'
+        classpath 'com.android.tools.build:gradle:3.5.1'
+
+        //Gradle Android Maven plugin
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.0'
 //        classpath "com.neenbedankt.gradle.plugins:android-apt:1.8"
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -20,26 +23,30 @@ buildscript {
 
 allprojects {
     repositories {
-        jcenter()
         google()
-        //这里是 LeanCloud 的包仓库
-        maven { url "http://mvn.leancloud.cn/nexus/content/repositories/public" }
+        jcenter()
         maven { url "https://jitpack.io" }
+        maven { url "https://raw.githubusercontent.com/Pgyer/mvn_repo_pgyer/master" }
+        flatDir { dirs 'libs' }
+    }
+
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
     }
 }
 
-subprojects {
-    configurations.all {
-        resolutionStrategy {
-            force 'com.android.support:support-v4:28.0.0'
-            force 'com.android.support:appcompat-v7:28.0.0'
-            force 'com.android.support:support-annotations:28.0.0'
-            force 'com.android.support:design:28.0.0'
-            force 'com.android.support:recyclerview-v7:28.0.0'
-            force 'com.android.support:cardview-v7:28.0.0'
-        }
-    }
-}
+//subprojects {
+//    configurations.all {
+//        resolutionStrategy {
+//            force 'com.android.support:support-v4:28.0.0'
+//            force 'com.android.support:appcompat-v7:28.0.0'
+//            force 'com.android.support:support-annotations:28.0.0'
+//            force 'com.android.support:design:28.0.0'
+//            force 'com.android.support:recyclerview-v7:28.0.0'
+//            force 'com.android.support:cardview-v7:28.0.0'
+//        }
+//    }
+//}
 
 task clean(type: Delete) {
     delete rootProject.buildDir

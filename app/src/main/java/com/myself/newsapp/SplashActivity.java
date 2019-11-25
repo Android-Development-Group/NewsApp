@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
 
-import com.avos.avoscloud.feedback.FeedbackAgent;
 import com.myself.library.controller.BaseActivity;
 import com.myself.newsapp.account.AccountHelper;
 import com.myself.newsapp.guidance.GuidanceActivity;
@@ -25,8 +24,8 @@ public class SplashActivity extends BaseActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         //用户反馈通知
-        FeedbackAgent agent = new FeedbackAgent(this);
-        agent.sync();
+//        FeedbackAgent agent = new FeedbackAgent(this);
+//        agent.sync();
     }
 
     @Override

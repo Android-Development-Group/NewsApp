@@ -52,7 +52,7 @@
     <application
         android:name=".TotalApplication"
         android:allowBackup="true"
-        android:icon="@drawable/newsapp_icon"
+        android:icon="@drawable/icon_newsapp"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
@@ -118,34 +118,34 @@
             android:name=".user.ForgetPasswordActivity"
             android:label="@string/title_activity_forgetpassword" />
         <!-- NewsApp主页 -->
-<!--        <activity-->
-<!--            android:name=".MainActivity"-->
-<!--            android:label="@string/main_title" />-->
+        <!--        <activity-->
+        <!--            android:name=".MainActivity"-->
+        <!--            android:label="@string/main_title" />-->
         <!-- 引导页 -->
         <activity
             android:name=".guidance.GuidanceActivity"
             android:label="@string/title_activity_guidance" />
-        <!-- 商品列表 -->
-        <activity
-            android:name=".na_store.GoodsListActivity"
-            android:label="@string/title_activity_goodslist" />
-        <!-- 商品详情 -->
-        <activity
-            android:name=".na_store.GoodsDetailActivity"
-            android:label="@string/title_activity_goodsdetail" />
-        <!-- 添加商品 -->
-        <activity
-            android:name=".test.AddGoodsActivity"
-            android:label="@string/title_activity_addgoods" />
+        <!--        &lt;!&ndash; 商品列表 &ndash;&gt;-->
+        <!--        <activity-->
+        <!--            android:name=".na_store.GoodsListActivity"-->
+        <!--            android:label="@string/title_activity_goodslist" />-->
+        <!--        &lt;!&ndash; 商品详情 &ndash;&gt;-->
+        <!--        <activity-->
+        <!--            android:name=".na_store.GoodsDetailActivity"-->
+        <!--            android:label="@string/title_activity_goodsdetail" />-->
+        <!--        &lt;!&ndash; 添加商品 &ndash;&gt;-->
+        <!--        <activity-->
+        <!--            android:name=".test.AddGoodsActivity"-->
+        <!--            android:label="@string/title_activity_addgoods" />-->
         <!-- 设置 -->
         <activity
             android:name=".na_me.setting.SettingActivity"
             android:label="@string/title_activity_setting" />
         <activity android:name=".na_me.feedback.FeedbackActivity" />
         <activity android:name=".na_me.message.MessageActivity" />
-        <activity android:name=".user.PerfectActivity" />
+        <!--        <activity android:name=".user.PerfectActivity" />-->
         <activity android:name=".test.LeakCanaryTestActivity" />
-        <activity android:name=".test.Test2Activity"></activity>
+        <activity android:name=".test.Test2Activity" />
     </application>
 
 </manifest>

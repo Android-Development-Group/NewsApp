@@ -15,12 +15,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.avos.avoscloud.AVException;
-import com.avos.avoscloud.AVUser;
-import com.avos.avoscloud.SignUpCallback;
-import com.myself.leancloudlibrary.TipsUtils;
 import com.myself.library.utils.StringUtils;
-import com.myself.library.utils.ToastUtils;
 import com.myself.library.view.CleanableEditText;
 import com.myself.library.view.SwitchButton;
 import com.myself.library.view.TimeButton;
@@ -229,10 +224,13 @@ public class RegisterActivity extends TitleActivity implements TextWatcher {
         if (cancel) {
             focusView.requestFocus();
         } else {
-            AVUser user = new AVUser();// 新建 AVUser 对象实例
-            user.setUsername(username);// 设置用户名
-            user.setEmail(username);// 设置邮箱
-            user.setPassword(password);// 设置密码
+            startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+            RegisterActivity.this.finish();
+
+//            AVUser user = new AVUser();// 新建 AVUser 对象实例
+//            user.setUsername(username);// 设置用户名
+//            user.setEmail(username);// 设置邮箱
+//            user.setPassword(password);// 设置密码
 
             //重新发送验证邮箱
 //            AVUser.requestEmailVerifyInBackground(username, new RequestEmailVerifyCallback() {
@@ -249,18 +247,18 @@ public class RegisterActivity extends TitleActivity implements TextWatcher {
 //                }
 //            });
 
-            user.signUpInBackground(new SignUpCallback() {
-                @Override
-                public void done(AVException e) {
-                    if (e == null) {
-                        ToastUtils.showToastShort(mContext, "请去邮箱" + username + "验证后方可登录！");
-                        startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-                        RegisterActivity.this.finish();
-                    } else {
-                        TipsUtils.getPrompt(mContext, e.getCode());
-                    }
-                }
-            });
+//            user.signUpInBackground(new SignUpCallback() {
+//                @Override
+//                public void done(AVException e) {
+//                    if (e == null) {
+//                        ToastUtils.showToastShort(mContext, "请去邮箱" + username + "验证后方可登录！");
+//                        startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+//                        RegisterActivity.this.finish();
+//                    } else {
+//                        TipsUtils.getPrompt(mContext, e.getCode());
+//                    }
+//                }
+//            });
         }
     }
 }
