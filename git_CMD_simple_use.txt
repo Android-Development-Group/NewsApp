@@ -1,0 +1,46 @@
+﻿git常用命令汇总
+
+	Git全局设置
+	$ git config --global user.name  "账户名称"	//引号内容为用户名称（英文名）
+	$ git config --global user.email "邮箱地址"	//引号内容为登陆远端使用的邮箱
+	$ git config --global credential.helper store	//本地记住账户
+
+	一、推送本地新项目到远程仓库
+	
+		$ cd C:\Users\T5\ASProjects\test	//切换到本地项目test目录下
+		$ git init	//git初始化项目
+		$ git remote add origin git@github.com:Tom/test.git	//远程git地址(提前在远端创建好)
+		$ git pull origin master	//拉取远端仓库文件到本地
+		$ git add .	//添加项目下所有需要提交的文件到缓存区
+		$ git commit -m "first init"	//提交（引号内容为本次提交描述）
+		$ git push -u origin master	//推送到远程master分支
+		
+	二、本地仓库修改Git远程仓库地址	
+		
+		$ git remote -v //查看本地已经存在的远程仓库名称和地址地址
+		$ git remote set-url origin git@github.com:Tom/test2.git	//修改远程仓库origin的地址为git@github.com:Tom/test2.git（提前在远端创建好）
+		
+	三、本地项目添加多个Git远程仓库	
+		
+		1.方法一：
+		$ git remote add github git@github.com:Tom/test3.git	//添加一个远程库 名字不能是origin
+		$ git remote -v	//查看本地已经存在的远程仓库名称和地址地址
+		$ git pull github master	//从远程仓库github拉取
+		$ git push github master	//推送到远程仓库github
+
+		2.方法二：
+		$ git remote set-url --add origin git@github.com:Tom/test4.git	//为本地仓库添加新的远程仓库地址
+		$ git remote -v	//查看本地已经存在的远程仓库名称和地址地址
+		$ git push origin master	//推送到远程master分支
+		
+	四、其他
+
+		$ git remote rm origin	//删除本地仓库当前关联的远程仓库
+		$ git log	//查看提交历史
+		$ git status	//查看有多少次 提交了 没有push到版本库
+		$ git cherry -v	//查看已经提交 但是未传送到远程代码库的提交描述/说明
+		$ git log master ^origin/master	//查看已经提交但是未传送到远程代码库的提交详情（可能不止一次）
+		
+		
+		
+		

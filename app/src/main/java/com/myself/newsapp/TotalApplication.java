@@ -51,12 +51,6 @@ public class TotalApplication extends BaseApplication {
     }
 
     @Override
-    protected void initEnvironment() {
-        //初始化Service Api
-        BaseApi.init(BaseApi.HOST_TEST);
-    }
-
-    @Override
     public String appDeviceId() {
         return null;
     }
@@ -64,7 +58,7 @@ public class TotalApplication extends BaseApplication {
     @Override
     protected boolean isDebug() {
         //根据需求更改
-        return BaseApi.isInnerEnvironment();
+        return BuildConfig.DEBUG;
     }
 
     @Override

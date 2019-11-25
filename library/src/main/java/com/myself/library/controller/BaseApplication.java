@@ -41,7 +41,6 @@ public abstract class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        initEnvironment();
         isDebug = isDebug();
         mApplication = this;
         //sdCard缓存路径
@@ -109,13 +108,6 @@ public abstract class BaseApplication extends Application {
      * @return 腾讯bugly的AppKey
      */
     protected abstract String getBuglyKey();
-
-    /**
-     * debug模式
-     *
-     * @return 是否开启
-     */
-    protected abstract void initEnvironment();
 
     /**
      * 填写工程包名
